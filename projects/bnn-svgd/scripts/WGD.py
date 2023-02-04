@@ -359,6 +359,11 @@ def main():
     log_str = datetime.datetime.now().strftime('[%Y-%m-%d %H:%M:%S] ') + log_str
     print_fn(log_str)
 
+    if jax.local_device_count() > 1:
+        log_str = f'Multiple local devices are detected:\n{jax.local_devices()}\n'
+        log_str = datetime.datetime.now().strftime('[%Y-%m-%d %H:%M:%S] ') + log_str
+        print_fn(log_str)
+
     launch(args, print_fn)
 
 
