@@ -24,20 +24,34 @@ We consider the following command line arguments,
 ```bash
 python scripts/SGDM.py
     --data_name {CIFAR10_x32, CIFAR100_x32}
+    --model_width {1, 4}
+    --optim_ne 500
     --optim_lr {3e-6, 1e-6, 3e-7, 1e-7}
     --optim_momentum {0.99, 0.97, 0.90, 0.70}
     --prior_precision {80.0, 40.0, 20.0, 10.0, 5.0, 2.5}
     --seed 42
 ```
 and obtain the following test performance with varying prior precision,
-| Method | Epoch | Precision | CIFAR-10      | CIFAR-100     | Logs |
-| :-:    | :-:   | :-:       | :-:           | :-:           | :-   |
-| SGDM   | 500   | 2.5       | 84.62 / 0.637 | 49.21 / 2.847 | [`CIFAR-10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.97_pr-00/42/20230203091638.log), [`CIFAR-100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000010_mo-0.99_pr-00/42/20230203200438.log)
-|        | 500   | 5.0       | 84.78 / 0.602 | 49.76 / 1.889 | [`CIFAR-10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.97_pr-01/42/20230203092801.log), [`CIFAR-100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000010_mo-0.99_pr-01/42/20230203200442.log)
-|        | 500   | 10.0      | 84.86 / 0.606 | 52.27 / 2.228 | [`CIFAR-10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000010_mo-0.97_pr-02/42/20230203075155.log), [`CIFAR-100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000010_mo-0.97_pr-02/42/20230203194716.log)
-|        | 500   | 20.0      | 84.96 / 0.626 | 50.27 / 2.141 | [`CIFAR-10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.90_pr-03/42/20230203090836.log), [`CIFAR-100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.90_pr-03/42/20230203205925.log)
-|        | 500   | 40.0      | 85.15 / 0.639 | 51.31 / 1.885 | [`CIFAR-10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.70_pr-04/42/20230203084421.log), [`CIFAR-100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.70_pr-04/42/20230203204656.log)
-|        | 500   | 80.0      | 85.04 / 0.671 | 46.86 / 2.018 | [`CIFAR-10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000001_mo-0.97_pr-05/42/20230203042552.log), [`CIFAR-100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000010_mo-0.70_pr-05/42/20230203190726.log)
+
+**R20-FRN-Swish on CIFAR-10/100**
+| Precision | CIFAR-10      | CIFAR-100     | Logs |
+| :-:       | :-:           | :-:           | :-   |
+| 2.5       | 84.62 / 0.637 | 49.21 / 2.847 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.97_pr-00/42/20230203091638.log), [`C100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000010_mo-0.99_pr-00/42/20230203200438.log)
+| 5.0       | 84.78 / 0.602 | 49.76 / 1.889 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.97_pr-01/42/20230203092801.log), [`C100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000010_mo-0.99_pr-01/42/20230203200442.log)
+| 10.0      | 84.86 / 0.606 | 52.27 / 2.228 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000010_mo-0.97_pr-02/42/20230203075155.log), [`C100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000010_mo-0.97_pr-02/42/20230203194716.log)
+| 20.0      | 84.96 / 0.626 | 50.27 / 2.141 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.90_pr-03/42/20230203090836.log), [`C100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.90_pr-03/42/20230203205925.log)
+| 40.0      | 85.15 / 0.639 | 51.31 / 1.885 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.70_pr-04/42/20230203084421.log), [`C100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.70_pr-04/42/20230203204656.log)
+| 80.0      | 85.04 / 0.671 | 46.86 / 2.018 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000001_mo-0.97_pr-05/42/20230203042552.log), [`C100`](./save/CIFAR100_x32/R20-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000010_mo-0.70_pr-05/42/20230203190726.log)
+
+**R20x4-FRN-Swish on CIFAR-10/100 (8 TPUv2 cores)**
+| Precision | CIFAR-10      | CIFAR-100     | Logs |
+| :-:       | :-:           | :-:           | :-   |
+| 2.5       | 87.17 / 0.487 | 00.00 / 0.000 | [`C10`](./save/CIFAR10_x32/R20x4-FRN-Swish/bs-0080_ne-0500_lr-0.0000030_mo-0.97_pr-00/42/20230205152826.log)
+| 5.0       | 87.09 / 0.563 |               | [`C10`](./save/CIFAR10_x32/R20x4-FRN-Swish/bs-0080_ne-0500_lr-0.0000010_mo-0.97_pr-01/42/20230205171157.log)
+| 10.0      | 87.21 / 0.619 |               | [`C10`](./save/CIFAR10_x32/R20x4-FRN-Swish/bs-0080_ne-0500_lr-0.0000010_mo-0.90_pr-02/42/20230205084003.log)
+| 20.0      | 87.74 / 0.584 |               | [`C10`](./save/CIFAR10_x32/R20x4-FRN-Swish/bs-0080_ne-0500_lr-0.0000030_mo-0.70_pr-03/42/20230205001428.log)
+| 40.0      | 87.48 / 0.578 |               | [`C10`](./save/CIFAR10_x32/R20x4-FRN-Swish/bs-0080_ne-0500_lr-0.0000030_mo-0.70_pr-04/42/20230205015539.log)
+| 80.0      | 87.34 / 0.596 |               | [`C10`](./save/CIFAR10_x32/R20x4-FRN-Swish/bs-0080_ne-0500_lr-0.0000030_mo-0.70_pr-05/42/20230205033517.log)
 
 ### Stochastic Gradient Hamiltonian Monte Carlo (SGHMC; [Chen et al., 2014](https://arxiv.org/abs/1402.4102))
 
@@ -52,30 +66,33 @@ python scripts/SGHMC.py
     --prior_precision {80.0, 40.0, 20.0, 10.0, 5.0, 2.5}
     --seed 42
 
-    # schedule: 0045-0005
-    --num_cycles 30 --num_epochs_quiet  45 --num_epochs_noisy   5
-
-    # schedule: 0000-0050
+    # 0000-0050 schedule for SGHMC
     --num_cycles 30 --num_epochs_quiet   0 --num_epochs_noisy  50
 
-    # schedule: 0090-0010
-    --num_cycles 30 --num_epochs_quiet  90 --num_epochs_noisy  10
+    # 0045-0005 schedule for SGHMC with exploration (Zhang et al., 2020)
+    --num_cycles 30 --num_epochs_quiet  45 --num_epochs_noisy   5
 
-    # schedule: 0000-0100
-    --num_cycles 30 --num_epochs_quiet   0 --num_epochs_noisy 100
+    # 0050-0000 schedule for SSE (Huang et al., 2017)
+    --num_cycles 30 --num_epochs_quiet  50 --num_epochs_noisy   0
 ```
 and obtain the following test performance with varying prior precision,
-| Method | Epoch / Cycle | Schedule  | Precision | CIFAR-10      | CIFAR-100     | Logs |
-| :-:    | :-:           | :-:       | :-:       | :-:           | :-:           | :-   |
-| SGHMC  | 1500 / 30     | 0045-0005 | 2.5       | 88.05 / 0.370 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000030_mo-0.97_pr-00/42/20230204172708.log)
-|        |               |           | 5.0       | 88.43 / 0.360 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000030_mo-0.90_pr-01/42/20230204164156.log)
-|        |               |           | 10.0      | 87.51 / 0.377 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000003_mo-0.99_pr-02/42/20230204081042.log)
-|        |               |           | 20.0      | 88.77 / 0.352 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000030_mo-0.70_pr-03/42/20230204152125.log)
-|        |               |           | 40.0      | 87.91 / 0.378 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000010_mo-0.90_pr-04/42/20230204113545.log)
-|        |               |           | 80.0      | 88.56 / 0.369 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000003_mo-0.90_pr-05/42/20230204062313.log)
-|        |               | 0000-0050 | 2.5       | 85.93 / 0.456 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000003_mo-0.99_pr-00/42/20230205061339.log)
-|        |               |           | 5.0       | 86.21 / 0.427 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000010_mo-0.90_pr-01/42/20230205084120.log)
-|        |               |           | 10.0      | 86.06 / 0.428 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000010_mo-0.90_pr-02/42/20230205093834.log)
-|        |               |           | 20.0      | 86.46 / 0.425 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000003_mo-0.90_pr-03/42/20230205043014.log)
-|        |               |           | 40.0      | 86.03 / 0.439 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000001_mo-0.90_pr-04/42/20230204232015.log)
-|        |               |           | 80.0      | 85.27 / 0.464 |               | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000003_mo-0.70_pr-05/42/20230205031644.log)
+| Method | Epoch / Cycle | Schedule  | Precision | CIFAR-10      | Logs |
+| :-:    | :-:           | :-:       | :-:       | :-:           | :-   |
+| SGHMC  | 1500 / 30     | 0000-0050 | 2.5       | 85.93 / 0.456 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000003_mo-0.99_pr-00/42/20230205061339.log)
+|        |               |           | 5.0       | 86.21 / 0.427 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000010_mo-0.90_pr-01/42/20230205084120.log)
+|        |               |           | 10.0      | 86.06 / 0.428 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000010_mo-0.90_pr-02/42/20230205093834.log)
+|        |               |           | 20.0      | 86.46 / 0.425 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000003_mo-0.90_pr-03/42/20230205043014.log)
+|        |               |           | 40.0      | 86.03 / 0.439 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000001_mo-0.90_pr-04/42/20230204232015.log)
+|        |               |           | 80.0      | 85.27 / 0.464 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0000-0050_lr-0.0000003_mo-0.70_pr-05/42/20230205031644.log)
+| SGHMC  | 1500 / 30     | 0045-0005 | 2.5       | 88.05 / 0.370 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000030_mo-0.97_pr-00/42/20230204172708.log)
+|        |               |           | 5.0       | 88.43 / 0.360 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000030_mo-0.90_pr-01/42/20230204164156.log)
+|        |               |           | 10.0      | 87.51 / 0.377 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000003_mo-0.99_pr-02/42/20230204081042.log)
+|        |               |           | 20.0      | 88.77 / 0.352 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000030_mo-0.70_pr-03/42/20230204152125.log)
+|        |               |           | 40.0      | 87.91 / 0.378 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000010_mo-0.90_pr-04/42/20230204113545.log)
+|        |               |           | 80.0      | 88.56 / 0.369 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SGHMC/bs-0080_nc-0030_ne-0045-0005_lr-0.0000003_mo-0.90_pr-05/42/20230204062313.log)
+| SSE    | 1500 / 30     | 0050-0000 | 2.5       | 88.28 / 0.354 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SSE/bs-0080_nc-0030_ne-0050-0000_lr-0.0000030_mo-0.97_pr-00/42/20230206124722.log)
+|        |               |           | 5.0       | 88.78 / 0.341 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SSE/bs-0080_nc-0030_ne-0050-0000_lr-0.0000030_mo-0.97_pr-01/42/20230206130909.log)
+|        |               |           | 10.0      | 88.17 / 0.361 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SSE/bs-0080_nc-0030_ne-0050-0000_lr-0.0000003_mo-0.99_pr-02/42/20230205192703.log)
+|        |               |           | 20.0      | 88.73 / 0.344 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SSE/bs-0080_nc-0030_ne-0050-0000_lr-0.0000030_mo-0.70_pr-03/42/20230206080228.log)
+|        |               |           | 40.0      | 88.15 / 0.356 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SSE/bs-0080_nc-0030_ne-0050-0000_lr-0.0000003_mo-0.97_pr-04/42/20230205174208.log)
+|        |               |           | 80.0      | 88.86 / 0.338 | [`C10`](./save/CIFAR10_x32/R20-FRN-Swish/SSE/bs-0080_nc-0030_ne-0050-0000_lr-0.0000003_mo-0.90_pr-05/42/20230205142337.log)

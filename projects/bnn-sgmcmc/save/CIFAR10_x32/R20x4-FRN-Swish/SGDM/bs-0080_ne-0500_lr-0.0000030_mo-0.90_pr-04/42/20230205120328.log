@@ -1,0 +1,530 @@
+[2023-02-05 12:03:28] Environments:
+------------  ------------------------------------------------------------
+sys.platform  linux
+Python        3.8.10 (default, Nov 14 2022, 12:59:47) [GCC 9.4.0]
+JAX           0.4.2 @/home/giung/.local/lib/python3.8/site-packages/jax
+jaxlib        0.4.2 @/home/giung/.local/lib/python3.8/site-packages/jaxlib
+Flax          0.6.4 @/home/giung/.local/lib/python3.8/site-packages/flax
+Optax         0.1.4 @/home/giung/.local/lib/python3.8/site-packages/optax
+------------  ------------------------------------------------------------
+
+[2023-02-05 12:03:28] Command line arguments:
+- args.data_root         : ./data/
+- args.data_name         : CIFAR10_x32
+- args.data_augmentation : none
+- args.data_proportional : 1.0
+- args.model_depth       : 20
+- args.model_width       : 4
+- args.model_style       : FRN-Swish
+- args.optim_bs          : 80
+- args.optim_ne          : 500
+- args.optim_lr          : 3e-06
+- args.optim_momentum    : 0.9
+- args.prior_precision   : 40.0
+- args.save              : /home/giung/giung2-dev/projects/bnn-sgmcmc/save/CIFAR10_x32/R20x4-FRN-Swish/SGDM/bs-0080_ne-0500_lr-0.0000030_mo-0.90_pr-04/42
+- args.seed              : 42
+- args.precision         : fp32
+
+[2023-02-05 12:03:42] Multiple local devices are detected:
+[TpuDevice(id=0, process_index=0, coords=(0,0,0), core_on_chip=0), TpuDevice(id=1, process_index=0, coords=(0,0,0), core_on_chip=1), TpuDevice(id=2, process_index=0, coords=(1,0,0), core_on_chip=0), TpuDevice(id=3, process_index=0, coords=(1,0,0), core_on_chip=1), TpuDevice(id=4, process_index=0, coords=(0,1,0), core_on_chip=0), TpuDevice(id=5, process_index=0, coords=(0,1,0), core_on_chip=1), TpuDevice(id=6, process_index=0, coords=(1,1,0), core_on_chip=0), TpuDevice(id=7, process_index=0, coords=(1,1,0), core_on_chip=1)]
+
+[2023-02-05 12:04:25] [Epoch     1/  500] trn/posterior_energy  4.197e+06, trn/neg_log_likelihood  9.354e+04, trn/neg_log_prior  4.103e+06, trn/lr  3.000e-06, val/acc 2.333e-01, val/nll 2.045e+00 (best_acc: 0.000e+00 -> 2.333e-01, test_acc: 2.406e-01, test_nll: 2.044e+00)
+[2023-02-05 12:04:40] [Epoch     2/  500] trn/posterior_energy  4.101e+06, trn/neg_log_likelihood  7.850e+04, trn/neg_log_prior  4.023e+06, trn/lr  3.000e-06, val/acc 3.403e-01, val/nll 1.793e+00 (best_acc: 2.333e-01 -> 3.403e-01, test_acc: 3.573e-01, test_nll: 1.777e+00)
+[2023-02-05 12:04:53] [Epoch     3/  500] trn/posterior_energy  4.073e+06, trn/neg_log_likelihood  7.151e+04, trn/neg_log_prior  4.001e+06, trn/lr  3.000e-06, val/acc 3.850e-01, val/nll 1.661e+00 (best_acc: 3.403e-01 -> 3.850e-01, test_acc: 3.937e-01, test_nll: 1.639e+00)
+[2023-02-05 12:05:07] [Epoch     4/  500] trn/posterior_energy  4.063e+06, trn/neg_log_likelihood  6.695e+04, trn/neg_log_prior  3.997e+06, trn/lr  3.000e-06, val/acc 4.265e-01, val/nll 1.547e+00 (best_acc: 3.850e-01 -> 4.265e-01, test_acc: 4.204e-01, test_nll: 1.562e+00)
+[2023-02-05 12:05:21] [Epoch     5/  500] trn/posterior_energy  4.059e+06, trn/neg_log_likelihood  6.230e+04, trn/neg_log_prior  3.997e+06, trn/lr  2.999e-06, val/acc 4.465e-01, val/nll 1.467e+00 (best_acc: 4.265e-01 -> 4.465e-01, test_acc: 4.417e-01, test_nll: 1.466e+00)
+[2023-02-05 12:05:35] [Epoch     6/  500] trn/posterior_energy  4.056e+06, trn/neg_log_likelihood  5.714e+04, trn/neg_log_prior  3.998e+06, trn/lr  2.999e-06, val/acc 5.202e-01, val/nll 1.303e+00 (best_acc: 4.465e-01 -> 5.202e-01, test_acc: 5.226e-01, test_nll: 1.309e+00)
+[2023-02-05 12:05:49] [Epoch     7/  500] trn/posterior_energy  4.052e+06, trn/neg_log_likelihood  5.146e+04, trn/neg_log_prior  4.001e+06, trn/lr  2.999e-06, val/acc 5.902e-01, val/nll 1.138e+00 (best_acc: 5.202e-01 -> 5.902e-01, test_acc: 5.857e-01, test_nll: 1.157e+00)
+[2023-02-05 12:06:01] [Epoch     8/  500] trn/posterior_energy  4.050e+06, trn/neg_log_likelihood  4.694e+04, trn/neg_log_prior  4.003e+06, trn/lr  2.998e-06, val/acc 5.730e-01, val/nll 1.174e+00
+[2023-02-05 12:06:15] [Epoch     9/  500] trn/posterior_energy  4.047e+06, trn/neg_log_likelihood  4.248e+04, trn/neg_log_prior  4.005e+06, trn/lr  2.998e-06, val/acc 6.119e-01, val/nll 1.119e+00 (best_acc: 5.902e-01 -> 6.119e-01, test_acc: 6.222e-01, test_nll: 1.115e+00)
+[2023-02-05 12:06:29] [Epoch    10/  500] trn/posterior_energy  4.047e+06, trn/neg_log_likelihood  4.036e+04, trn/neg_log_prior  4.006e+06, trn/lr  2.997e-06, val/acc 6.699e-01, val/nll 9.434e-01 (best_acc: 6.119e-01 -> 6.699e-01, test_acc: 6.681e-01, test_nll: 9.570e-01)
+[2023-02-05 12:06:43] [Epoch    11/  500] trn/posterior_energy  4.046e+06, trn/neg_log_likelihood  3.831e+04, trn/neg_log_prior  4.008e+06, trn/lr  2.997e-06, val/acc 7.023e-01, val/nll 8.563e-01 (best_acc: 6.699e-01 -> 7.023e-01, test_acc: 6.995e-01, test_nll: 8.590e-01)
+[2023-02-05 12:06:55] [Epoch    12/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  3.650e+04, trn/neg_log_prior  4.009e+06, trn/lr  2.996e-06, val/acc 7.020e-01, val/nll 8.746e-01
+[2023-02-05 12:07:07] [Epoch    13/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.500e+04, trn/neg_log_prior  4.009e+06, trn/lr  2.995e-06, val/acc 6.581e-01, val/nll 9.821e-01
+[2023-02-05 12:07:19] [Epoch    14/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.384e+04, trn/neg_log_prior  4.010e+06, trn/lr  2.995e-06, val/acc 6.643e-01, val/nll 1.016e+00
+[2023-02-05 12:07:31] [Epoch    15/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.385e+04, trn/neg_log_prior  4.011e+06, trn/lr  2.994e-06, val/acc 7.008e-01, val/nll 8.578e-01
+[2023-02-05 12:07:45] [Epoch    16/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.306e+04, trn/neg_log_prior  4.011e+06, trn/lr  2.993e-06, val/acc 7.241e-01, val/nll 8.482e-01 (best_acc: 7.023e-01 -> 7.241e-01, test_acc: 7.199e-01, test_nll: 8.589e-01)
+[2023-02-05 12:07:57] [Epoch    17/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.221e+04, trn/neg_log_prior  4.012e+06, trn/lr  2.992e-06, val/acc 7.241e-01, val/nll 8.243e-01
+[2023-02-05 12:08:09] [Epoch    18/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.199e+04, trn/neg_log_prior  4.012e+06, trn/lr  2.991e-06, val/acc 6.976e-01, val/nll 8.785e-01
+[2023-02-05 12:08:23] [Epoch    19/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.187e+04, trn/neg_log_prior  4.012e+06, trn/lr  2.990e-06, val/acc 7.644e-01, val/nll 7.174e-01 (best_acc: 7.241e-01 -> 7.644e-01, test_acc: 7.573e-01, test_nll: 7.219e-01)
+[2023-02-05 12:08:35] [Epoch    20/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  3.191e+04, trn/neg_log_prior  4.013e+06, trn/lr  2.989e-06, val/acc 7.511e-01, val/nll 7.316e-01
+[2023-02-05 12:08:47] [Epoch    21/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.081e+04, trn/neg_log_prior  4.013e+06, trn/lr  2.988e-06, val/acc 7.160e-01, val/nll 8.502e-01
+[2023-02-05 12:08:59] [Epoch    22/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.121e+04, trn/neg_log_prior  4.013e+06, trn/lr  2.986e-06, val/acc 7.044e-01, val/nll 8.341e-01
+[2023-02-05 12:09:11] [Epoch    23/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  3.089e+04, trn/neg_log_prior  4.014e+06, trn/lr  2.985e-06, val/acc 7.384e-01, val/nll 7.956e-01
+[2023-02-05 12:09:24] [Epoch    24/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.006e+04, trn/neg_log_prior  4.014e+06, trn/lr  2.984e-06, val/acc 7.105e-01, val/nll 9.048e-01
+[2023-02-05 12:09:36] [Epoch    25/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.992e+04, trn/neg_log_prior  4.014e+06, trn/lr  2.982e-06, val/acc 7.340e-01, val/nll 7.733e-01
+[2023-02-05 12:09:48] [Epoch    26/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  3.009e+04, trn/neg_log_prior  4.014e+06, trn/lr  2.981e-06, val/acc 7.000e-01, val/nll 9.220e-01
+[2023-02-05 12:10:00] [Epoch    27/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  3.019e+04, trn/neg_log_prior  4.015e+06, trn/lr  2.979e-06, val/acc 6.869e-01, val/nll 9.164e-01
+[2023-02-05 12:10:12] [Epoch    28/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.956e+04, trn/neg_log_prior  4.015e+06, trn/lr  2.978e-06, val/acc 7.534e-01, val/nll 7.368e-01
+[2023-02-05 12:10:24] [Epoch    29/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.981e+04, trn/neg_log_prior  4.015e+06, trn/lr  2.976e-06, val/acc 7.441e-01, val/nll 7.691e-01
+[2023-02-05 12:10:36] [Epoch    30/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.965e+04, trn/neg_log_prior  4.015e+06, trn/lr  2.974e-06, val/acc 7.468e-01, val/nll 7.592e-01
+[2023-02-05 12:10:48] [Epoch    31/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.937e+04, trn/neg_log_prior  4.015e+06, trn/lr  2.973e-06, val/acc 7.485e-01, val/nll 7.360e-01
+[2023-02-05 12:11:00] [Epoch    32/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.890e+04, trn/neg_log_prior  4.015e+06, trn/lr  2.971e-06, val/acc 7.490e-01, val/nll 7.633e-01
+[2023-02-05 12:11:12] [Epoch    33/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.925e+04, trn/neg_log_prior  4.015e+06, trn/lr  2.969e-06, val/acc 7.052e-01, val/nll 8.645e-01
+[2023-02-05 12:11:24] [Epoch    34/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.937e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.967e-06, val/acc 7.163e-01, val/nll 8.312e-01
+[2023-02-05 12:11:36] [Epoch    35/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.898e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.965e-06, val/acc 7.473e-01, val/nll 7.463e-01
+[2023-02-05 12:11:49] [Epoch    36/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.919e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.963e-06, val/acc 7.527e-01, val/nll 7.440e-01
+[2023-02-05 12:12:01] [Epoch    37/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.864e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.961e-06, val/acc 7.230e-01, val/nll 8.260e-01
+[2023-02-05 12:12:13] [Epoch    38/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.860e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.959e-06, val/acc 7.500e-01, val/nll 7.430e-01
+[2023-02-05 12:12:25] [Epoch    39/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.854e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.956e-06, val/acc 7.587e-01, val/nll 7.138e-01
+[2023-02-05 12:12:37] [Epoch    40/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.872e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.954e-06, val/acc 7.212e-01, val/nll 8.140e-01
+[2023-02-05 12:12:49] [Epoch    41/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.842e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.952e-06, val/acc 7.403e-01, val/nll 7.779e-01
+[2023-02-05 12:13:00] [Epoch    42/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.842e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.949e-06, val/acc 7.605e-01, val/nll 7.236e-01
+[2023-02-05 12:13:12] [Epoch    43/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.871e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.947e-06, val/acc 7.603e-01, val/nll 7.222e-01
+[2023-02-05 12:13:24] [Epoch    44/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.839e+04, trn/neg_log_prior  4.016e+06, trn/lr  2.944e-06, val/acc 7.048e-01, val/nll 8.709e-01
+[2023-02-05 12:13:36] [Epoch    45/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.845e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.942e-06, val/acc 7.229e-01, val/nll 8.591e-01
+[2023-02-05 12:13:49] [Epoch    46/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.846e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.939e-06, val/acc 7.397e-01, val/nll 7.755e-01
+[2023-02-05 12:14:01] [Epoch    47/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.830e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.936e-06, val/acc 7.635e-01, val/nll 6.928e-01
+[2023-02-05 12:14:13] [Epoch    48/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.808e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.934e-06, val/acc 7.037e-01, val/nll 8.749e-01
+[2023-02-05 12:14:27] [Epoch    49/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.829e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.931e-06, val/acc 7.662e-01, val/nll 7.034e-01 (best_acc: 7.644e-01 -> 7.662e-01, test_acc: 7.662e-01, test_nll: 6.921e-01)
+[2023-02-05 12:14:39] [Epoch    50/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.824e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.928e-06, val/acc 7.282e-01, val/nll 8.270e-01
+[2023-02-05 12:14:53] [Epoch    51/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.799e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.925e-06, val/acc 7.729e-01, val/nll 6.721e-01 (best_acc: 7.662e-01 -> 7.729e-01, test_acc: 7.657e-01, test_nll: 6.981e-01)
+[2023-02-05 12:15:05] [Epoch    52/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.809e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.922e-06, val/acc 7.487e-01, val/nll 7.324e-01
+[2023-02-05 12:15:17] [Epoch    53/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.804e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.919e-06, val/acc 7.585e-01, val/nll 7.127e-01
+[2023-02-05 12:15:29] [Epoch    54/  500] trn/posterior_energy  4.046e+06, trn/neg_log_likelihood  2.853e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.916e-06, val/acc 7.451e-01, val/nll 7.612e-01
+[2023-02-05 12:15:40] [Epoch    55/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.732e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.913e-06, val/acc 7.419e-01, val/nll 7.506e-01
+[2023-02-05 12:15:53] [Epoch    56/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.811e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.910e-06, val/acc 7.643e-01, val/nll 7.003e-01
+[2023-02-05 12:16:05] [Epoch    57/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.728e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.906e-06, val/acc 7.410e-01, val/nll 7.637e-01
+[2023-02-05 12:16:17] [Epoch    58/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.769e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.903e-06, val/acc 7.594e-01, val/nll 7.197e-01
+[2023-02-05 12:16:29] [Epoch    59/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.816e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.900e-06, val/acc 7.625e-01, val/nll 7.213e-01
+[2023-02-05 12:16:41] [Epoch    60/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.772e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.896e-06, val/acc 7.457e-01, val/nll 7.716e-01
+[2023-02-05 12:16:53] [Epoch    61/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.753e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.893e-06, val/acc 7.403e-01, val/nll 7.600e-01
+[2023-02-05 12:17:05] [Epoch    62/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.757e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.889e-06, val/acc 7.508e-01, val/nll 7.256e-01
+[2023-02-05 12:17:17] [Epoch    63/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.751e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.886e-06, val/acc 7.542e-01, val/nll 7.369e-01
+[2023-02-05 12:17:29] [Epoch    64/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.755e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.882e-06, val/acc 7.612e-01, val/nll 7.081e-01
+[2023-02-05 12:17:41] [Epoch    65/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.698e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.878e-06, val/acc 6.461e-01, val/nll 1.119e+00
+[2023-02-05 12:17:53] [Epoch    66/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.725e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.875e-06, val/acc 7.572e-01, val/nll 7.357e-01
+[2023-02-05 12:18:05] [Epoch    67/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.738e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.871e-06, val/acc 7.240e-01, val/nll 8.373e-01
+[2023-02-05 12:18:16] [Epoch    68/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.698e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.867e-06, val/acc 7.688e-01, val/nll 7.036e-01
+[2023-02-05 12:18:29] [Epoch    69/  500] trn/posterior_energy  4.046e+06, trn/neg_log_likelihood  2.780e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.863e-06, val/acc 7.667e-01, val/nll 6.846e-01
+[2023-02-05 12:18:41] [Epoch    70/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.700e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.859e-06, val/acc 7.623e-01, val/nll 7.029e-01
+[2023-02-05 12:18:53] [Epoch    71/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.721e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.855e-06, val/acc 7.634e-01, val/nll 7.003e-01
+[2023-02-05 12:19:04] [Epoch    72/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.695e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.851e-06, val/acc 7.244e-01, val/nll 8.160e-01
+[2023-02-05 12:19:16] [Epoch    73/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.730e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.847e-06, val/acc 7.394e-01, val/nll 7.638e-01
+[2023-02-05 12:19:28] [Epoch    74/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.716e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.843e-06, val/acc 7.624e-01, val/nll 7.038e-01
+[2023-02-05 12:19:42] [Epoch    75/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.691e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.839e-06, val/acc 7.771e-01, val/nll 6.570e-01 (best_acc: 7.729e-01 -> 7.771e-01, test_acc: 7.761e-01, test_nll: 6.641e-01)
+[2023-02-05 12:19:54] [Epoch    76/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.680e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.834e-06, val/acc 7.701e-01, val/nll 6.815e-01
+[2023-02-05 12:20:08] [Epoch    77/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.686e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.830e-06, val/acc 7.790e-01, val/nll 6.648e-01 (best_acc: 7.771e-01 -> 7.790e-01, test_acc: 7.816e-01, test_nll: 6.588e-01)
+[2023-02-05 12:20:20] [Epoch    78/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.714e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.826e-06, val/acc 7.699e-01, val/nll 6.953e-01
+[2023-02-05 12:20:31] [Epoch    79/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.658e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.821e-06, val/acc 7.553e-01, val/nll 7.193e-01
+[2023-02-05 12:20:43] [Epoch    80/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.716e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.817e-06, val/acc 7.493e-01, val/nll 7.650e-01
+[2023-02-05 12:20:55] [Epoch    81/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.659e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.812e-06, val/acc 7.431e-01, val/nll 7.628e-01
+[2023-02-05 12:21:07] [Epoch    82/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.683e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.808e-06, val/acc 7.543e-01, val/nll 7.292e-01
+[2023-02-05 12:21:19] [Epoch    83/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.633e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.803e-06, val/acc 7.779e-01, val/nll 6.700e-01
+[2023-02-05 12:21:31] [Epoch    84/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.683e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.798e-06, val/acc 7.311e-01, val/nll 7.925e-01
+[2023-02-05 12:21:43] [Epoch    85/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.619e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.794e-06, val/acc 7.274e-01, val/nll 8.154e-01
+[2023-02-05 12:21:57] [Epoch    86/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.612e+04, trn/neg_log_prior  4.017e+06, trn/lr  2.789e-06, val/acc 7.895e-01, val/nll 6.345e-01 (best_acc: 7.790e-01 -> 7.895e-01, test_acc: 7.831e-01, test_nll: 6.459e-01)
+[2023-02-05 12:22:09] [Epoch    87/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.700e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.784e-06, val/acc 7.628e-01, val/nll 7.121e-01
+[2023-02-05 12:22:20] [Epoch    88/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.634e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.779e-06, val/acc 7.573e-01, val/nll 7.286e-01
+[2023-02-05 12:22:32] [Epoch    89/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.637e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.774e-06, val/acc 7.601e-01, val/nll 7.084e-01
+[2023-02-05 12:22:44] [Epoch    90/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.652e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.769e-06, val/acc 7.613e-01, val/nll 7.138e-01
+[2023-02-05 12:22:56] [Epoch    91/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.617e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.764e-06, val/acc 7.862e-01, val/nll 6.391e-01
+[2023-02-05 12:23:08] [Epoch    92/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.645e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.759e-06, val/acc 7.587e-01, val/nll 7.175e-01
+[2023-02-05 12:23:20] [Epoch    93/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.612e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.754e-06, val/acc 7.794e-01, val/nll 6.494e-01
+[2023-02-05 12:23:32] [Epoch    94/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.605e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.749e-06, val/acc 7.550e-01, val/nll 7.348e-01
+[2023-02-05 12:23:44] [Epoch    95/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.630e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.743e-06, val/acc 7.590e-01, val/nll 7.187e-01
+[2023-02-05 12:23:56] [Epoch    96/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.592e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.738e-06, val/acc 7.508e-01, val/nll 7.451e-01
+[2023-02-05 12:24:09] [Epoch    97/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.594e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.733e-06, val/acc 7.733e-01, val/nll 6.860e-01
+[2023-02-05 12:24:21] [Epoch    98/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.629e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.727e-06, val/acc 7.573e-01, val/nll 7.278e-01
+[2023-02-05 12:24:33] [Epoch    99/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.564e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.722e-06, val/acc 7.555e-01, val/nll 7.373e-01
+[2023-02-05 12:24:45] [Epoch   100/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.544e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.716e-06, val/acc 7.248e-01, val/nll 8.129e-01
+[2023-02-05 12:24:57] [Epoch   101/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.642e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.711e-06, val/acc 7.592e-01, val/nll 7.191e-01
+[2023-02-05 12:25:09] [Epoch   102/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.566e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.705e-06, val/acc 7.719e-01, val/nll 6.627e-01
+[2023-02-05 12:25:21] [Epoch   103/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.615e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.700e-06, val/acc 7.556e-01, val/nll 7.275e-01
+[2023-02-05 12:25:33] [Epoch   104/  500] trn/posterior_energy  4.045e+06, trn/neg_log_likelihood  2.623e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.694e-06, val/acc 7.626e-01, val/nll 7.063e-01
+[2023-02-05 12:25:45] [Epoch   105/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.596e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.688e-06, val/acc 7.796e-01, val/nll 6.608e-01
+[2023-02-05 12:25:57] [Epoch   106/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.553e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.682e-06, val/acc 7.735e-01, val/nll 7.009e-01
+[2023-02-05 12:26:09] [Epoch   107/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.550e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.677e-06, val/acc 7.610e-01, val/nll 7.121e-01
+[2023-02-05 12:26:21] [Epoch   108/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.577e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.671e-06, val/acc 7.639e-01, val/nll 7.036e-01
+[2023-02-05 12:26:33] [Epoch   109/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.596e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.665e-06, val/acc 7.340e-01, val/nll 7.898e-01
+[2023-02-05 12:26:45] [Epoch   110/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.553e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.659e-06, val/acc 7.702e-01, val/nll 6.913e-01
+[2023-02-05 12:26:57] [Epoch   111/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.557e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.653e-06, val/acc 7.667e-01, val/nll 7.017e-01
+[2023-02-05 12:27:09] [Epoch   112/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.515e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.647e-06, val/acc 7.527e-01, val/nll 7.337e-01
+[2023-02-05 12:27:21] [Epoch   113/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.546e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.641e-06, val/acc 7.680e-01, val/nll 6.921e-01
+[2023-02-05 12:27:33] [Epoch   114/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.567e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.634e-06, val/acc 7.640e-01, val/nll 6.905e-01
+[2023-02-05 12:27:45] [Epoch   115/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.530e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.628e-06, val/acc 7.455e-01, val/nll 7.719e-01
+[2023-02-05 12:27:57] [Epoch   116/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.491e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.622e-06, val/acc 7.504e-01, val/nll 7.768e-01
+[2023-02-05 12:28:09] [Epoch   117/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.549e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.616e-06, val/acc 7.562e-01, val/nll 7.516e-01
+[2023-02-05 12:28:21] [Epoch   118/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.536e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.609e-06, val/acc 7.877e-01, val/nll 6.274e-01
+[2023-02-05 12:28:34] [Epoch   119/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.514e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.603e-06, val/acc 7.706e-01, val/nll 6.781e-01
+[2023-02-05 12:28:45] [Epoch   120/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.495e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.597e-06, val/acc 7.692e-01, val/nll 6.994e-01
+[2023-02-05 12:28:58] [Epoch   121/  500] trn/posterior_energy  4.044e+06, trn/neg_log_likelihood  2.536e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.590e-06, val/acc 7.722e-01, val/nll 6.947e-01
+[2023-02-05 12:29:10] [Epoch   122/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.499e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.584e-06, val/acc 7.621e-01, val/nll 6.961e-01
+[2023-02-05 12:29:22] [Epoch   123/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.512e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.577e-06, val/acc 7.704e-01, val/nll 6.829e-01
+[2023-02-05 12:29:34] [Epoch   124/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.522e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.571e-06, val/acc 7.704e-01, val/nll 6.860e-01
+[2023-02-05 12:29:46] [Epoch   125/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.480e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.564e-06, val/acc 7.559e-01, val/nll 7.394e-01
+[2023-02-05 12:29:58] [Epoch   126/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.472e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.557e-06, val/acc 7.465e-01, val/nll 7.604e-01
+[2023-02-05 12:30:12] [Epoch   127/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.468e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.551e-06, val/acc 7.918e-01, val/nll 6.249e-01 (best_acc: 7.895e-01 -> 7.918e-01, test_acc: 7.913e-01, test_nll: 6.260e-01)
+[2023-02-05 12:30:24] [Epoch   128/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.509e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.544e-06, val/acc 7.671e-01, val/nll 6.942e-01
+[2023-02-05 12:30:36] [Epoch   129/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.519e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.537e-06, val/acc 7.677e-01, val/nll 6.820e-01
+[2023-02-05 12:30:48] [Epoch   130/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.458e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.530e-06, val/acc 7.663e-01, val/nll 6.935e-01
+[2023-02-05 12:31:00] [Epoch   131/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.479e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.523e-06, val/acc 7.907e-01, val/nll 6.173e-01
+[2023-02-05 12:31:12] [Epoch   132/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.471e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.516e-06, val/acc 7.558e-01, val/nll 7.431e-01
+[2023-02-05 12:31:25] [Epoch   133/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.458e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.510e-06, val/acc 7.885e-01, val/nll 6.546e-01
+[2023-02-05 12:31:36] [Epoch   134/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.433e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.503e-06, val/acc 7.709e-01, val/nll 6.948e-01
+[2023-02-05 12:31:48] [Epoch   135/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.482e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.496e-06, val/acc 7.721e-01, val/nll 6.861e-01
+[2023-02-05 12:32:00] [Epoch   136/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.450e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.488e-06, val/acc 7.476e-01, val/nll 7.580e-01
+[2023-02-05 12:32:13] [Epoch   137/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.429e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.481e-06, val/acc 7.730e-01, val/nll 6.748e-01
+[2023-02-05 12:32:25] [Epoch   138/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.453e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.474e-06, val/acc 7.528e-01, val/nll 7.425e-01
+[2023-02-05 12:32:37] [Epoch   139/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.403e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.467e-06, val/acc 7.642e-01, val/nll 7.015e-01
+[2023-02-05 12:32:49] [Epoch   140/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.393e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.460e-06, val/acc 7.552e-01, val/nll 7.296e-01
+[2023-02-05 12:33:01] [Epoch   141/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.418e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.453e-06, val/acc 7.509e-01, val/nll 7.428e-01
+[2023-02-05 12:33:13] [Epoch   142/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.412e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.445e-06, val/acc 7.553e-01, val/nll 7.307e-01
+[2023-02-05 12:33:25] [Epoch   143/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.410e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.438e-06, val/acc 7.701e-01, val/nll 6.804e-01
+[2023-02-05 12:33:37] [Epoch   144/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.390e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.430e-06, val/acc 7.591e-01, val/nll 7.202e-01
+[2023-02-05 12:33:49] [Epoch   145/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.397e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.423e-06, val/acc 7.670e-01, val/nll 6.966e-01
+[2023-02-05 12:34:01] [Epoch   146/  500] trn/posterior_energy  4.043e+06, trn/neg_log_likelihood  2.431e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.416e-06, val/acc 7.342e-01, val/nll 7.964e-01
+[2023-02-05 12:34:13] [Epoch   147/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.378e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.408e-06, val/acc 7.747e-01, val/nll 6.817e-01
+[2023-02-05 12:34:25] [Epoch   148/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.406e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.401e-06, val/acc 7.763e-01, val/nll 6.803e-01
+[2023-02-05 12:34:37] [Epoch   149/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.348e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.393e-06, val/acc 7.639e-01, val/nll 7.110e-01
+[2023-02-05 12:34:49] [Epoch   150/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.364e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.385e-06, val/acc 7.423e-01, val/nll 7.910e-01
+[2023-02-05 12:35:01] [Epoch   151/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.347e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.378e-06, val/acc 7.501e-01, val/nll 7.412e-01
+[2023-02-05 12:35:13] [Epoch   152/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.359e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.370e-06, val/acc 7.607e-01, val/nll 7.092e-01
+[2023-02-05 12:35:25] [Epoch   153/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.357e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.363e-06, val/acc 7.810e-01, val/nll 6.656e-01
+[2023-02-05 12:35:37] [Epoch   154/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.316e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.355e-06, val/acc 7.826e-01, val/nll 6.558e-01
+[2023-02-05 12:35:49] [Epoch   155/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.338e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.347e-06, val/acc 7.632e-01, val/nll 7.117e-01
+[2023-02-05 12:36:01] [Epoch   156/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.352e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.339e-06, val/acc 7.862e-01, val/nll 6.534e-01
+[2023-02-05 12:36:15] [Epoch   157/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.278e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.331e-06, val/acc 7.945e-01, val/nll 6.293e-01 (best_acc: 7.918e-01 -> 7.945e-01, test_acc: 7.861e-01, test_nll: 6.353e-01)
+[2023-02-05 12:36:27] [Epoch   158/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.351e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.324e-06, val/acc 7.668e-01, val/nll 6.923e-01
+[2023-02-05 12:36:39] [Epoch   159/  500] trn/posterior_energy  4.042e+06, trn/neg_log_likelihood  2.322e+04, trn/neg_log_prior  4.019e+06, trn/lr  2.316e-06, val/acc 7.809e-01, val/nll 6.470e-01
+[2023-02-05 12:36:51] [Epoch   160/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.290e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.308e-06, val/acc 7.709e-01, val/nll 6.949e-01
+[2023-02-05 12:37:03] [Epoch   161/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.309e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.300e-06, val/acc 7.804e-01, val/nll 6.462e-01
+[2023-02-05 12:37:15] [Epoch   162/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.315e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.292e-06, val/acc 7.716e-01, val/nll 6.935e-01
+[2023-02-05 12:37:27] [Epoch   163/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.308e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.284e-06, val/acc 7.514e-01, val/nll 7.434e-01
+[2023-02-05 12:37:39] [Epoch   164/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.252e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.276e-06, val/acc 7.830e-01, val/nll 6.557e-01
+[2023-02-05 12:37:51] [Epoch   165/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.273e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.268e-06, val/acc 7.424e-01, val/nll 7.611e-01
+[2023-02-05 12:38:03] [Epoch   166/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.308e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.260e-06, val/acc 7.770e-01, val/nll 6.739e-01
+[2023-02-05 12:38:15] [Epoch   167/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.266e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.251e-06, val/acc 7.534e-01, val/nll 7.404e-01
+[2023-02-05 12:38:28] [Epoch   168/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.293e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.243e-06, val/acc 7.900e-01, val/nll 6.406e-01
+[2023-02-05 12:38:40] [Epoch   169/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.240e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.235e-06, val/acc 7.939e-01, val/nll 6.279e-01
+[2023-02-05 12:38:52] [Epoch   170/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.233e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.227e-06, val/acc 7.823e-01, val/nll 6.586e-01
+[2023-02-05 12:39:04] [Epoch   171/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.233e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.219e-06, val/acc 7.893e-01, val/nll 6.246e-01
+[2023-02-05 12:39:16] [Epoch   172/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.244e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.210e-06, val/acc 7.767e-01, val/nll 6.752e-01
+[2023-02-05 12:39:28] [Epoch   173/  500] trn/posterior_energy  4.041e+06, trn/neg_log_likelihood  2.246e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.202e-06, val/acc 7.866e-01, val/nll 6.448e-01
+[2023-02-05 12:39:40] [Epoch   174/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.242e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.194e-06, val/acc 7.769e-01, val/nll 6.710e-01
+[2023-02-05 12:39:52] [Epoch   175/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.190e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.185e-06, val/acc 7.345e-01, val/nll 7.890e-01
+[2023-02-05 12:40:05] [Epoch   176/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.207e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.177e-06, val/acc 7.764e-01, val/nll 6.463e-01
+[2023-02-05 12:40:17] [Epoch   177/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.231e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.168e-06, val/acc 7.800e-01, val/nll 6.594e-01
+[2023-02-05 12:40:29] [Epoch   178/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.215e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.160e-06, val/acc 7.910e-01, val/nll 6.324e-01
+[2023-02-05 12:40:43] [Epoch   179/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.178e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.151e-06, val/acc 8.018e-01, val/nll 6.029e-01 (best_acc: 7.945e-01 -> 8.018e-01, test_acc: 7.987e-01, test_nll: 6.139e-01)
+[2023-02-05 12:40:55] [Epoch   180/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.153e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.143e-06, val/acc 7.631e-01, val/nll 7.476e-01
+[2023-02-05 12:41:07] [Epoch   181/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.164e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.134e-06, val/acc 7.869e-01, val/nll 6.390e-01
+[2023-02-05 12:41:19] [Epoch   182/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.158e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.126e-06, val/acc 7.959e-01, val/nll 6.199e-01
+[2023-02-05 12:41:31] [Epoch   183/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.154e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.117e-06, val/acc 7.820e-01, val/nll 6.433e-01
+[2023-02-05 12:41:43] [Epoch   184/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.182e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.109e-06, val/acc 7.799e-01, val/nll 6.549e-01
+[2023-02-05 12:41:55] [Epoch   185/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.201e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.100e-06, val/acc 7.704e-01, val/nll 7.052e-01
+[2023-02-05 12:42:08] [Epoch   186/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.147e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.091e-06, val/acc 7.662e-01, val/nll 7.305e-01
+[2023-02-05 12:42:20] [Epoch   187/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.105e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.083e-06, val/acc 7.731e-01, val/nll 6.807e-01
+[2023-02-05 12:42:32] [Epoch   188/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.129e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.074e-06, val/acc 7.571e-01, val/nll 7.315e-01
+[2023-02-05 12:42:45] [Epoch   189/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.093e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.065e-06, val/acc 7.753e-01, val/nll 6.726e-01
+[2023-02-05 12:42:57] [Epoch   190/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.160e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.057e-06, val/acc 7.996e-01, val/nll 6.056e-01
+[2023-02-05 12:43:09] [Epoch   191/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.133e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.048e-06, val/acc 7.819e-01, val/nll 6.602e-01
+[2023-02-05 12:43:23] [Epoch   192/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.099e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.039e-06, val/acc 8.042e-01, val/nll 5.837e-01 (best_acc: 8.018e-01 -> 8.042e-01, test_acc: 8.027e-01, test_nll: 6.023e-01)
+[2023-02-05 12:43:35] [Epoch   193/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.103e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.030e-06, val/acc 7.424e-01, val/nll 7.778e-01
+[2023-02-05 12:43:47] [Epoch   194/  500] trn/posterior_energy  4.040e+06, trn/neg_log_likelihood  2.144e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.021e-06, val/acc 7.631e-01, val/nll 6.940e-01
+[2023-02-05 12:44:01] [Epoch   195/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.095e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.013e-06, val/acc 8.088e-01, val/nll 5.726e-01 (best_acc: 8.042e-01 -> 8.088e-01, test_acc: 8.087e-01, test_nll: 5.756e-01)
+[2023-02-05 12:44:13] [Epoch   196/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  2.044e+04, trn/neg_log_prior  4.018e+06, trn/lr  2.004e-06, val/acc 7.958e-01, val/nll 6.151e-01
+[2023-02-05 12:44:25] [Epoch   197/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.051e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.995e-06, val/acc 7.958e-01, val/nll 6.231e-01
+[2023-02-05 12:44:37] [Epoch   198/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.072e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.986e-06, val/acc 7.823e-01, val/nll 6.514e-01
+[2023-02-05 12:44:49] [Epoch   199/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.044e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.977e-06, val/acc 7.715e-01, val/nll 6.825e-01
+[2023-02-05 12:45:01] [Epoch   200/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.053e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.968e-06, val/acc 7.998e-01, val/nll 6.102e-01
+[2023-02-05 12:45:13] [Epoch   201/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  2.008e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.959e-06, val/acc 8.007e-01, val/nll 6.128e-01
+[2023-02-05 12:45:25] [Epoch   202/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.065e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.950e-06, val/acc 7.853e-01, val/nll 6.539e-01
+[2023-02-05 12:45:38] [Epoch   203/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.994e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.941e-06, val/acc 7.721e-01, val/nll 7.009e-01
+[2023-02-05 12:45:50] [Epoch   204/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.975e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.932e-06, val/acc 7.866e-01, val/nll 6.641e-01
+[2023-02-05 12:46:02] [Epoch   205/  500] trn/posterior_energy  4.039e+06, trn/neg_log_likelihood  2.047e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.923e-06, val/acc 7.852e-01, val/nll 6.519e-01
+[2023-02-05 12:46:14] [Epoch   206/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.964e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.914e-06, val/acc 7.811e-01, val/nll 6.579e-01
+[2023-02-05 12:46:26] [Epoch   207/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.972e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.905e-06, val/acc 7.738e-01, val/nll 6.918e-01
+[2023-02-05 12:46:38] [Epoch   208/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.995e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.896e-06, val/acc 8.085e-01, val/nll 5.743e-01
+[2023-02-05 12:46:50] [Epoch   209/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.969e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.887e-06, val/acc 7.840e-01, val/nll 6.562e-01
+[2023-02-05 12:47:02] [Epoch   210/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.945e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.878e-06, val/acc 7.931e-01, val/nll 6.307e-01
+[2023-02-05 12:47:15] [Epoch   211/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.956e+04, trn/neg_log_prior  4.019e+06, trn/lr  1.868e-06, val/acc 7.774e-01, val/nll 6.761e-01
+[2023-02-05 12:47:27] [Epoch   212/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.939e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.859e-06, val/acc 7.508e-01, val/nll 7.565e-01
+[2023-02-05 12:47:39] [Epoch   213/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.894e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.850e-06, val/acc 7.824e-01, val/nll 6.721e-01
+[2023-02-05 12:47:51] [Epoch   214/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.969e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.841e-06, val/acc 7.813e-01, val/nll 6.533e-01
+[2023-02-05 12:48:03] [Epoch   215/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.930e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.832e-06, val/acc 7.854e-01, val/nll 6.477e-01
+[2023-02-05 12:48:15] [Epoch   216/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.905e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.823e-06, val/acc 7.840e-01, val/nll 6.647e-01
+[2023-02-05 12:48:27] [Epoch   217/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.900e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.813e-06, val/acc 7.897e-01, val/nll 6.368e-01
+[2023-02-05 12:48:39] [Epoch   218/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.915e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.804e-06, val/acc 7.815e-01, val/nll 6.562e-01
+[2023-02-05 12:48:51] [Epoch   219/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.893e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.795e-06, val/acc 8.050e-01, val/nll 5.852e-01
+[2023-02-05 12:49:03] [Epoch   220/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.855e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.786e-06, val/acc 7.504e-01, val/nll 7.698e-01
+[2023-02-05 12:49:15] [Epoch   221/  500] trn/posterior_energy  4.038e+06, trn/neg_log_likelihood  1.903e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.776e-06, val/acc 7.941e-01, val/nll 6.273e-01
+[2023-02-05 12:49:27] [Epoch   222/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.877e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.767e-06, val/acc 7.958e-01, val/nll 6.174e-01
+[2023-02-05 12:49:40] [Epoch   223/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.864e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.758e-06, val/acc 7.837e-01, val/nll 6.919e-01
+[2023-02-05 12:49:52] [Epoch   224/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.873e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.749e-06, val/acc 7.889e-01, val/nll 6.407e-01
+[2023-02-05 12:50:04] [Epoch   225/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.825e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.739e-06, val/acc 7.918e-01, val/nll 6.376e-01
+[2023-02-05 12:50:16] [Epoch   226/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.813e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.730e-06, val/acc 7.826e-01, val/nll 6.517e-01
+[2023-02-05 12:50:28] [Epoch   227/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.834e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.721e-06, val/acc 8.041e-01, val/nll 5.853e-01
+[2023-02-05 12:50:41] [Epoch   228/  500] trn/posterior_energy  4.037e+06, trn/neg_log_likelihood  1.816e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.711e-06, val/acc 7.904e-01, val/nll 6.334e-01
+[2023-02-05 12:50:53] [Epoch   229/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.809e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.702e-06, val/acc 8.055e-01, val/nll 5.866e-01
+[2023-02-05 12:51:05] [Epoch   230/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.776e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.693e-06, val/acc 7.712e-01, val/nll 6.858e-01
+[2023-02-05 12:51:17] [Epoch   231/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.802e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.683e-06, val/acc 7.993e-01, val/nll 6.017e-01
+[2023-02-05 12:51:29] [Epoch   232/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.757e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.674e-06, val/acc 7.917e-01, val/nll 6.287e-01
+[2023-02-05 12:51:41] [Epoch   233/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.770e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.665e-06, val/acc 8.039e-01, val/nll 6.016e-01
+[2023-02-05 12:51:54] [Epoch   234/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.743e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.655e-06, val/acc 7.720e-01, val/nll 7.066e-01
+[2023-02-05 12:52:06] [Epoch   235/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.783e+04, trn/neg_log_prior  4.019e+06, trn/lr  1.646e-06, val/acc 7.910e-01, val/nll 6.409e-01
+[2023-02-05 12:52:18] [Epoch   236/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.736e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.636e-06, val/acc 8.059e-01, val/nll 5.958e-01
+[2023-02-05 12:52:30] [Epoch   237/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.719e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.627e-06, val/acc 8.086e-01, val/nll 5.719e-01
+[2023-02-05 12:52:42] [Epoch   238/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.695e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.618e-06, val/acc 7.888e-01, val/nll 6.374e-01
+[2023-02-05 12:52:54] [Epoch   239/  500] trn/posterior_energy  4.036e+06, trn/neg_log_likelihood  1.747e+04, trn/neg_log_prior  4.019e+06, trn/lr  1.608e-06, val/acc 7.957e-01, val/nll 6.232e-01
+[2023-02-05 12:53:06] [Epoch   240/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.684e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.599e-06, val/acc 7.727e-01, val/nll 7.089e-01
+[2023-02-05 12:53:18] [Epoch   241/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.707e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.589e-06, val/acc 7.749e-01, val/nll 7.157e-01
+[2023-02-05 12:53:30] [Epoch   242/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.675e+04, trn/neg_log_prior  4.019e+06, trn/lr  1.580e-06, val/acc 8.014e-01, val/nll 5.950e-01
+[2023-02-05 12:53:42] [Epoch   243/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.688e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.571e-06, val/acc 8.030e-01, val/nll 5.751e-01
+[2023-02-05 12:53:54] [Epoch   244/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.657e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.561e-06, val/acc 8.053e-01, val/nll 5.965e-01
+[2023-02-05 12:54:07] [Epoch   245/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.669e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.552e-06, val/acc 7.904e-01, val/nll 6.275e-01
+[2023-02-05 12:54:19] [Epoch   246/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.650e+04, trn/neg_log_prior  4.019e+06, trn/lr  1.542e-06, val/acc 8.020e-01, val/nll 6.020e-01
+[2023-02-05 12:54:31] [Epoch   247/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.621e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.533e-06, val/acc 8.029e-01, val/nll 6.015e-01
+[2023-02-05 12:54:43] [Epoch   248/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.623e+04, trn/neg_log_prior  4.019e+06, trn/lr  1.524e-06, val/acc 8.080e-01, val/nll 5.782e-01
+[2023-02-05 12:54:55] [Epoch   249/  500] trn/posterior_energy  4.034e+06, trn/neg_log_likelihood  1.591e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.514e-06, val/acc 7.862e-01, val/nll 6.597e-01
+[2023-02-05 12:55:07] [Epoch   250/  500] trn/posterior_energy  4.034e+06, trn/neg_log_likelihood  1.588e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.505e-06, val/acc 8.060e-01, val/nll 5.855e-01
+[2023-02-05 12:55:22] [Epoch   251/  500] trn/posterior_energy  4.034e+06, trn/neg_log_likelihood  1.592e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.495e-06, val/acc 8.125e-01, val/nll 5.814e-01 (best_acc: 8.088e-01 -> 8.125e-01, test_acc: 8.108e-01, test_nll: 5.836e-01)
+[2023-02-05 12:55:34] [Epoch   252/  500] trn/posterior_energy  4.035e+06, trn/neg_log_likelihood  1.606e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.486e-06, val/acc 7.885e-01, val/nll 6.539e-01
+[2023-02-05 12:55:45] [Epoch   253/  500] trn/posterior_energy  4.034e+06, trn/neg_log_likelihood  1.544e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.476e-06, val/acc 7.969e-01, val/nll 6.191e-01
+[2023-02-05 12:55:56] [Epoch   254/  500] trn/posterior_energy  4.034e+06, trn/neg_log_likelihood  1.572e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.467e-06, val/acc 7.991e-01, val/nll 6.202e-01
+[2023-02-05 12:56:08] [Epoch   255/  500] trn/posterior_energy  4.034e+06, trn/neg_log_likelihood  1.555e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.458e-06, val/acc 7.875e-01, val/nll 6.583e-01
+[2023-02-05 12:56:20] [Epoch   256/  500] trn/posterior_energy  4.034e+06, trn/neg_log_likelihood  1.539e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.448e-06, val/acc 7.990e-01, val/nll 6.081e-01
+[2023-02-05 12:56:33] [Epoch   257/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.517e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.439e-06, val/acc 8.158e-01, val/nll 5.627e-01 (best_acc: 8.125e-01 -> 8.158e-01, test_acc: 8.211e-01, test_nll: 5.560e-01)
+[2023-02-05 12:56:45] [Epoch   258/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.521e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.429e-06, val/acc 7.915e-01, val/nll 6.191e-01
+[2023-02-05 12:56:56] [Epoch   259/  500] trn/posterior_energy  4.034e+06, trn/neg_log_likelihood  1.525e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.420e-06, val/acc 7.671e-01, val/nll 7.382e-01
+[2023-02-05 12:57:08] [Epoch   260/  500] trn/posterior_energy  4.034e+06, trn/neg_log_likelihood  1.518e+04, trn/neg_log_prior  4.019e+06, trn/lr  1.411e-06, val/acc 7.959e-01, val/nll 6.338e-01
+[2023-02-05 12:57:22] [Epoch   261/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.461e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.401e-06, val/acc 8.215e-01, val/nll 5.554e-01 (best_acc: 8.158e-01 -> 8.215e-01, test_acc: 8.159e-01, test_nll: 5.650e-01)
+[2023-02-05 12:57:35] [Epoch   262/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.481e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.392e-06, val/acc 8.079e-01, val/nll 5.964e-01
+[2023-02-05 12:57:47] [Epoch   263/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.482e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.382e-06, val/acc 8.041e-01, val/nll 5.862e-01
+[2023-02-05 12:57:58] [Epoch   264/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.460e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.373e-06, val/acc 7.864e-01, val/nll 6.570e-01
+[2023-02-05 12:58:11] [Epoch   265/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.432e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.364e-06, val/acc 7.863e-01, val/nll 6.699e-01
+[2023-02-05 12:58:23] [Epoch   266/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.449e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.354e-06, val/acc 8.066e-01, val/nll 5.889e-01
+[2023-02-05 12:58:35] [Epoch   267/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.418e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.345e-06, val/acc 7.952e-01, val/nll 6.271e-01
+[2023-02-05 12:58:47] [Epoch   268/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.454e+04, trn/neg_log_prior  4.019e+06, trn/lr  1.335e-06, val/acc 7.869e-01, val/nll 6.461e-01
+[2023-02-05 12:58:59] [Epoch   269/  500] trn/posterior_energy  4.032e+06, trn/neg_log_likelihood  1.382e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.326e-06, val/acc 7.898e-01, val/nll 6.563e-01
+[2023-02-05 12:59:11] [Epoch   270/  500] trn/posterior_energy  4.033e+06, trn/neg_log_likelihood  1.407e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.317e-06, val/acc 7.877e-01, val/nll 6.622e-01
+[2023-02-05 12:59:23] [Epoch   271/  500] trn/posterior_energy  4.032e+06, trn/neg_log_likelihood  1.370e+04, trn/neg_log_prior  4.019e+06, trn/lr  1.307e-06, val/acc 8.103e-01, val/nll 5.885e-01
+[2023-02-05 12:59:35] [Epoch   272/  500] trn/posterior_energy  4.032e+06, trn/neg_log_likelihood  1.356e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.298e-06, val/acc 8.031e-01, val/nll 6.161e-01
+[2023-02-05 12:59:47] [Epoch   273/  500] trn/posterior_energy  4.032e+06, trn/neg_log_likelihood  1.393e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.289e-06, val/acc 8.079e-01, val/nll 6.037e-01
+[2023-02-05 12:59:59] [Epoch   274/  500] trn/posterior_energy  4.032e+06, trn/neg_log_likelihood  1.370e+04, trn/neg_log_prior  4.019e+06, trn/lr  1.279e-06, val/acc 8.021e-01, val/nll 6.163e-01
+[2023-02-05 13:00:11] [Epoch   275/  500] trn/posterior_energy  4.032e+06, trn/neg_log_likelihood  1.371e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.270e-06, val/acc 8.174e-01, val/nll 5.610e-01
+[2023-02-05 13:00:24] [Epoch   276/  500] trn/posterior_energy  4.032e+06, trn/neg_log_likelihood  1.320e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.261e-06, val/acc 8.001e-01, val/nll 6.151e-01
+[2023-02-05 13:00:37] [Epoch   277/  500] trn/posterior_energy  4.032e+06, trn/neg_log_likelihood  1.328e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.251e-06, val/acc 8.292e-01, val/nll 5.257e-01 (best_acc: 8.215e-01 -> 8.292e-01, test_acc: 8.224e-01, test_nll: 5.339e-01)
+[2023-02-05 13:00:49] [Epoch   278/  500] trn/posterior_energy  4.031e+06, trn/neg_log_likelihood  1.283e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.242e-06, val/acc 8.254e-01, val/nll 5.359e-01
+[2023-02-05 13:01:01] [Epoch   279/  500] trn/posterior_energy  4.031e+06, trn/neg_log_likelihood  1.312e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.233e-06, val/acc 8.211e-01, val/nll 5.484e-01
+[2023-02-05 13:01:14] [Epoch   280/  500] trn/posterior_energy  4.031e+06, trn/neg_log_likelihood  1.292e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.224e-06, val/acc 8.029e-01, val/nll 6.117e-01
+[2023-02-05 13:01:26] [Epoch   281/  500] trn/posterior_energy  4.031e+06, trn/neg_log_likelihood  1.270e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.214e-06, val/acc 8.179e-01, val/nll 5.503e-01
+[2023-02-05 13:01:38] [Epoch   282/  500] trn/posterior_energy  4.031e+06, trn/neg_log_likelihood  1.272e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.205e-06, val/acc 7.976e-01, val/nll 6.242e-01
+[2023-02-05 13:01:50] [Epoch   283/  500] trn/posterior_energy  4.031e+06, trn/neg_log_likelihood  1.279e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.196e-06, val/acc 8.113e-01, val/nll 5.926e-01
+[2023-02-05 13:02:02] [Epoch   284/  500] trn/posterior_energy  4.031e+06, trn/neg_log_likelihood  1.249e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.187e-06, val/acc 7.780e-01, val/nll 7.106e-01
+[2023-02-05 13:02:14] [Epoch   285/  500] trn/posterior_energy  4.031e+06, trn/neg_log_likelihood  1.257e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.177e-06, val/acc 8.252e-01, val/nll 5.473e-01
+[2023-02-05 13:02:26] [Epoch   286/  500] trn/posterior_energy  4.030e+06, trn/neg_log_likelihood  1.198e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.168e-06, val/acc 7.998e-01, val/nll 6.497e-01
+[2023-02-05 13:02:38] [Epoch   287/  500] trn/posterior_energy  4.030e+06, trn/neg_log_likelihood  1.248e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.159e-06, val/acc 8.029e-01, val/nll 6.138e-01
+[2023-02-05 13:02:50] [Epoch   288/  500] trn/posterior_energy  4.030e+06, trn/neg_log_likelihood  1.205e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.150e-06, val/acc 7.906e-01, val/nll 6.739e-01
+[2023-02-05 13:03:02] [Epoch   289/  500] trn/posterior_energy  4.030e+06, trn/neg_log_likelihood  1.218e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.141e-06, val/acc 7.856e-01, val/nll 6.973e-01
+[2023-02-05 13:03:14] [Epoch   290/  500] trn/posterior_energy  4.030e+06, trn/neg_log_likelihood  1.187e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.132e-06, val/acc 8.062e-01, val/nll 6.154e-01
+[2023-02-05 13:03:26] [Epoch   291/  500] trn/posterior_energy  4.029e+06, trn/neg_log_likelihood  1.143e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.122e-06, val/acc 8.166e-01, val/nll 5.677e-01
+[2023-02-05 13:03:38] [Epoch   292/  500] trn/posterior_energy  4.029e+06, trn/neg_log_likelihood  1.131e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.113e-06, val/acc 8.158e-01, val/nll 5.759e-01
+[2023-02-05 13:03:50] [Epoch   293/  500] trn/posterior_energy  4.029e+06, trn/neg_log_likelihood  1.158e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.104e-06, val/acc 8.197e-01, val/nll 5.706e-01
+[2023-02-05 13:04:02] [Epoch   294/  500] trn/posterior_energy  4.029e+06, trn/neg_log_likelihood  1.120e+04, trn/neg_log_prior  4.017e+06, trn/lr  1.095e-06, val/acc 7.965e-01, val/nll 6.315e-01
+[2023-02-05 13:04:14] [Epoch   295/  500] trn/posterior_energy  4.029e+06, trn/neg_log_likelihood  1.158e+04, trn/neg_log_prior  4.018e+06, trn/lr  1.086e-06, val/acc 8.146e-01, val/nll 5.827e-01
+[2023-02-05 13:04:26] [Epoch   296/  500] trn/posterior_energy  4.028e+06, trn/neg_log_likelihood  1.074e+04, trn/neg_log_prior  4.017e+06, trn/lr  1.077e-06, val/acc 8.204e-01, val/nll 5.570e-01
+[2023-02-05 13:04:38] [Epoch   297/  500] trn/posterior_energy  4.029e+06, trn/neg_log_likelihood  1.111e+04, trn/neg_log_prior  4.017e+06, trn/lr  1.068e-06, val/acc 8.140e-01, val/nll 5.663e-01
+[2023-02-05 13:04:50] [Epoch   298/  500] trn/posterior_energy  4.028e+06, trn/neg_log_likelihood  1.088e+04, trn/neg_log_prior  4.017e+06, trn/lr  1.059e-06, val/acc 7.913e-01, val/nll 6.638e-01
+[2023-02-05 13:05:01] [Epoch   299/  500] trn/posterior_energy  4.028e+06, trn/neg_log_likelihood  1.061e+04, trn/neg_log_prior  4.017e+06, trn/lr  1.050e-06, val/acc 7.991e-01, val/nll 6.415e-01
+[2023-02-05 13:05:13] [Epoch   300/  500] trn/posterior_energy  4.028e+06, trn/neg_log_likelihood  1.102e+04, trn/neg_log_prior  4.017e+06, trn/lr  1.041e-06, val/acc 7.946e-01, val/nll 6.511e-01
+[2023-02-05 13:05:25] [Epoch   301/  500] trn/posterior_energy  4.028e+06, trn/neg_log_likelihood  1.102e+04, trn/neg_log_prior  4.017e+06, trn/lr  1.032e-06, val/acc 8.167e-01, val/nll 5.893e-01
+[2023-02-05 13:05:37] [Epoch   302/  500] trn/posterior_energy  4.028e+06, trn/neg_log_likelihood  1.041e+04, trn/neg_log_prior  4.017e+06, trn/lr  1.023e-06, val/acc 8.206e-01, val/nll 5.647e-01
+[2023-02-05 13:05:49] [Epoch   303/  500] trn/posterior_energy  4.028e+06, trn/neg_log_likelihood  1.037e+04, trn/neg_log_prior  4.017e+06, trn/lr  1.014e-06, val/acc 7.476e-01, val/nll 8.853e-01
+[2023-02-05 13:06:01] [Epoch   304/  500] trn/posterior_energy  4.027e+06, trn/neg_log_likelihood  1.018e+04, trn/neg_log_prior  4.017e+06, trn/lr  1.005e-06, val/acc 8.107e-01, val/nll 6.010e-01
+[2023-02-05 13:06:14] [Epoch   305/  500] trn/posterior_energy  4.028e+06, trn/neg_log_likelihood  1.048e+04, trn/neg_log_prior  4.017e+06, trn/lr  9.963e-07, val/acc 8.006e-01, val/nll 6.322e-01
+[2023-02-05 13:06:26] [Epoch   306/  500] trn/posterior_energy  4.027e+06, trn/neg_log_likelihood  1.003e+04, trn/neg_log_prior  4.017e+06, trn/lr  9.875e-07, val/acc 8.150e-01, val/nll 6.024e-01
+[2023-02-05 13:06:38] [Epoch   307/  500] trn/posterior_energy  4.027e+06, trn/neg_log_likelihood  9.918e+03, trn/neg_log_prior  4.017e+06, trn/lr  9.786e-07, val/acc 8.090e-01, val/nll 6.319e-01
+[2023-02-05 13:06:52] [Epoch   308/  500] trn/posterior_energy  4.026e+06, trn/neg_log_likelihood  9.707e+03, trn/neg_log_prior  4.017e+06, trn/lr  9.698e-07, val/acc 8.309e-01, val/nll 5.355e-01 (best_acc: 8.292e-01 -> 8.309e-01, test_acc: 8.275e-01, test_nll: 5.493e-01)
+[2023-02-05 13:07:04] [Epoch   309/  500] trn/posterior_energy  4.027e+06, trn/neg_log_likelihood  9.938e+03, trn/neg_log_prior  4.017e+06, trn/lr  9.610e-07, val/acc 7.991e-01, val/nll 6.388e-01
+[2023-02-05 13:07:16] [Epoch   310/  500] trn/posterior_energy  4.027e+06, trn/neg_log_likelihood  1.014e+04, trn/neg_log_prior  4.017e+06, trn/lr  9.522e-07, val/acc 8.284e-01, val/nll 5.450e-01
+[2023-02-05 13:07:28] [Epoch   311/  500] trn/posterior_energy  4.026e+06, trn/neg_log_likelihood  9.392e+03, trn/neg_log_prior  4.017e+06, trn/lr  9.434e-07, val/acc 8.246e-01, val/nll 5.448e-01
+[2023-02-05 13:07:40] [Epoch   312/  500] trn/posterior_energy  4.026e+06, trn/neg_log_likelihood  9.708e+03, trn/neg_log_prior  4.016e+06, trn/lr  9.347e-07, val/acc 7.962e-01, val/nll 6.414e-01
+[2023-02-05 13:07:52] [Epoch   313/  500] trn/posterior_energy  4.026e+06, trn/neg_log_likelihood  9.371e+03, trn/neg_log_prior  4.016e+06, trn/lr  9.260e-07, val/acc 7.815e-01, val/nll 7.399e-01
+[2023-02-05 13:08:04] [Epoch   314/  500] trn/posterior_energy  4.026e+06, trn/neg_log_likelihood  9.671e+03, trn/neg_log_prior  4.017e+06, trn/lr  9.173e-07, val/acc 7.980e-01, val/nll 6.692e-01
+[2023-02-05 13:08:17] [Epoch   315/  500] trn/posterior_energy  4.025e+06, trn/neg_log_likelihood  9.090e+03, trn/neg_log_prior  4.016e+06, trn/lr  9.086e-07, val/acc 8.150e-01, val/nll 5.868e-01
+[2023-02-05 13:08:29] [Epoch   316/  500] trn/posterior_energy  4.025e+06, trn/neg_log_likelihood  9.104e+03, trn/neg_log_prior  4.016e+06, trn/lr  9.000e-07, val/acc 8.044e-01, val/nll 6.404e-01
+[2023-02-05 13:08:41] [Epoch   317/  500] trn/posterior_energy  4.026e+06, trn/neg_log_likelihood  9.217e+03, trn/neg_log_prior  4.016e+06, trn/lr  8.913e-07, val/acc 7.969e-01, val/nll 6.667e-01
+[2023-02-05 13:08:53] [Epoch   318/  500] trn/posterior_energy  4.025e+06, trn/neg_log_likelihood  8.732e+03, trn/neg_log_prior  4.016e+06, trn/lr  8.827e-07, val/acc 7.957e-01, val/nll 6.470e-01
+[2023-02-05 13:09:05] [Epoch   319/  500] trn/posterior_energy  4.025e+06, trn/neg_log_likelihood  9.212e+03, trn/neg_log_prior  4.016e+06, trn/lr  8.742e-07, val/acc 8.075e-01, val/nll 6.223e-01
+[2023-02-05 13:09:17] [Epoch   320/  500] trn/posterior_energy  4.025e+06, trn/neg_log_likelihood  8.529e+03, trn/neg_log_prior  4.016e+06, trn/lr  8.656e-07, val/acc 8.237e-01, val/nll 5.784e-01
+[2023-02-05 13:09:29] [Epoch   321/  500] trn/posterior_energy  4.024e+06, trn/neg_log_likelihood  8.454e+03, trn/neg_log_prior  4.016e+06, trn/lr  8.571e-07, val/acc 8.303e-01, val/nll 5.733e-01
+[2023-02-05 13:09:43] [Epoch   322/  500] trn/posterior_energy  4.024e+06, trn/neg_log_likelihood  8.599e+03, trn/neg_log_prior  4.016e+06, trn/lr  8.486e-07, val/acc 8.335e-01, val/nll 5.316e-01 (best_acc: 8.309e-01 -> 8.335e-01, test_acc: 8.258e-01, test_nll: 5.593e-01)
+[2023-02-05 13:09:55] [Epoch   323/  500] trn/posterior_energy  4.024e+06, trn/neg_log_likelihood  8.553e+03, trn/neg_log_prior  4.016e+06, trn/lr  8.401e-07, val/acc 8.028e-01, val/nll 6.565e-01
+[2023-02-05 13:10:07] [Epoch   324/  500] trn/posterior_energy  4.024e+06, trn/neg_log_likelihood  8.403e+03, trn/neg_log_prior  4.016e+06, trn/lr  8.316e-07, val/acc 8.093e-01, val/nll 6.161e-01
+[2023-02-05 13:10:19] [Epoch   325/  500] trn/posterior_energy  4.023e+06, trn/neg_log_likelihood  8.189e+03, trn/neg_log_prior  4.015e+06, trn/lr  8.232e-07, val/acc 8.174e-01, val/nll 6.035e-01
+[2023-02-05 13:10:32] [Epoch   326/  500] trn/posterior_energy  4.024e+06, trn/neg_log_likelihood  8.268e+03, trn/neg_log_prior  4.015e+06, trn/lr  8.148e-07, val/acc 8.152e-01, val/nll 5.895e-01
+[2023-02-05 13:10:44] [Epoch   327/  500] trn/posterior_energy  4.023e+06, trn/neg_log_likelihood  8.126e+03, trn/neg_log_prior  4.015e+06, trn/lr  8.065e-07, val/acc 8.217e-01, val/nll 5.945e-01
+[2023-02-05 13:10:56] [Epoch   328/  500] trn/posterior_energy  4.023e+06, trn/neg_log_likelihood  7.769e+03, trn/neg_log_prior  4.015e+06, trn/lr  7.981e-07, val/acc 7.801e-01, val/nll 7.281e-01
+[2023-02-05 13:11:08] [Epoch   329/  500] trn/posterior_energy  4.022e+06, trn/neg_log_likelihood  7.672e+03, trn/neg_log_prior  4.015e+06, trn/lr  7.898e-07, val/acc 8.152e-01, val/nll 5.989e-01
+[2023-02-05 13:11:20] [Epoch   330/  500] trn/posterior_energy  4.023e+06, trn/neg_log_likelihood  7.896e+03, trn/neg_log_prior  4.015e+06, trn/lr  7.815e-07, val/acc 8.113e-01, val/nll 6.355e-01
+[2023-02-05 13:11:32] [Epoch   331/  500] trn/posterior_energy  4.022e+06, trn/neg_log_likelihood  7.821e+03, trn/neg_log_prior  4.015e+06, trn/lr  7.733e-07, val/acc 8.128e-01, val/nll 6.329e-01
+[2023-02-05 13:11:44] [Epoch   332/  500] trn/posterior_energy  4.022e+06, trn/neg_log_likelihood  7.458e+03, trn/neg_log_prior  4.014e+06, trn/lr  7.650e-07, val/acc 7.940e-01, val/nll 6.993e-01
+[2023-02-05 13:11:56] [Epoch   333/  500] trn/posterior_energy  4.021e+06, trn/neg_log_likelihood  7.321e+03, trn/neg_log_prior  4.014e+06, trn/lr  7.568e-07, val/acc 8.169e-01, val/nll 6.102e-01
+[2023-02-05 13:12:08] [Epoch   334/  500] trn/posterior_energy  4.022e+06, trn/neg_log_likelihood  7.733e+03, trn/neg_log_prior  4.014e+06, trn/lr  7.486e-07, val/acc 8.176e-01, val/nll 6.008e-01
+[2023-02-05 13:12:20] [Epoch   335/  500] trn/posterior_energy  4.022e+06, trn/neg_log_likelihood  7.364e+03, trn/neg_log_prior  4.014e+06, trn/lr  7.405e-07, val/acc 8.063e-01, val/nll 6.402e-01
+[2023-02-05 13:12:32] [Epoch   336/  500] trn/posterior_energy  4.021e+06, trn/neg_log_likelihood  6.990e+03, trn/neg_log_prior  4.014e+06, trn/lr  7.324e-07, val/acc 8.242e-01, val/nll 6.107e-01
+[2023-02-05 13:12:45] [Epoch   337/  500] trn/posterior_energy  4.021e+06, trn/neg_log_likelihood  7.093e+03, trn/neg_log_prior  4.014e+06, trn/lr  7.243e-07, val/acc 8.157e-01, val/nll 6.454e-01
+[2023-02-05 13:12:56] [Epoch   338/  500] trn/posterior_energy  4.020e+06, trn/neg_log_likelihood  6.746e+03, trn/neg_log_prior  4.014e+06, trn/lr  7.163e-07, val/acc 8.148e-01, val/nll 6.161e-01
+[2023-02-05 13:13:08] [Epoch   339/  500] trn/posterior_energy  4.020e+06, trn/neg_log_likelihood  6.926e+03, trn/neg_log_prior  4.013e+06, trn/lr  7.082e-07, val/acc 8.134e-01, val/nll 6.232e-01
+[2023-02-05 13:13:21] [Epoch   340/  500] trn/posterior_energy  4.020e+06, trn/neg_log_likelihood  6.926e+03, trn/neg_log_prior  4.014e+06, trn/lr  7.003e-07, val/acc 8.295e-01, val/nll 5.503e-01
+[2023-02-05 13:13:33] [Epoch   341/  500] trn/posterior_energy  4.020e+06, trn/neg_log_likelihood  6.721e+03, trn/neg_log_prior  4.013e+06, trn/lr  6.923e-07, val/acc 8.202e-01, val/nll 5.952e-01
+[2023-02-05 13:13:45] [Epoch   342/  500] trn/posterior_energy  4.020e+06, trn/neg_log_likelihood  6.785e+03, trn/neg_log_prior  4.013e+06, trn/lr  6.844e-07, val/acc 8.115e-01, val/nll 6.271e-01
+[2023-02-05 13:13:57] [Epoch   343/  500] trn/posterior_energy  4.019e+06, trn/neg_log_likelihood  6.499e+03, trn/neg_log_prior  4.013e+06, trn/lr  6.765e-07, val/acc 8.095e-01, val/nll 6.401e-01
+[2023-02-05 13:14:09] [Epoch   344/  500] trn/posterior_energy  4.020e+06, trn/neg_log_likelihood  6.678e+03, trn/neg_log_prior  4.013e+06, trn/lr  6.686e-07, val/acc 8.129e-01, val/nll 6.122e-01
+[2023-02-05 13:14:21] [Epoch   345/  500] trn/posterior_energy  4.020e+06, trn/neg_log_likelihood  6.621e+03, trn/neg_log_prior  4.013e+06, trn/lr  6.608e-07, val/acc 8.135e-01, val/nll 6.124e-01
+[2023-02-05 13:14:33] [Epoch   346/  500] trn/posterior_energy  4.019e+06, trn/neg_log_likelihood  6.072e+03, trn/neg_log_prior  4.013e+06, trn/lr  6.530e-07, val/acc 8.222e-01, val/nll 5.857e-01
+[2023-02-05 13:14:46] [Epoch   347/  500] trn/posterior_energy  4.019e+06, trn/neg_log_likelihood  6.116e+03, trn/neg_log_prior  4.013e+06, trn/lr  6.452e-07, val/acc 8.159e-01, val/nll 6.466e-01
+[2023-02-05 13:14:58] [Epoch   348/  500] trn/posterior_energy  4.018e+06, trn/neg_log_likelihood  5.922e+03, trn/neg_log_prior  4.012e+06, trn/lr  6.375e-07, val/acc 8.095e-01, val/nll 6.612e-01
+[2023-02-05 13:15:10] [Epoch   349/  500] trn/posterior_energy  4.019e+06, trn/neg_log_likelihood  6.383e+03, trn/neg_log_prior  4.012e+06, trn/lr  6.298e-07, val/acc 8.011e-01, val/nll 6.691e-01
+[2023-02-05 13:15:22] [Epoch   350/  500] trn/posterior_energy  4.019e+06, trn/neg_log_likelihood  6.250e+03, trn/neg_log_prior  4.012e+06, trn/lr  6.221e-07, val/acc 8.142e-01, val/nll 6.499e-01
+[2023-02-05 13:15:34] [Epoch   351/  500] trn/posterior_energy  4.018e+06, trn/neg_log_likelihood  5.868e+03, trn/neg_log_prior  4.012e+06, trn/lr  6.145e-07, val/acc 8.127e-01, val/nll 6.322e-01
+[2023-02-05 13:15:46] [Epoch   352/  500] trn/posterior_energy  4.017e+06, trn/neg_log_likelihood  5.346e+03, trn/neg_log_prior  4.012e+06, trn/lr  6.069e-07, val/acc 8.048e-01, val/nll 6.682e-01
+[2023-02-05 13:15:58] [Epoch   353/  500] trn/posterior_energy  4.017e+06, trn/neg_log_likelihood  5.787e+03, trn/neg_log_prior  4.011e+06, trn/lr  5.994e-07, val/acc 8.108e-01, val/nll 6.331e-01
+[2023-02-05 13:16:10] [Epoch   354/  500] trn/posterior_energy  4.017e+06, trn/neg_log_likelihood  5.788e+03, trn/neg_log_prior  4.011e+06, trn/lr  5.919e-07, val/acc 7.969e-01, val/nll 7.004e-01
+[2023-02-05 13:16:22] [Epoch   355/  500] trn/posterior_energy  4.017e+06, trn/neg_log_likelihood  5.581e+03, trn/neg_log_prior  4.011e+06, trn/lr  5.844e-07, val/acc 8.208e-01, val/nll 6.393e-01
+[2023-02-05 13:16:34] [Epoch   356/  500] trn/posterior_energy  4.016e+06, trn/neg_log_likelihood  5.233e+03, trn/neg_log_prior  4.011e+06, trn/lr  5.769e-07, val/acc 8.201e-01, val/nll 6.630e-01
+[2023-02-05 13:16:46] [Epoch   357/  500] trn/posterior_energy  4.016e+06, trn/neg_log_likelihood  5.472e+03, trn/neg_log_prior  4.011e+06, trn/lr  5.695e-07, val/acc 8.162e-01, val/nll 6.449e-01
+[2023-02-05 13:16:57] [Epoch   358/  500] trn/posterior_energy  4.016e+06, trn/neg_log_likelihood  5.290e+03, trn/neg_log_prior  4.011e+06, trn/lr  5.621e-07, val/acc 8.083e-01, val/nll 6.531e-01
+[2023-02-05 13:17:10] [Epoch   359/  500] trn/posterior_energy  4.016e+06, trn/neg_log_likelihood  5.557e+03, trn/neg_log_prior  4.011e+06, trn/lr  5.548e-07, val/acc 8.239e-01, val/nll 6.046e-01
+[2023-02-05 13:17:22] [Epoch   360/  500] trn/posterior_energy  4.015e+06, trn/neg_log_likelihood  4.761e+03, trn/neg_log_prior  4.010e+06, trn/lr  5.475e-07, val/acc 7.912e-01, val/nll 7.290e-01
+[2023-02-05 13:17:34] [Epoch   361/  500] trn/posterior_energy  4.015e+06, trn/neg_log_likelihood  5.074e+03, trn/neg_log_prior  4.010e+06, trn/lr  5.402e-07, val/acc 8.084e-01, val/nll 6.849e-01
+[2023-02-05 13:17:46] [Epoch   362/  500] trn/posterior_energy  4.015e+06, trn/neg_log_likelihood  5.036e+03, trn/neg_log_prior  4.010e+06, trn/lr  5.330e-07, val/acc 7.986e-01, val/nll 6.981e-01
+[2023-02-05 13:17:58] [Epoch   363/  500] trn/posterior_energy  4.014e+06, trn/neg_log_likelihood  4.602e+03, trn/neg_log_prior  4.010e+06, trn/lr  5.258e-07, val/acc 8.147e-01, val/nll 6.463e-01
+[2023-02-05 13:18:10] [Epoch   364/  500] trn/posterior_energy  4.014e+06, trn/neg_log_likelihood  4.802e+03, trn/neg_log_prior  4.010e+06, trn/lr  5.187e-07, val/acc 8.202e-01, val/nll 6.327e-01
+[2023-02-05 13:18:22] [Epoch   365/  500] trn/posterior_energy  4.014e+06, trn/neg_log_likelihood  4.867e+03, trn/neg_log_prior  4.009e+06, trn/lr  5.116e-07, val/acc 8.292e-01, val/nll 5.659e-01
+[2023-02-05 13:18:35] [Epoch   366/  500] trn/posterior_energy  4.014e+06, trn/neg_log_likelihood  4.749e+03, trn/neg_log_prior  4.009e+06, trn/lr  5.045e-07, val/acc 8.102e-01, val/nll 6.908e-01
+[2023-02-05 13:18:47] [Epoch   367/  500] trn/posterior_energy  4.014e+06, trn/neg_log_likelihood  4.790e+03, trn/neg_log_prior  4.009e+06, trn/lr  4.975e-07, val/acc 8.009e-01, val/nll 7.026e-01
+[2023-02-05 13:18:59] [Epoch   368/  500] trn/posterior_energy  4.014e+06, trn/neg_log_likelihood  4.719e+03, trn/neg_log_prior  4.009e+06, trn/lr  4.905e-07, val/acc 7.921e-01, val/nll 7.516e-01
+[2023-02-05 13:19:11] [Epoch   369/  500] trn/posterior_energy  4.013e+06, trn/neg_log_likelihood  4.444e+03, trn/neg_log_prior  4.009e+06, trn/lr  4.835e-07, val/acc 8.319e-01, val/nll 5.881e-01
+[2023-02-05 13:19:23] [Epoch   370/  500] trn/posterior_energy  4.013e+06, trn/neg_log_likelihood  4.232e+03, trn/neg_log_prior  4.009e+06, trn/lr  4.766e-07, val/acc 7.993e-01, val/nll 7.343e-01
+[2023-02-05 13:19:36] [Epoch   371/  500] trn/posterior_energy  4.012e+06, trn/neg_log_likelihood  4.070e+03, trn/neg_log_prior  4.008e+06, trn/lr  4.698e-07, val/acc 8.074e-01, val/nll 6.767e-01
+[2023-02-05 13:19:48] [Epoch   372/  500] trn/posterior_energy  4.012e+06, trn/neg_log_likelihood  4.132e+03, trn/neg_log_prior  4.008e+06, trn/lr  4.629e-07, val/acc 8.011e-01, val/nll 7.374e-01
+[2023-02-05 13:20:01] [Epoch   373/  500] trn/posterior_energy  4.012e+06, trn/neg_log_likelihood  4.149e+03, trn/neg_log_prior  4.008e+06, trn/lr  4.561e-07, val/acc 8.196e-01, val/nll 6.542e-01
+[2023-02-05 13:20:13] [Epoch   374/  500] trn/posterior_energy  4.012e+06, trn/neg_log_likelihood  4.067e+03, trn/neg_log_prior  4.008e+06, trn/lr  4.494e-07, val/acc 8.044e-01, val/nll 7.047e-01
+[2023-02-05 13:20:25] [Epoch   375/  500] trn/posterior_energy  4.012e+06, trn/neg_log_likelihood  4.155e+03, trn/neg_log_prior  4.008e+06, trn/lr  4.427e-07, val/acc 8.040e-01, val/nll 6.982e-01
+[2023-02-05 13:20:37] [Epoch   376/  500] trn/posterior_energy  4.011e+06, trn/neg_log_likelihood  3.791e+03, trn/neg_log_prior  4.007e+06, trn/lr  4.360e-07, val/acc 8.225e-01, val/nll 6.447e-01
+[2023-02-05 13:20:49] [Epoch   377/  500] trn/posterior_energy  4.011e+06, trn/neg_log_likelihood  3.549e+03, trn/neg_log_prior  4.007e+06, trn/lr  4.294e-07, val/acc 8.179e-01, val/nll 6.481e-01
+[2023-02-05 13:21:01] [Epoch   378/  500] trn/posterior_energy  4.011e+06, trn/neg_log_likelihood  4.345e+03, trn/neg_log_prior  4.007e+06, trn/lr  4.228e-07, val/acc 8.046e-01, val/nll 6.959e-01
+[2023-02-05 13:21:13] [Epoch   379/  500] trn/posterior_energy  4.010e+06, trn/neg_log_likelihood  3.601e+03, trn/neg_log_prior  4.007e+06, trn/lr  4.163e-07, val/acc 8.148e-01, val/nll 6.703e-01
+[2023-02-05 13:21:25] [Epoch   380/  500] trn/posterior_energy  4.010e+06, trn/neg_log_likelihood  3.524e+03, trn/neg_log_prior  4.006e+06, trn/lr  4.098e-07, val/acc 8.138e-01, val/nll 6.819e-01
+[2023-02-05 13:21:37] [Epoch   381/  500] trn/posterior_energy  4.010e+06, trn/neg_log_likelihood  3.481e+03, trn/neg_log_prior  4.006e+06, trn/lr  4.033e-07, val/acc 8.142e-01, val/nll 6.849e-01
+[2023-02-05 13:21:50] [Epoch   382/  500] trn/posterior_energy  4.010e+06, trn/neg_log_likelihood  3.532e+03, trn/neg_log_prior  4.006e+06, trn/lr  3.969e-07, val/acc 8.263e-01, val/nll 6.079e-01
+[2023-02-05 13:22:02] [Epoch   383/  500] trn/posterior_energy  4.009e+06, trn/neg_log_likelihood  3.554e+03, trn/neg_log_prior  4.006e+06, trn/lr  3.906e-07, val/acc 8.044e-01, val/nll 7.160e-01
+[2023-02-05 13:22:14] [Epoch   384/  500] trn/posterior_energy  4.009e+06, trn/neg_log_likelihood  3.640e+03, trn/neg_log_prior  4.006e+06, trn/lr  3.842e-07, val/acc 8.106e-01, val/nll 7.035e-01
+[2023-02-05 13:22:26] [Epoch   385/  500] trn/posterior_energy  4.009e+06, trn/neg_log_likelihood  3.351e+03, trn/neg_log_prior  4.006e+06, trn/lr  3.780e-07, val/acc 8.333e-01, val/nll 6.157e-01
+[2023-02-05 13:22:38] [Epoch   386/  500] trn/posterior_energy  4.008e+06, trn/neg_log_likelihood  3.043e+03, trn/neg_log_prior  4.005e+06, trn/lr  3.717e-07, val/acc 8.278e-01, val/nll 6.211e-01
+[2023-02-05 13:22:50] [Epoch   387/  500] trn/posterior_energy  4.008e+06, trn/neg_log_likelihood  2.973e+03, trn/neg_log_prior  4.005e+06, trn/lr  3.655e-07, val/acc 8.317e-01, val/nll 6.237e-01
+[2023-02-05 13:23:02] [Epoch   388/  500] trn/posterior_energy  4.008e+06, trn/neg_log_likelihood  3.124e+03, trn/neg_log_prior  4.005e+06, trn/lr  3.594e-07, val/acc 8.176e-01, val/nll 6.672e-01
+[2023-02-05 13:23:14] [Epoch   389/  500] trn/posterior_energy  4.008e+06, trn/neg_log_likelihood  3.460e+03, trn/neg_log_prior  4.005e+06, trn/lr  3.533e-07, val/acc 8.282e-01, val/nll 6.282e-01
+[2023-02-05 13:23:26] [Epoch   390/  500] trn/posterior_energy  4.008e+06, trn/neg_log_likelihood  3.003e+03, trn/neg_log_prior  4.005e+06, trn/lr  3.472e-07, val/acc 8.094e-01, val/nll 6.818e-01
+[2023-02-05 13:23:38] [Epoch   391/  500] trn/posterior_energy  4.007e+06, trn/neg_log_likelihood  2.974e+03, trn/neg_log_prior  4.004e+06, trn/lr  3.412e-07, val/acc 8.059e-01, val/nll 7.229e-01
+[2023-02-05 13:23:51] [Epoch   392/  500] trn/posterior_energy  4.007e+06, trn/neg_log_likelihood  2.981e+03, trn/neg_log_prior  4.004e+06, trn/lr  3.353e-07, val/acc 8.217e-01, val/nll 6.340e-01
+[2023-02-05 13:24:03] [Epoch   393/  500] trn/posterior_energy  4.007e+06, trn/neg_log_likelihood  2.739e+03, trn/neg_log_prior  4.004e+06, trn/lr  3.294e-07, val/acc 8.179e-01, val/nll 6.619e-01
+[2023-02-05 13:24:15] [Epoch   394/  500] trn/posterior_energy  4.007e+06, trn/neg_log_likelihood  2.911e+03, trn/neg_log_prior  4.004e+06, trn/lr  3.235e-07, val/acc 8.230e-01, val/nll 6.107e-01
+[2023-02-05 13:24:27] [Epoch   395/  500] trn/posterior_energy  4.007e+06, trn/neg_log_likelihood  2.989e+03, trn/neg_log_prior  4.004e+06, trn/lr  3.177e-07, val/acc 8.074e-01, val/nll 7.296e-01
+[2023-02-05 13:24:39] [Epoch   396/  500] trn/posterior_energy  4.007e+06, trn/neg_log_likelihood  2.983e+03, trn/neg_log_prior  4.004e+06, trn/lr  3.119e-07, val/acc 8.189e-01, val/nll 6.448e-01
+[2023-02-05 13:24:52] [Epoch   397/  500] trn/posterior_energy  4.006e+06, trn/neg_log_likelihood  2.392e+03, trn/neg_log_prior  4.003e+06, trn/lr  3.062e-07, val/acc 8.198e-01, val/nll 6.510e-01
+[2023-02-05 13:25:06] [Epoch   398/  500] trn/posterior_energy  4.005e+06, trn/neg_log_likelihood  2.343e+03, trn/neg_log_prior  4.003e+06, trn/lr  3.005e-07, val/acc 8.342e-01, val/nll 6.002e-01 (best_acc: 8.335e-01 -> 8.342e-01, test_acc: 8.330e-01, test_nll: 6.035e-01)
+[2023-02-05 13:25:18] [Epoch   399/  500] trn/posterior_energy  4.005e+06, trn/neg_log_likelihood  2.471e+03, trn/neg_log_prior  4.003e+06, trn/lr  2.948e-07, val/acc 8.154e-01, val/nll 6.820e-01
+[2023-02-05 13:25:31] [Epoch   400/  500] trn/posterior_energy  4.005e+06, trn/neg_log_likelihood  2.617e+03, trn/neg_log_prior  4.003e+06, trn/lr  2.893e-07, val/acc 8.265e-01, val/nll 6.441e-01
+[2023-02-05 13:25:43] [Epoch   401/  500] trn/posterior_energy  4.004e+06, trn/neg_log_likelihood  2.094e+03, trn/neg_log_prior  4.002e+06, trn/lr  2.837e-07, val/acc 8.166e-01, val/nll 6.795e-01
+[2023-02-05 13:25:55] [Epoch   402/  500] trn/posterior_energy  4.004e+06, trn/neg_log_likelihood  2.260e+03, trn/neg_log_prior  4.002e+06, trn/lr  2.782e-07, val/acc 8.196e-01, val/nll 6.625e-01
+[2023-02-05 13:26:08] [Epoch   403/  500] trn/posterior_energy  4.004e+06, trn/neg_log_likelihood  2.154e+03, trn/neg_log_prior  4.002e+06, trn/lr  2.728e-07, val/acc 8.209e-01, val/nll 6.600e-01
+[2023-02-05 13:26:20] [Epoch   404/  500] trn/posterior_energy  4.004e+06, trn/neg_log_likelihood  2.312e+03, trn/neg_log_prior  4.002e+06, trn/lr  2.674e-07, val/acc 8.268e-01, val/nll 6.489e-01
+[2023-02-05 13:26:32] [Epoch   405/  500] trn/posterior_energy  4.004e+06, trn/neg_log_likelihood  2.134e+03, trn/neg_log_prior  4.001e+06, trn/lr  2.620e-07, val/acc 8.095e-01, val/nll 7.067e-01
+[2023-02-05 13:26:44] [Epoch   406/  500] trn/posterior_energy  4.003e+06, trn/neg_log_likelihood  2.065e+03, trn/neg_log_prior  4.001e+06, trn/lr  2.567e-07, val/acc 8.263e-01, val/nll 6.324e-01
+[2023-02-05 13:26:56] [Epoch   407/  500] trn/posterior_energy  4.003e+06, trn/neg_log_likelihood  2.143e+03, trn/neg_log_prior  4.001e+06, trn/lr  2.515e-07, val/acc 8.176e-01, val/nll 6.877e-01
+[2023-02-05 13:27:09] [Epoch   408/  500] trn/posterior_energy  4.003e+06, trn/neg_log_likelihood  1.942e+03, trn/neg_log_prior  4.001e+06, trn/lr  2.463e-07, val/acc 8.209e-01, val/nll 6.740e-01
+[2023-02-05 13:27:23] [Epoch   409/  500] trn/posterior_energy  4.003e+06, trn/neg_log_likelihood  2.068e+03, trn/neg_log_prior  4.001e+06, trn/lr  2.411e-07, val/acc 8.376e-01, val/nll 6.164e-01 (best_acc: 8.342e-01 -> 8.376e-01, test_acc: 8.338e-01, test_nll: 6.247e-01)
+[2023-02-05 13:27:34] [Epoch   410/  500] trn/posterior_energy  4.002e+06, trn/neg_log_likelihood  1.593e+03, trn/neg_log_prior  4.000e+06, trn/lr  2.360e-07, val/acc 8.352e-01, val/nll 6.467e-01
+[2023-02-05 13:27:46] [Epoch   411/  500] trn/posterior_energy  4.002e+06, trn/neg_log_likelihood  2.037e+03, trn/neg_log_prior  4.000e+06, trn/lr  2.310e-07, val/acc 8.355e-01, val/nll 6.362e-01
+[2023-02-05 13:27:58] [Epoch   412/  500] trn/posterior_energy  4.002e+06, trn/neg_log_likelihood  1.492e+03, trn/neg_log_prior  4.000e+06, trn/lr  2.260e-07, val/acc 8.362e-01, val/nll 6.333e-01
+[2023-02-05 13:28:10] [Epoch   413/  500] trn/posterior_energy  4.001e+06, trn/neg_log_likelihood  1.556e+03, trn/neg_log_prior  4.000e+06, trn/lr  2.210e-07, val/acc 8.147e-01, val/nll 7.406e-01
+[2023-02-05 13:28:22] [Epoch   414/  500] trn/posterior_energy  4.001e+06, trn/neg_log_likelihood  1.590e+03, trn/neg_log_prior  3.999e+06, trn/lr  2.161e-07, val/acc 8.343e-01, val/nll 6.269e-01
+[2023-02-05 13:28:36] [Epoch   415/  500] trn/posterior_energy  4.001e+06, trn/neg_log_likelihood  1.825e+03, trn/neg_log_prior  3.999e+06, trn/lr  2.113e-07, val/acc 8.447e-01, val/nll 5.993e-01 (best_acc: 8.376e-01 -> 8.447e-01, test_acc: 8.453e-01, test_nll: 5.911e-01)
+[2023-02-05 13:28:48] [Epoch   416/  500] trn/posterior_energy  4.001e+06, trn/neg_log_likelihood  1.617e+03, trn/neg_log_prior  3.999e+06, trn/lr  2.065e-07, val/acc 8.267e-01, val/nll 6.832e-01
+[2023-02-05 13:29:00] [Epoch   417/  500] trn/posterior_energy  4.001e+06, trn/neg_log_likelihood  1.853e+03, trn/neg_log_prior  3.999e+06, trn/lr  2.018e-07, val/acc 8.207e-01, val/nll 6.611e-01
+[2023-02-05 13:29:12] [Epoch   418/  500] trn/posterior_energy  4.001e+06, trn/neg_log_likelihood  1.634e+03, trn/neg_log_prior  3.999e+06, trn/lr  1.971e-07, val/acc 8.302e-01, val/nll 6.479e-01
+[2023-02-05 13:29:24] [Epoch   419/  500] trn/posterior_energy  4.000e+06, trn/neg_log_likelihood  1.254e+03, trn/neg_log_prior  3.999e+06, trn/lr  1.924e-07, val/acc 8.290e-01, val/nll 6.716e-01
+[2023-02-05 13:29:37] [Epoch   420/  500] trn/posterior_energy  4.000e+06, trn/neg_log_likelihood  1.423e+03, trn/neg_log_prior  3.999e+06, trn/lr  1.878e-07, val/acc 8.389e-01, val/nll 6.141e-01
+[2023-02-05 13:29:49] [Epoch   421/  500] trn/posterior_energy  4.000e+06, trn/neg_log_likelihood  1.291e+03, trn/neg_log_prior  3.998e+06, trn/lr  1.833e-07, val/acc 8.262e-01, val/nll 6.865e-01
+[2023-02-05 13:30:01] [Epoch   422/  500] trn/posterior_energy  4.000e+06, trn/neg_log_likelihood  1.477e+03, trn/neg_log_prior  3.998e+06, trn/lr  1.788e-07, val/acc 8.290e-01, val/nll 6.638e-01
+[2023-02-05 13:30:13] [Epoch   423/  500] trn/posterior_energy  3.999e+06, trn/neg_log_likelihood  1.240e+03, trn/neg_log_prior  3.998e+06, trn/lr  1.744e-07, val/acc 8.337e-01, val/nll 6.245e-01
+[2023-02-05 13:30:25] [Epoch   424/  500] trn/posterior_energy  3.999e+06, trn/neg_log_likelihood  9.143e+02, trn/neg_log_prior  3.998e+06, trn/lr  1.700e-07, val/acc 8.272e-01, val/nll 6.836e-01
+[2023-02-05 13:30:37] [Epoch   425/  500] trn/posterior_energy  3.999e+06, trn/neg_log_likelihood  1.060e+03, trn/neg_log_prior  3.997e+06, trn/lr  1.656e-07, val/acc 8.417e-01, val/nll 6.227e-01
+[2023-02-05 13:30:49] [Epoch   426/  500] trn/posterior_energy  3.999e+06, trn/neg_log_likelihood  1.313e+03, trn/neg_log_prior  3.997e+06, trn/lr  1.614e-07, val/acc 8.324e-01, val/nll 6.708e-01
+[2023-02-05 13:31:01] [Epoch   427/  500] trn/posterior_energy  3.998e+06, trn/neg_log_likelihood  1.002e+03, trn/neg_log_prior  3.997e+06, trn/lr  1.571e-07, val/acc 8.207e-01, val/nll 7.147e-01
+[2023-02-05 13:31:13] [Epoch   428/  500] trn/posterior_energy  3.998e+06, trn/neg_log_likelihood  9.407e+02, trn/neg_log_prior  3.997e+06, trn/lr  1.530e-07, val/acc 8.146e-01, val/nll 7.460e-01
+[2023-02-05 13:31:25] [Epoch   429/  500] trn/posterior_energy  3.997e+06, trn/neg_log_likelihood  7.794e+02, trn/neg_log_prior  3.997e+06, trn/lr  1.488e-07, val/acc 8.372e-01, val/nll 6.543e-01
+[2023-02-05 13:31:37] [Epoch   430/  500] trn/posterior_energy  3.997e+06, trn/neg_log_likelihood  1.017e+03, trn/neg_log_prior  3.996e+06, trn/lr  1.448e-07, val/acc 8.435e-01, val/nll 6.332e-01
+[2023-02-05 13:31:50] [Epoch   431/  500] trn/posterior_energy  3.997e+06, trn/neg_log_likelihood  1.232e+03, trn/neg_log_prior  3.996e+06, trn/lr  1.408e-07, val/acc 8.231e-01, val/nll 6.969e-01
+[2023-02-05 13:32:02] [Epoch   432/  500] trn/posterior_energy  3.997e+06, trn/neg_log_likelihood  9.719e+02, trn/neg_log_prior  3.996e+06, trn/lr  1.368e-07, val/acc 8.272e-01, val/nll 6.584e-01
+[2023-02-05 13:32:14] [Epoch   433/  500] trn/posterior_energy  3.998e+06, trn/neg_log_likelihood  1.442e+03, trn/neg_log_prior  3.996e+06, trn/lr  1.329e-07, val/acc 8.392e-01, val/nll 6.370e-01
+[2023-02-05 13:32:26] [Epoch   434/  500] trn/posterior_energy  3.997e+06, trn/neg_log_likelihood  7.471e+02, trn/neg_log_prior  3.996e+06, trn/lr  1.290e-07, val/acc 8.410e-01, val/nll 6.381e-01
+[2023-02-05 13:32:38] [Epoch   435/  500] trn/posterior_energy  3.996e+06, trn/neg_log_likelihood  5.780e+02, trn/neg_log_prior  3.996e+06, trn/lr  1.253e-07, val/acc 8.393e-01, val/nll 6.548e-01
+[2023-02-05 13:32:50] [Epoch   436/  500] trn/posterior_energy  3.996e+06, trn/neg_log_likelihood  6.227e+02, trn/neg_log_prior  3.996e+06, trn/lr  1.215e-07, val/acc 8.425e-01, val/nll 6.689e-01
+[2023-02-05 13:33:02] [Epoch   437/  500] trn/posterior_energy  3.996e+06, trn/neg_log_likelihood  6.202e+02, trn/neg_log_prior  3.995e+06, trn/lr  1.178e-07, val/acc 8.336e-01, val/nll 6.452e-01
+[2023-02-05 13:33:15] [Epoch   438/  500] trn/posterior_energy  3.996e+06, trn/neg_log_likelihood  4.817e+02, trn/neg_log_prior  3.995e+06, trn/lr  1.142e-07, val/acc 8.430e-01, val/nll 6.339e-01
+[2023-02-05 13:33:28] [Epoch   439/  500] trn/posterior_energy  3.995e+06, trn/neg_log_likelihood  3.637e+02, trn/neg_log_prior  3.995e+06, trn/lr  1.106e-07, val/acc 8.555e-01, val/nll 5.958e-01 (best_acc: 8.447e-01 -> 8.555e-01, test_acc: 8.519e-01, test_nll: 6.076e-01)
+[2023-02-05 13:33:42] [Epoch   440/  500] trn/posterior_energy  3.995e+06, trn/neg_log_likelihood  1.672e+02, trn/neg_log_prior  3.995e+06, trn/lr  1.071e-07, val/acc 8.576e-01, val/nll 6.080e-01 (best_acc: 8.555e-01 -> 8.576e-01, test_acc: 8.563e-01, test_nll: 6.227e-01)
+[2023-02-05 13:33:56] [Epoch   441/  500] trn/posterior_energy  3.994e+06, trn/neg_log_likelihood  1.294e+02, trn/neg_log_prior  3.994e+06, trn/lr  1.036e-07, val/acc 8.612e-01, val/nll 5.986e-01 (best_acc: 8.576e-01 -> 8.612e-01, test_acc: 8.594e-01, test_nll: 6.130e-01)
+[2023-02-05 13:34:10] [Epoch   442/  500] trn/posterior_energy  3.994e+06, trn/neg_log_likelihood  1.325e+02, trn/neg_log_prior  3.994e+06, trn/lr  1.002e-07, val/acc 8.623e-01, val/nll 5.932e-01 (best_acc: 8.612e-01 -> 8.623e-01, test_acc: 8.597e-01, test_nll: 6.107e-01)
+[2023-02-05 13:34:24] [Epoch   443/  500] trn/posterior_energy  3.994e+06, trn/neg_log_likelihood  1.378e+02, trn/neg_log_prior  3.994e+06, trn/lr  9.684e-08, val/acc 8.625e-01, val/nll 5.937e-01 (best_acc: 8.623e-01 -> 8.625e-01, test_acc: 8.605e-01, test_nll: 6.124e-01)
+[2023-02-05 13:34:38] [Epoch   444/  500] trn/posterior_energy  3.993e+06, trn/neg_log_likelihood  1.424e+02, trn/neg_log_prior  3.993e+06, trn/lr  9.354e-08, val/acc 8.634e-01, val/nll 5.946e-01 (best_acc: 8.625e-01 -> 8.634e-01, test_acc: 8.597e-01, test_nll: 6.145e-01)
+[2023-02-05 13:34:52] [Epoch   445/  500] trn/posterior_energy  3.993e+06, trn/neg_log_likelihood  1.465e+02, trn/neg_log_prior  3.993e+06, trn/lr  9.029e-08, val/acc 8.642e-01, val/nll 5.961e-01 (best_acc: 8.634e-01 -> 8.642e-01, test_acc: 8.608e-01, test_nll: 6.176e-01)
+[2023-02-05 13:35:06] [Epoch   446/  500] trn/posterior_energy  3.993e+06, trn/neg_log_likelihood  1.500e+02, trn/neg_log_prior  3.993e+06, trn/lr  8.709e-08, val/acc 8.644e-01, val/nll 5.974e-01 (best_acc: 8.642e-01 -> 8.644e-01, test_acc: 8.610e-01, test_nll: 6.195e-01)
+[2023-02-05 13:35:20] [Epoch   447/  500] trn/posterior_energy  3.993e+06, trn/neg_log_likelihood  1.535e+02, trn/neg_log_prior  3.993e+06, trn/lr  8.396e-08, val/acc 8.647e-01, val/nll 6.008e-01 (best_acc: 8.644e-01 -> 8.647e-01, test_acc: 8.600e-01, test_nll: 6.237e-01)
+[2023-02-05 13:35:32] [Epoch   448/  500] trn/posterior_energy  3.993e+06, trn/neg_log_likelihood  1.562e+02, trn/neg_log_prior  3.992e+06, trn/lr  8.088e-08, val/acc 8.643e-01, val/nll 6.024e-01
+[2023-02-05 13:35:44] [Epoch   449/  500] trn/posterior_energy  3.992e+06, trn/neg_log_likelihood  1.583e+02, trn/neg_log_prior  3.992e+06, trn/lr  7.785e-08, val/acc 8.638e-01, val/nll 6.045e-01
+[2023-02-05 13:35:56] [Epoch   450/  500] trn/posterior_energy  3.992e+06, trn/neg_log_likelihood  1.601e+02, trn/neg_log_prior  3.992e+06, trn/lr  7.488e-08, val/acc 8.633e-01, val/nll 6.068e-01
+[2023-02-05 13:36:09] [Epoch   451/  500] trn/posterior_energy  3.992e+06, trn/neg_log_likelihood  1.615e+02, trn/neg_log_prior  3.992e+06, trn/lr  7.197e-08, val/acc 8.639e-01, val/nll 6.099e-01
+[2023-02-05 13:36:21] [Epoch   452/  500] trn/posterior_energy  3.992e+06, trn/neg_log_likelihood  1.629e+02, trn/neg_log_prior  3.992e+06, trn/lr  6.911e-08, val/acc 8.628e-01, val/nll 6.110e-01
+[2023-02-05 13:36:35] [Epoch   453/  500] trn/posterior_energy  3.992e+06, trn/neg_log_likelihood  1.636e+02, trn/neg_log_prior  3.992e+06, trn/lr  6.632e-08, val/acc 8.648e-01, val/nll 6.137e-01 (best_acc: 8.647e-01 -> 8.648e-01, test_acc: 8.598e-01, test_nll: 6.413e-01)
+[2023-02-05 13:36:47] [Epoch   454/  500] trn/posterior_energy  3.992e+06, trn/neg_log_likelihood  1.640e+02, trn/neg_log_prior  3.992e+06, trn/lr  6.357e-08, val/acc 8.639e-01, val/nll 6.167e-01
+[2023-02-05 13:36:59] [Epoch   455/  500] trn/posterior_energy  3.992e+06, trn/neg_log_likelihood  1.645e+02, trn/neg_log_prior  3.991e+06, trn/lr  6.089e-08, val/acc 8.639e-01, val/nll 6.182e-01
+[2023-02-05 13:37:11] [Epoch   456/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.651e+02, trn/neg_log_prior  3.991e+06, trn/lr  5.826e-08, val/acc 8.642e-01, val/nll 6.202e-01
+[2023-02-05 13:37:24] [Epoch   457/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.655e+02, trn/neg_log_prior  3.991e+06, trn/lr  5.568e-08, val/acc 8.638e-01, val/nll 6.224e-01
+[2023-02-05 13:37:36] [Epoch   458/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.657e+02, trn/neg_log_prior  3.991e+06, trn/lr  5.317e-08, val/acc 8.635e-01, val/nll 6.249e-01
+[2023-02-05 13:37:48] [Epoch   459/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.657e+02, trn/neg_log_prior  3.991e+06, trn/lr  5.071e-08, val/acc 8.634e-01, val/nll 6.258e-01
+[2023-02-05 13:38:00] [Epoch   460/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.657e+02, trn/neg_log_prior  3.991e+06, trn/lr  4.831e-08, val/acc 8.635e-01, val/nll 6.290e-01
+[2023-02-05 13:38:12] [Epoch   461/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.661e+02, trn/neg_log_prior  3.991e+06, trn/lr  4.597e-08, val/acc 8.638e-01, val/nll 6.289e-01
+[2023-02-05 13:38:24] [Epoch   462/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.661e+02, trn/neg_log_prior  3.991e+06, trn/lr  4.368e-08, val/acc 8.638e-01, val/nll 6.318e-01
+[2023-02-05 13:38:36] [Epoch   463/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.991e+06, trn/lr  4.145e-08, val/acc 8.638e-01, val/nll 6.330e-01
+[2023-02-05 13:38:48] [Epoch   464/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.662e+02, trn/neg_log_prior  3.991e+06, trn/lr  3.928e-08, val/acc 8.637e-01, val/nll 6.345e-01
+[2023-02-05 13:39:00] [Epoch   465/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.662e+02, trn/neg_log_prior  3.991e+06, trn/lr  3.716e-08, val/acc 8.632e-01, val/nll 6.358e-01
+[2023-02-05 13:39:12] [Epoch   466/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.663e+02, trn/neg_log_prior  3.991e+06, trn/lr  3.511e-08, val/acc 8.629e-01, val/nll 6.370e-01
+[2023-02-05 13:39:24] [Epoch   467/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.661e+02, trn/neg_log_prior  3.990e+06, trn/lr  3.311e-08, val/acc 8.631e-01, val/nll 6.388e-01
+[2023-02-05 13:39:36] [Epoch   468/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  3.117e-08, val/acc 8.627e-01, val/nll 6.400e-01
+[2023-02-05 13:39:48] [Epoch   469/  500] trn/posterior_energy  3.991e+06, trn/neg_log_likelihood  1.661e+02, trn/neg_log_prior  3.990e+06, trn/lr  2.929e-08, val/acc 8.627e-01, val/nll 6.413e-01
+[2023-02-05 13:40:00] [Epoch   470/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.663e+02, trn/neg_log_prior  3.990e+06, trn/lr  2.746e-08, val/acc 8.618e-01, val/nll 6.426e-01
+[2023-02-05 13:40:13] [Epoch   471/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.662e+02, trn/neg_log_prior  3.990e+06, trn/lr  2.570e-08, val/acc 8.623e-01, val/nll 6.422e-01
+[2023-02-05 13:40:25] [Epoch   472/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  2.399e-08, val/acc 8.625e-01, val/nll 6.436e-01
+[2023-02-05 13:40:37] [Epoch   473/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  2.234e-08, val/acc 8.626e-01, val/nll 6.445e-01
+[2023-02-05 13:40:49] [Epoch   474/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  2.075e-08, val/acc 8.622e-01, val/nll 6.456e-01
+[2023-02-05 13:41:01] [Epoch   475/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.922e-08, val/acc 8.618e-01, val/nll 6.457e-01
+[2023-02-05 13:41:13] [Epoch   476/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.774e-08, val/acc 8.614e-01, val/nll 6.465e-01
+[2023-02-05 13:41:25] [Epoch   477/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.633e-08, val/acc 8.615e-01, val/nll 6.468e-01
+[2023-02-05 13:41:38] [Epoch   478/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.497e-08, val/acc 8.618e-01, val/nll 6.474e-01
+[2023-02-05 13:41:50] [Epoch   479/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.367e-08, val/acc 8.616e-01, val/nll 6.478e-01
+[2023-02-05 13:42:02] [Epoch   480/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.243e-08, val/acc 8.613e-01, val/nll 6.481e-01
+[2023-02-05 13:42:14] [Epoch   481/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.125e-08, val/acc 8.616e-01, val/nll 6.485e-01
+[2023-02-05 13:42:26] [Epoch   482/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.013e-08, val/acc 8.617e-01, val/nll 6.489e-01
+[2023-02-05 13:42:39] [Epoch   483/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  9.062e-09, val/acc 8.616e-01, val/nll 6.490e-01
+[2023-02-05 13:42:50] [Epoch   484/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  8.057e-09, val/acc 8.617e-01, val/nll 6.495e-01
+[2023-02-05 13:43:02] [Epoch   485/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.661e+02, trn/neg_log_prior  3.990e+06, trn/lr  7.111e-09, val/acc 8.619e-01, val/nll 6.495e-01
+[2023-02-05 13:43:15] [Epoch   486/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  6.224e-09, val/acc 8.614e-01, val/nll 6.495e-01
+[2023-02-05 13:43:26] [Epoch   487/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  5.396e-09, val/acc 8.617e-01, val/nll 6.497e-01
+[2023-02-05 13:43:38] [Epoch   488/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.660e+02, trn/neg_log_prior  3.990e+06, trn/lr  4.627e-09, val/acc 8.619e-01, val/nll 6.498e-01
+[2023-02-05 13:43:51] [Epoch   489/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  3.917e-09, val/acc 8.616e-01, val/nll 6.502e-01
+[2023-02-05 13:44:02] [Epoch   490/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  3.266e-09, val/acc 8.616e-01, val/nll 6.501e-01
+[2023-02-05 13:44:14] [Epoch   491/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  2.674e-09, val/acc 8.617e-01, val/nll 6.504e-01
+[2023-02-05 13:44:26] [Epoch   492/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  2.142e-09, val/acc 8.616e-01, val/nll 6.505e-01
+[2023-02-05 13:44:39] [Epoch   493/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.668e-09, val/acc 8.617e-01, val/nll 6.507e-01
+[2023-02-05 13:44:51] [Epoch   494/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.254e-09, val/acc 8.617e-01, val/nll 6.505e-01
+[2023-02-05 13:45:03] [Epoch   495/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  8.983e-10, val/acc 8.616e-01, val/nll 6.507e-01
+[2023-02-05 13:45:15] [Epoch   496/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  6.023e-10, val/acc 8.616e-01, val/nll 6.504e-01
+[2023-02-05 13:45:27] [Epoch   497/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  3.654e-10, val/acc 8.615e-01, val/nll 6.506e-01
+[2023-02-05 13:45:39] [Epoch   498/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  1.877e-10, val/acc 8.617e-01, val/nll 6.505e-01
+[2023-02-05 13:45:51] [Epoch   499/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  6.917e-11, val/acc 8.615e-01, val/nll 6.506e-01
+[2023-02-05 13:46:04] [Epoch   500/  500] trn/posterior_energy  3.990e+06, trn/neg_log_likelihood  1.659e+02, trn/neg_log_prior  3.990e+06, trn/lr  9.896e-12, val/acc 8.617e-01, val/nll 6.506e-01
