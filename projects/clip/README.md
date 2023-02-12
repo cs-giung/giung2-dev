@@ -24,3 +24,4 @@ This project additionally requires the following libraries.
 | Method   | IN            | IN-V2         | IN-R          | IN-A          | IN-Sketch     | Logs |
 | :-:      | :-:           | :-:           | :-:           | :-:           | :-:           | :-:  |
 | AdamW-LP | 79.75 / 0.718 | 69.95 / 1.162 | 71.18 / 1.184 | 47.89 / 2.129 | 46.98 / 2.360 | [log](./save/clip-vit-base-patch16-zero-head/AdamW-LP/bs-0256_ne-0010_lr-0.010000_wd-0.0010/0/20230211012559.log)
+| AdamW-FP | 71.14 / 1.496 | 59.29 / 2.062 | 35.78 / 3.544 | 13.40 / 4.600 | 25.07 / 4.854 | [log](./save/clip-vit-base-patch16-zero-head/AdamW-FT/bs-0256_ne-0010_lr-0.000100_wd-0.0010/0/20230211180406.log)
