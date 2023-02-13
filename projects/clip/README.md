@@ -9,11 +9,12 @@ ln -s ../../giung2
 This project additionally requires the following libraries.
 * [Transformers: State-of-the-art Machine Learning for Pytorch, TensorFlow, and JAX.](https://github.com/huggingface/transformers)
 * [PyTorch and torchvision: an open source machine learning framework.](https://github.com/pytorch/pytorch)
+* [timm: a library containing computer vision models, augmentations, and etc.](https://github.com/rwightman/pytorch-image-models)
 
 ### Datasets
 (TBD)
 
-## Results
+## Results (deprecated)
 
 | Method   | IN            | IN-V2         | IN-R          | IN-A          | IN-Sketch     | Logs |
 | :-:      | :-:           | :-:           | :-:           | :-:           | :-:           | :-:  |

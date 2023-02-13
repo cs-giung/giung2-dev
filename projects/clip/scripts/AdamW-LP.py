@@ -9,7 +9,6 @@ import datetime
 from tqdm import tqdm
 from tabulate import tabulate
 from functools import partial
-from typing import Any, NamedTuple
 from collections import OrderedDict
 
 import jax
@@ -19,15 +18,15 @@ import optax
 import flax
 from flax import jax_utils, serialization
 from flax.core import unfreeze
-from flax.training import checkpoints, common_utils, train_state
+from flax.training import common_utils, train_state
 from tensorflow.io import gfile
 
 import torchvision
 from transformers import FlaxCLIPModel, CLIPTokenizer
+from timm.data.transforms_factory import transforms_imagenet_train
 
 from scripts import defaults
 from giung2.data import imagenet
-from giung2.models.resnet import FlaxResNet
 from giung2.metrics import evaluate_acc, evaluate_nll
 
 
@@ -37,15 +36,10 @@ TrainState = train_state.TrainState
 def launch(config, print_fn):
     
     # setup input-transformations
-    preprocess_trn = torchvision.transforms.Compose([
-        torchvision.transforms.RandomResizedCrop(
-            224, scale=(0.9, 1.0), interpolation=torchvision.transforms.InterpolationMode.BICUBIC),
-        lambda e: e.convert('RGB'),
-        torchvision.transforms.ToTensor(),
-        torchvision.transforms.Normalize(
-            (0.48145466, 0.45782750, 0.40821073),
-            (0.26862954, 0.26130258, 0.27577711),
-        )])
+    preprocess_trn = transforms_imagenet_train(
+        img_size = 224,
+        mean     = (0.48145466, 0.45782750, 0.40821073),
+        std      = (0.26862954, 0.26130258, 0.27577711))
     preprocess_val = torchvision.transforms.Compose([
         torchvision.transforms.Resize(224, interpolation=torchvision.transforms.InterpolationMode.BICUBIC),
         torchvision.transforms.CenterCrop(224),
@@ -160,7 +154,8 @@ def launch(config, print_fn):
 
         # clip gradients
         _global_norm_before_clipping = _global_norm(grads)
-        grads = _clip_by_global_norm(grads)
+        if config.optim_clipping:
+            grads = _clip_by_global_norm(grads)
         
         # update state
         new_state = state.apply_gradients(grads=grads)
@@ -321,8 +316,8 @@ def main():
                         help='it applied to denominator outside of the square root (default: 1e-08)')
     parser.add_argument('--optim_weight_decay', default=0.0001, type=float,
                         help='strength of the weight decay regularization (default: 0.0001)')
-    parser.add_argument('--optim_clipping', default=1.0, type=float,
-                        help='global norm for the gradient clipping (default: 1.0)')
+    parser.add_argument('--optim_clipping', default=None, type=float,
+                        help='global norm for the gradient clipping (default: None)')
 
     parser.add_argument('--save', default=None, type=str,
                         help='save the *.log and *.ckpt files if specified (default: False)')
