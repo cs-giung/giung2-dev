@@ -1,8 +1,21 @@
-from typing import Any
+from typing import Any, Callable, Tuple
 
 import jax
 import jax.numpy as jnp
 import flax.linen as nn
+
+
+PRNGKey = Any
+Shape = Tuple[int, ...]
+Dtype = Any
+Array = Any
+
+
+class Identity(nn.Module):
+    
+    @nn.compact
+    def __call__(self, inputs):
+        return inputs
 
 
 class FilterResponseNorm(nn.Module):
