@@ -33,6 +33,13 @@ class FlaxResNet(nn.Module):
         if 'use_running_average' in inspect.signature(self.norm).parameters:
             self.norm.keywords['use_running_average'] = use_running_average
 
+        # NOTE: it should be False during training, if we use batch normalization...
+        deterministic = kwargs.pop('deterministic', True)
+        if 'deterministic' in inspect.signature(self.conv).parameters:
+            self.conv.keywords['deterministic'] = deterministic
+        if 'deterministic' in inspect.signature(self.fc).parameters:
+            self.fc.keywords['deterministic'] = deterministic
+
         # standardize input images...
         m = self.variable('image_stats', 'm', lambda _: jnp.array(self.pixel_mean, dtype=jnp.float32), (x.shape[-1],))
         s = self.variable('image_stats', 's', lambda _: jnp.array(self.pixel_std , dtype=jnp.float32), (x.shape[-1],))
