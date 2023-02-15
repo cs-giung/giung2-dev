@@ -12,17 +12,35 @@ This project additionally requires the following libraries.
 * [timm: a library containing computer vision models, augmentations, and etc.](https://github.com/rwightman/pytorch-image-models)
 
 ### Datasets
-(TBD)
+For evaluation, the following datasets should be manually downloaded.
+* `~/data/imagenet`: ImageNet (IN; Russakovsky et al., 2015), 
+* `~/data/imagenetv2-matched-frequency`: ImageNet-V2 (IN-V2; Recht et al., 2019), 
+* `~/data/imagenet-r`: ImageNet-R (IN-R; Hendrycks et al., 2021), 
+* `~/data/imagenet-a`: ImageNet-A (IN-A; Hendrycks et al., 2021), 
+* `~/data/sketch`: ImageNet-Sketch (IN-S; Wang et al., 2019), 
 
-## Results (deprecated)
+## Results
 
-| Method   | IN            | IN-V2         | IN-R          | IN-A          | IN-Sketch     | Logs |
-| :-:      | :-:           | :-:           | :-:           | :-:           | :-:           | :-:  |
-| Zeroshot | 68.34 / 1.168 | 61.94 / 1.477 | 77.64 / 0.862 | 49.92 / 1.974 | 48.16 / 2.163 |
-| AdamW-LP | 79.82 / 0.711 | 69.97 / 1.152 | 73.32 / 1.057 | 48.99 / 2.074 | 48.41 / 2.074 | [log](./save/clip-vit-base-patch16/AdamW-LP/bs-0256_ne-0010_lr-0.010000_wd-0.0010/0/20230208081404.log)
-| AdamW-FT | 81.88 / 0.847 | 72.22 / 1.497 | 71.42 / 1.438 | 44.44 / 3.093 | 49.70 / 3.107 | [log](./save/clip-vit-base-patch16/AdamW-FT/bs-0256_ne-0010_lr-0.000010_wd-0.0001/0/20230207234539.log)
+### CLIP-ViT-B/32
 
-| Method   | IN            | IN-V2         | IN-R          | IN-A          | IN-Sketch     | Logs |
-| :-:      | :-:           | :-:           | :-:           | :-:           | :-:           | :-:  |
-| AdamW-LP | 79.75 / 0.718 | 69.95 / 1.162 | 71.18 / 1.184 | 47.89 / 2.129 | 46.98 / 2.360 | [log](./save/clip-vit-base-patch16-zero-head/AdamW-LP/bs-0256_ne-0010_lr-0.010000_wd-0.0010/0/20230211012559.log)
-| AdamW-FP | 71.14 / 1.496 | 59.29 / 2.062 | 35.78 / 3.544 | 13.40 / 4.600 | 25.07 / 4.854 | [log](./save/clip-vit-base-patch16-zero-head/AdamW-FT/bs-0256_ne-0010_lr-0.000100_wd-0.0010/0/20230211180406.log)
+| Method   | IN            | IN-V2         | IN-R          | IN-A          | IN-S          | Logs |
+| :-       | :-:           | :-:           | :-:           | :-:           | :-:           | :-:  |
+| Zeroshot | 63.35 / 1.398 | 55.91 / 1.764 | 69.34 / 1.201 | 31.60 / 2.942 | 42.23 / 2.507 |
+| AdamW-LP | 75.45 / 0.901 | 63.86 / 1.445 | 60.00 / 1.773 | 26.27 / 3.412 | 39.79 / 2.832 | [log](./save/clip-vit-base-patch32/AdamW-LP/bs-0256_ne-0010_lr-0.100000_wd-0.0010/0/20230214211003.log)
+| AdamW-FT | 79.47 / 0.765 | 68.24 / 1.301 | 61.95 / 1.777 | 23.69 / 3.875 | 43.54 / 2.867 | [log](./save/clip-vit-base-patch32/AdamW-FT/bs-0256_ne-0010_lr-0.000010_wd-0.0001/0/20230214100736.log) 
+
+**AdamW-LP**
+```
+python scripts/AdamW-LP.py
+    --clip_name openai/clip-vit-base-patch32
+    --optim_lr {0.3, 0.1, 0.03, 0.01, 0.003, 0.001, 0.0003, 0.0001}
+    --optim_weight_decay {0.0000, 0.0001, 0.0010, 0.0100, 0.1000}
+```
+
+**AdamW-FT**
+```
+python scripts/AdamW-FT.py
+    --clip_name openai/clip-vit-base-patch32
+    --optim_lr {0.003, 0.001, 0.0003, 0.0001, 0.00003, 0.00001, 0.000003, 0.000001}
+    --optim_weight_decay {0.0000, 0.0001, 0.0010, 0.0100, 0.1000}
+```
