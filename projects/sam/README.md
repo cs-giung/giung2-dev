@@ -46,5 +46,6 @@ python scripts/BayesSAM.py
     --optim_b1 {0.99, 0.97, 0.90, 0.70}
     --optim_weight_decay {0.003, 0.001, 0.0003, 0.0001}
     --rho {0.3, 0.1, 0.03, 0.01}
+    --num_data_factor {1.0, 4.0}
     --seed 42
 ```
