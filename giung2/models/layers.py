@@ -1,5 +1,5 @@
 import math
-from typing import Any, Callable, Optional, Tuple
+from typing import Any, Callable, Optional, Sequence, Tuple
 
 import jax
 import jax.numpy as jnp
@@ -167,3 +167,34 @@ class ConvNormalRankOneBNN(nn.Conv):
         if b is not None:
             y += jnp.reshape(b, (1,) * (y.ndim - 1) + (-1,))
         return y.reshape((-1,) + y.shape[2:])
+
+
+class ConvDropFilter(nn.Conv):
+    drop_rate: float = 0.0
+    deterministic: Optional[bool] = None
+    rng_collection: str = 'dropout'
+
+    @nn.compact
+    def __call__(self, inputs: Array, deterministic: Optional[bool] = None) -> Array:
+        deterministic = nn.module.merge_param('deterministic', self.deterministic, deterministic)
+        if self.drop_rate == 0.0 or deterministic:
+            x = inputs
+            return super().__call__(x)
+        if self.drop_rate == 1.0:
+            x = jnp.zeros_like(inputs)
+            return super().__call__(x)
+
+        kernel_size = tuple(self.kernel_size)
+        num_batch_dimensions = inputs.ndim - (len(kernel_size) + 1)
+        broadcast_shape = list(inputs.shape)
+        for i in range(len(kernel_size)):
+            broadcast_shape[num_batch_dimensions + i] = 1
+
+        keep_prob = 1.0 - self.drop_rate
+        rng = self.make_rng(self.rng_collection)
+        mask = jax.random.bernoulli(rng, p=keep_prob, shape=broadcast_shape)
+        mask = jnp.broadcast_to(mask, inputs.shape)
+
+        x = jax.lax.select(mask, inputs / keep_prob, jnp.zeros_like(inputs))
+        return super().__call__(x)
+ 
