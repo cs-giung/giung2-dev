@@ -14,7 +14,7 @@ ln -s ../../data
 | SAM-SGDM | 96.20 / 0.119 | 78.96 / 0.726 | [`C10`](./save/CIFAR10_x32/R20x4-BN-ReLU/SAM/bs-0256_ne-0200_lr-0.10_mo-0.90_wd-0.0010_rho-0.3000_fp32/42/20230207023915.log), [`C100`](./save/CIFAR100_x32/R20x4-BN-ReLU/SAM/bs-0256_ne-0200_lr-0.30_mo-0.70_wd-0.0010_rho-0.3000_fp32/42/20230213110453.log)
 | Adam     | 93.53 / 0.316 |               | [`C10`](./save/CIFAR10_x32/R20x4-BN-ReLU/Adam/bs-0256_ne-0200_lr-0.0010_b1-0.9700_b2-0.9990_wd-0.0001_rho-0.0000_fp32/42/20230208152048.log)
 | SAM-Adam | 95.49 / 0.140 |               | [`C10`](./save/CIFAR10_x32/R20x4-BN-ReLU/SAM-Adam/bs-0256_ne-0200_lr-0.0003_b1-0.7000_b2-0.9990_wd-0.0010_rho-0.3000_fp32/42/20230208082743.log)
-| BayesSAM | 96.45 / 0.107 | 78.98 / 0.727 | [`C10`](./save/CIFAR10_x32/R20x4-BN-ReLU/BayesSAM/bs-0256_ne-0200_lr-0.30_b1-0.900_b2-0.999_wd-0.0003_eps-1e-1_rho-0.1000_factor-1.0_fp32/42/20230210182542.log), [`C100`](./save/CIFAR100_x32/R20x4-BN-ReLU/BayesSAM/bs-0256_ne-0200_lr-1.00_b1-0.700_b2-0.999_wd-0.0003_eps-1e-1_rho-0.1000_factor-1.0_fp32/42/20230211203918.log)
+| BayesSAM | 96.33 / 0.113 | 79.11 / 0.734 | [`C10`](./save/CIFAR10_x32/R20x4-BN-ReLU/BayesSAM/bs-0256_ne-0200_lr-0.10_b1-0.970_b2-0.999_wd-0.0010_eps-1e-1_rho-0.0300_factor-4.0_fp32/42/20230217012157.log), [`C100`](./save/CIFAR100_x32/R20x4-BN-ReLU/BayesSAM/bs-0256_ne-0200_lr-1.00_b1-0.900_b2-0.999_wd-0.0003_eps-1e-1_rho-0.1000_factor-4.0_fp32/42/20230214212740.log)
 
 **SGDM / SAM-SGDM ([Polyak, 1964](https://www.sciencedirect.com/science/article/abs/pii/0041555364901375); [Foret et al., 2021](https://arxiv.org/abs/2010.01412))**
 ```
