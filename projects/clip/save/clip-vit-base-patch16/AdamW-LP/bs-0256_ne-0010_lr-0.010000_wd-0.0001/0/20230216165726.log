@@ -1,0 +1,51 @@
+[2023-02-16 16:57:26] Environments:
+------------  ------------------------------------------------------------
+sys.platform  linux
+Python        3.8.10 (default, Nov 14 2022, 12:59:47) [GCC 9.4.0]
+JAX           0.4.2 @/home/giung/.local/lib/python3.8/site-packages/jax
+jaxlib        0.4.2 @/home/giung/.local/lib/python3.8/site-packages/jaxlib
+Flax          0.6.4 @/home/giung/.local/lib/python3.8/site-packages/flax
+Optax         0.1.4 @/home/giung/.local/lib/python3.8/site-packages/optax
+------------  ------------------------------------------------------------
+
+[2023-02-16 16:57:26] Command line arguments:
+- args.data_root          : /home/giung/data/
+- args.clip_name          : openai/clip-vit-base-patch16
+- args.clip_zero_head     : False
+- args.batch_size         : 256
+- args.num_workers        : 32
+- args.optim_ne           : 10
+- args.optim_lr           : 0.01
+- args.optim_b1           : 0.9
+- args.optim_b2           : 0.999
+- args.optim_eps          : 1e-08
+- args.optim_weight_decay : 0.0001
+- args.optim_clipping     : None
+- args.save               : /home/giung/giung2-dev/projects/clip/save/clip-vit-base-patch16/AdamW-LP/bs-0256_ne-0010_lr-0.010000_wd-0.0001/0
+
+[2023-02-16 16:57:30] Multiple local devices are detected:
+[TpuDevice(id=0, process_index=0, coords=(0,0,0), core_on_chip=0), TpuDevice(id=1, process_index=0, coords=(0,0,0), core_on_chip=1), TpuDevice(id=2, process_index=0, coords=(1,0,0), core_on_chip=0), TpuDevice(id=3, process_index=0, coords=(1,0,0), core_on_chip=1), TpuDevice(id=4, process_index=0, coords=(0,1,0), core_on_chip=0), TpuDevice(id=5, process_index=0, coords=(0,1,0), core_on_chip=1), TpuDevice(id=6, process_index=0, coords=(1,1,0), core_on_chip=0), TpuDevice(id=7, process_index=0, coords=(1,1,0), core_on_chip=1)]
+
+[2023-02-16 16:57:44] Setup zeroshot classification...
+[2023-02-16 16:58:52] Run zeroshot classification...
+- ImageNet       : ACC=0.6834, NLL=1.1679, CNT=50000
+- ImageNetV2     : ACC=0.6194, NLL=1.4768, CNT=10000
+- ImageNetR      : ACC=0.7764, NLL=0.8615, CNT=30000
+- ImageNetA      : ACC=0.4992, NLL=1.9741, CNT=7500
+- ImageNetSketch : ACC=0.4816, NLL=2.1628, CNT=50889
+[2023-02-16 17:16:01] [Epoch   1/ 10] trn/loss 1.481e+00, trn/norm 4.293e-02, trn/lr 4.999e-03, val/acc 7.709e-01, val/nll 8.287e-01
+[2023-02-16 17:28:37] [Epoch   2/ 10] trn/loss 1.264e+00, trn/norm 4.026e-02, trn/lr 9.899e-03, val/acc 7.833e-01, val/nll 7.757e-01
+[2023-02-16 17:41:47] [Epoch   3/ 10] trn/loss 1.206e+00, trn/norm 3.947e-02, trn/lr 9.308e-03, val/acc 7.860e-01, val/nll 7.636e-01
+[2023-02-16 17:54:34] [Epoch   4/ 10] trn/loss 1.176e+00, trn/norm 3.903e-02, trn/lr 8.198e-03, val/acc 7.902e-01, val/nll 7.519e-01
+[2023-02-16 18:07:24] [Epoch   5/ 10] trn/loss 1.156e+00, trn/norm 3.869e-02, trn/lr 6.702e-03, val/acc 7.921e-01, val/nll 7.443e-01
+[2023-02-16 18:20:08] [Epoch   6/ 10] trn/loss 1.139e+00, trn/norm 3.842e-02, trn/lr 5.000e-03, val/acc 7.928e-01, val/nll 7.381e-01
+[2023-02-16 18:33:16] [Epoch   7/ 10] trn/loss 1.124e+00, trn/norm 3.819e-02, trn/lr 3.299e-03, val/acc 7.952e-01, val/nll 7.330e-01
+[2023-02-16 18:46:00] [Epoch   8/ 10] trn/loss 1.118e+00, trn/norm 3.804e-02, trn/lr 1.802e-03, val/acc 7.953e-01, val/nll 7.321e-01
+[2023-02-16 18:59:09] [Epoch   9/ 10] trn/loss 1.111e+00, trn/norm 3.790e-02, trn/lr 6.919e-04, val/acc 7.965e-01, val/nll 7.302e-01
+[2023-02-16 19:11:56] [Epoch  10/ 10] trn/loss 1.107e+00, trn/norm 3.786e-02, trn/lr 1.010e-04, val/acc 7.968e-01, val/nll 7.297e-01
+[2023-02-16 19:11:56] Evaluate the final state...
+- ImageNet       : ACC=0.7977, NLL=0.7195, CNT=50000
+- ImageNetV2     : ACC=0.6964, NLL=1.1687, CNT=10000
+- ImageNetR      : ACC=0.7274, NLL=1.0980, CNT=30000
+- ImageNetA      : ACC=0.4689, NLL=2.1746, CNT=7500
+- ImageNetSketch : ACC=0.4773, NLL=2.3150, CNT=50889
