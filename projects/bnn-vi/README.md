@@ -20,6 +20,7 @@ ln -s ../../data
 | Method                 | Epoch | CIFAR-10      | CIFAR-100     | Logs |
 | :-                     | :-:   | :-:           | :-:           | :-   |
 | Deterministic          | 500   | 95.11 / 0.171 | 77.17 / 1.022 | [`C10`](/projects/residual-networks/save/CIFAR10_x32/R20x4-BN-ReLU/bs-0256_ne-0500_lr-0.03_mo-0.90_wd-0.0030_fp32/42/20230204011718.log), [`C100`](/projects/residual-networks/save/CIFAR100_x32/R20x4-BN-ReLU/bs-0256_ne-0500_lr-0.10_mo-0.90_wd-0.0010_fp32/42/20230203221028.log)
+| Dropout                | 500   | 95.35 / 0.166 | 78.40 / 0.863 | [`C10`](./save/CIFAR10_x32/R20x4-BN-ReLU/Dropout/bs-0256_ne-0500_lr-0.01_mo-0.90_wd-0.0030_drop-0.01_fp32/42/20230216113735.log), [`C100`](./save/CIFAR100_x32/R20x4-BN-ReLU/Dropout/bs-0256_ne-0500_lr-0.03_mo-0.90_wd-0.0030_drop-0.03_fp32/42/20230216145050.log)
 | BatchEnsemble (M=4)    | 500   | 95.36 / 0.165 | 76.78 / 0.946 | [`C10`](./save/CIFAR10_x32/R20x4-BN-ReLU/BatchEnsemble/bs-0256_ne-0500_lr-0.03_mo-0.90_wd-0.0030_ens-4_fp32/42/20230215010039.log), [`C100`](./save/CIFAR100_x32/R20x4-BN-ReLU/BatchEnsemble/bs-0256_ne-0500_lr-0.03_mo-0.90_wd-0.0030_ens-4_fp32/42/20230215181920.log)
 | NormalRankOneBNN (M=4) | 500   | 95.53 / 0.159 | 77.95 / 0.933 | [`C10`](./save/CIFAR10_x32/R20x4-BN-ReLU/NormalRankOneBNN/bs-0256_ne-0500_lr-0.10_mo-0.90_wd-0.0010_ens-4_std-0.0100_fp32/42/20230215085242.log), [`C100`](./save/CIFAR100_x32/R20x4-BN-ReLU/NormalRankOneBNN/bs-0256_ne-0500_lr-0.10_mo-0.90_wd-0.0010_ens-4_std-0.0100_fp32/42/20230216055323.log)
 
