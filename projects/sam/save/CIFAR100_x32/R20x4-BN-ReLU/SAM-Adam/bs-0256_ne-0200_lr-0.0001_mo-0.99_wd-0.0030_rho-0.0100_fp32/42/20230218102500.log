@@ -1,0 +1,233 @@
+[2023-02-18 10:25:00] Environments:
+------------  ------------------------------------------------------------
+sys.platform  linux
+Python        3.8.10 (default, Nov 14 2022, 12:59:47) [GCC 9.4.0]
+JAX           0.4.2 @/home/giung/.local/lib/python3.8/site-packages/jax
+jaxlib        0.4.2 @/home/giung/.local/lib/python3.8/site-packages/jaxlib
+Flax          0.6.4 @/home/giung/.local/lib/python3.8/site-packages/flax
+Optax         0.1.4 @/home/giung/.local/lib/python3.8/site-packages/optax
+------------  ------------------------------------------------------------
+
+[2023-02-18 10:25:00] Command line arguments:
+- args.data_root          : ./data/
+- args.data_name          : CIFAR100_x32
+- args.data_augmentation  : standard
+- args.data_proportional  : 1.0
+- args.model_depth        : 20
+- args.model_width        : 4
+- args.model_style        : BN-ReLU
+- args.optim_bs           : 256
+- args.optim_ne           : 200
+- args.optim_lr           : 0.0001
+- args.optim_b1           : 0.99
+- args.optim_b2           : 0.999
+- args.optim_eps          : 1e-08
+- args.optim_weight_decay : 0.003
+- args.rho                : 0.01
+- args.save               : /home/giung/giung2-dev/projects/sam/save/CIFAR100_x32/R20x4-BN-ReLU/SAM-Adam/bs-0256_ne-0200_lr-0.0001_mo-0.99_wd-0.0030_rho-0.0100_fp32/42
+- args.seed               : 42
+- args.precision          : fp32
+
+[2023-02-18 10:25:14] Multiple local devices are detected:
+[TpuDevice(id=0, process_index=0, coords=(0,0,0), core_on_chip=0), TpuDevice(id=1, process_index=0, coords=(0,0,0), core_on_chip=1), TpuDevice(id=2, process_index=0, coords=(1,0,0), core_on_chip=0), TpuDevice(id=3, process_index=0, coords=(1,0,0), core_on_chip=1), TpuDevice(id=4, process_index=0, coords=(0,1,0), core_on_chip=0), TpuDevice(id=5, process_index=0, coords=(0,1,0), core_on_chip=1), TpuDevice(id=6, process_index=0, coords=(1,1,0), core_on_chip=0), TpuDevice(id=7, process_index=0, coords=(1,1,0), core_on_chip=1)]
+
+[2023-02-18 10:26:15] [Epoch     1/  200] trn/loss 4.332e+00, trn/lr 1.000e-04, val/acc 9.403e-02, val/nll 4.017e+00 (best_acc: 0.000e+00 -> 9.403e-02, test_acc: 1.000e-01, test_nll: 3.980e+00)
+[2023-02-18 10:26:24] [Epoch     2/  200] trn/loss 3.815e+00, trn/lr 9.999e-05, val/acc 1.407e-01, val/nll 3.685e+00 (best_acc: 9.403e-02 -> 1.407e-01, test_acc: 1.484e-01, test_nll: 3.643e+00)
+[2023-02-18 10:26:32] [Epoch     3/  200] trn/loss 3.557e+00, trn/lr 9.996e-05, val/acc 1.868e-01, val/nll 3.432e+00 (best_acc: 1.407e-01 -> 1.868e-01, test_acc: 1.897e-01, test_nll: 3.398e+00)
+[2023-02-18 10:26:40] [Epoch     4/  200] trn/loss 3.328e+00, trn/lr 9.992e-05, val/acc 2.244e-01, val/nll 3.217e+00 (best_acc: 1.868e-01 -> 2.244e-01, test_acc: 2.290e-01, test_nll: 3.181e+00)
+[2023-02-18 10:26:49] [Epoch     5/  200] trn/loss 3.105e+00, trn/lr 9.987e-05, val/acc 2.584e-01, val/nll 3.010e+00 (best_acc: 2.244e-01 -> 2.584e-01, test_acc: 2.711e-01, test_nll: 2.980e+00)
+[2023-02-18 10:26:57] [Epoch     6/  200] trn/loss 2.910e+00, trn/lr 9.981e-05, val/acc 2.825e-01, val/nll 2.882e+00 (best_acc: 2.584e-01 -> 2.825e-01, test_acc: 2.956e-01, test_nll: 2.835e+00)
+[2023-02-18 10:27:05] [Epoch     7/  200] trn/loss 2.753e+00, trn/lr 9.974e-05, val/acc 3.185e-01, val/nll 2.717e+00 (best_acc: 2.825e-01 -> 3.185e-01, test_acc: 3.272e-01, test_nll: 2.666e+00)
+[2023-02-18 10:27:13] [Epoch     8/  200] trn/loss 2.597e+00, trn/lr 9.965e-05, val/acc 3.466e-01, val/nll 2.561e+00 (best_acc: 3.185e-01 -> 3.466e-01, test_acc: 3.560e-01, test_nll: 2.515e+00)
+[2023-02-18 10:27:22] [Epoch     9/  200] trn/loss 2.465e+00, trn/lr 9.955e-05, val/acc 3.681e-01, val/nll 2.482e+00 (best_acc: 3.466e-01 -> 3.681e-01, test_acc: 3.752e-01, test_nll: 2.442e+00)
+[2023-02-18 10:27:30] [Epoch    10/  200] trn/loss 2.350e+00, trn/lr 9.944e-05, val/acc 3.737e-01, val/nll 2.441e+00 (best_acc: 3.681e-01 -> 3.737e-01, test_acc: 3.878e-01, test_nll: 2.398e+00)
+[2023-02-18 10:27:38] [Epoch    11/  200] trn/loss 2.239e+00, trn/lr 9.932e-05, val/acc 4.084e-01, val/nll 2.280e+00 (best_acc: 3.737e-01 -> 4.084e-01, test_acc: 4.209e-01, test_nll: 2.238e+00)
+[2023-02-18 10:27:46] [Epoch    12/  200] trn/loss 2.143e+00, trn/lr 9.919e-05, val/acc 4.153e-01, val/nll 2.263e+00 (best_acc: 4.084e-01 -> 4.153e-01, test_acc: 4.247e-01, test_nll: 2.215e+00)
+[2023-02-18 10:27:55] [Epoch    13/  200] trn/loss 2.051e+00, trn/lr 9.904e-05, val/acc 4.472e-01, val/nll 2.102e+00 (best_acc: 4.153e-01 -> 4.472e-01, test_acc: 4.614e-01, test_nll: 2.067e+00)
+[2023-02-18 10:28:02] [Epoch    14/  200] trn/loss 1.965e+00, trn/lr 9.888e-05, val/acc 4.469e-01, val/nll 2.117e+00
+[2023-02-18 10:28:10] [Epoch    15/  200] trn/loss 1.897e+00, trn/lr 9.871e-05, val/acc 4.554e-01, val/nll 2.081e+00 (best_acc: 4.472e-01 -> 4.554e-01, test_acc: 4.662e-01, test_nll: 2.060e+00)
+[2023-02-18 10:28:18] [Epoch    16/  200] trn/loss 1.823e+00, trn/lr 9.853e-05, val/acc 4.669e-01, val/nll 2.001e+00 (best_acc: 4.554e-01 -> 4.669e-01, test_acc: 4.804e-01, test_nll: 1.973e+00)
+[2023-02-18 10:28:27] [Epoch    17/  200] trn/loss 1.760e+00, trn/lr 9.833e-05, val/acc 4.832e-01, val/nll 1.951e+00 (best_acc: 4.669e-01 -> 4.832e-01, test_acc: 4.878e-01, test_nll: 1.916e+00)
+[2023-02-18 10:28:34] [Epoch    18/  200] trn/loss 1.699e+00, trn/lr 9.812e-05, val/acc 4.781e-01, val/nll 1.954e+00
+[2023-02-18 10:28:42] [Epoch    19/  200] trn/loss 1.644e+00, trn/lr 9.790e-05, val/acc 4.981e-01, val/nll 1.893e+00 (best_acc: 4.832e-01 -> 4.981e-01, test_acc: 5.000e-01, test_nll: 1.871e+00)
+[2023-02-18 10:28:50] [Epoch    20/  200] trn/loss 1.588e+00, trn/lr 9.767e-05, val/acc 5.074e-01, val/nll 1.820e+00 (best_acc: 4.981e-01 -> 5.074e-01, test_acc: 5.149e-01, test_nll: 1.800e+00)
+[2023-02-18 10:28:57] [Epoch    21/  200] trn/loss 1.546e+00, trn/lr 9.743e-05, val/acc 5.013e-01, val/nll 1.864e+00
+[2023-02-18 10:29:06] [Epoch    22/  200] trn/loss 1.492e+00, trn/lr 9.718e-05, val/acc 5.248e-01, val/nll 1.764e+00 (best_acc: 5.074e-01 -> 5.248e-01, test_acc: 5.310e-01, test_nll: 1.748e+00)
+[2023-02-18 10:29:14] [Epoch    23/  200] trn/loss 1.443e+00, trn/lr 9.691e-05, val/acc 5.322e-01, val/nll 1.725e+00 (best_acc: 5.248e-01 -> 5.322e-01, test_acc: 5.396e-01, test_nll: 1.715e+00)
+[2023-02-18 10:29:21] [Epoch    24/  200] trn/loss 1.406e+00, trn/lr 9.663e-05, val/acc 5.311e-01, val/nll 1.738e+00
+[2023-02-18 10:29:29] [Epoch    25/  200] trn/loss 1.351e+00, trn/lr 9.634e-05, val/acc 5.450e-01, val/nll 1.673e+00 (best_acc: 5.322e-01 -> 5.450e-01, test_acc: 5.537e-01, test_nll: 1.653e+00)
+[2023-02-18 10:29:37] [Epoch    26/  200] trn/loss 1.318e+00, trn/lr 9.604e-05, val/acc 5.426e-01, val/nll 1.691e+00
+[2023-02-18 10:29:45] [Epoch    27/  200] trn/loss 1.282e+00, trn/lr 9.573e-05, val/acc 5.510e-01, val/nll 1.658e+00 (best_acc: 5.450e-01 -> 5.510e-01, test_acc: 5.595e-01, test_nll: 1.636e+00)
+[2023-02-18 10:29:52] [Epoch    28/  200] trn/loss 1.241e+00, trn/lr 9.541e-05, val/acc 5.494e-01, val/nll 1.656e+00
+[2023-02-18 10:30:00] [Epoch    29/  200] trn/loss 1.203e+00, trn/lr 9.507e-05, val/acc 5.606e-01, val/nll 1.606e+00 (best_acc: 5.510e-01 -> 5.606e-01, test_acc: 5.682e-01, test_nll: 1.587e+00)
+[2023-02-18 10:30:09] [Epoch    30/  200] trn/loss 1.172e+00, trn/lr 9.473e-05, val/acc 5.610e-01, val/nll 1.620e+00 (best_acc: 5.606e-01 -> 5.610e-01, test_acc: 5.705e-01, test_nll: 1.601e+00)
+[2023-02-18 10:30:17] [Epoch    31/  200] trn/loss 1.147e+00, trn/lr 9.437e-05, val/acc 5.735e-01, val/nll 1.610e+00 (best_acc: 5.610e-01 -> 5.735e-01, test_acc: 5.733e-01, test_nll: 1.591e+00)
+[2023-02-18 10:30:24] [Epoch    32/  200] trn/loss 1.126e+00, trn/lr 9.400e-05, val/acc 5.679e-01, val/nll 1.608e+00
+[2023-02-18 10:30:32] [Epoch    33/  200] trn/loss 1.086e+00, trn/lr 9.363e-05, val/acc 5.750e-01, val/nll 1.569e+00 (best_acc: 5.735e-01 -> 5.750e-01, test_acc: 5.861e-01, test_nll: 1.552e+00)
+[2023-02-18 10:30:41] [Epoch    34/  200] trn/loss 1.057e+00, trn/lr 9.324e-05, val/acc 5.778e-01, val/nll 1.554e+00 (best_acc: 5.750e-01 -> 5.778e-01, test_acc: 5.855e-01, test_nll: 1.537e+00)
+[2023-02-18 10:30:48] [Epoch    35/  200] trn/loss 1.035e+00, trn/lr 9.284e-05, val/acc 5.760e-01, val/nll 1.582e+00
+[2023-02-18 10:30:55] [Epoch    36/  200] trn/loss 1.008e+00, trn/lr 9.243e-05, val/acc 5.687e-01, val/nll 1.590e+00
+[2023-02-18 10:31:03] [Epoch    37/  200] trn/loss 9.680e-01, trn/lr 9.201e-05, val/acc 5.916e-01, val/nll 1.516e+00 (best_acc: 5.778e-01 -> 5.916e-01, test_acc: 5.955e-01, test_nll: 1.502e+00)
+[2023-02-18 10:31:11] [Epoch    38/  200] trn/loss 9.426e-01, trn/lr 9.157e-05, val/acc 5.951e-01, val/nll 1.503e+00 (best_acc: 5.916e-01 -> 5.951e-01, test_acc: 5.996e-01, test_nll: 1.504e+00)
+[2023-02-18 10:31:19] [Epoch    39/  200] trn/loss 9.269e-01, trn/lr 9.113e-05, val/acc 5.913e-01, val/nll 1.502e+00
+[2023-02-18 10:31:27] [Epoch    40/  200] trn/loss 9.001e-01, trn/lr 9.068e-05, val/acc 6.001e-01, val/nll 1.481e+00 (best_acc: 5.951e-01 -> 6.001e-01, test_acc: 6.069e-01, test_nll: 1.475e+00)
+[2023-02-18 10:31:34] [Epoch    41/  200] trn/loss 8.763e-01, trn/lr 9.022e-05, val/acc 5.866e-01, val/nll 1.532e+00
+[2023-02-18 10:31:42] [Epoch    42/  200] trn/loss 8.517e-01, trn/lr 8.975e-05, val/acc 6.042e-01, val/nll 1.461e+00 (best_acc: 6.001e-01 -> 6.042e-01, test_acc: 6.094e-01, test_nll: 1.459e+00)
+[2023-02-18 10:31:49] [Epoch    43/  200] trn/loss 8.240e-01, trn/lr 8.927e-05, val/acc 5.967e-01, val/nll 1.490e+00
+[2023-02-18 10:31:57] [Epoch    44/  200] trn/loss 8.046e-01, trn/lr 8.878e-05, val/acc 6.040e-01, val/nll 1.470e+00
+[2023-02-18 10:32:04] [Epoch    45/  200] trn/loss 7.875e-01, trn/lr 8.828e-05, val/acc 5.927e-01, val/nll 1.518e+00
+[2023-02-18 10:32:12] [Epoch    46/  200] trn/loss 7.689e-01, trn/lr 8.777e-05, val/acc 6.104e-01, val/nll 1.458e+00 (best_acc: 6.042e-01 -> 6.104e-01, test_acc: 6.145e-01, test_nll: 1.445e+00)
+[2023-02-18 10:32:20] [Epoch    47/  200] trn/loss 7.504e-01, trn/lr 8.725e-05, val/acc 6.060e-01, val/nll 1.471e+00
+[2023-02-18 10:32:27] [Epoch    48/  200] trn/loss 7.327e-01, trn/lr 8.672e-05, val/acc 6.052e-01, val/nll 1.479e+00
+[2023-02-18 10:32:35] [Epoch    49/  200] trn/loss 7.153e-01, trn/lr 8.618e-05, val/acc 6.170e-01, val/nll 1.419e+00 (best_acc: 6.104e-01 -> 6.170e-01, test_acc: 6.215e-01, test_nll: 1.414e+00)
+[2023-02-18 10:32:42] [Epoch    50/  200] trn/loss 6.839e-01, trn/lr 8.563e-05, val/acc 6.110e-01, val/nll 1.451e+00
+[2023-02-18 10:32:50] [Epoch    51/  200] trn/loss 6.728e-01, trn/lr 8.508e-05, val/acc 6.129e-01, val/nll 1.429e+00
+[2023-02-18 10:32:57] [Epoch    52/  200] trn/loss 6.510e-01, trn/lr 8.451e-05, val/acc 6.107e-01, val/nll 1.478e+00
+[2023-02-18 10:33:04] [Epoch    53/  200] trn/loss 6.383e-01, trn/lr 8.394e-05, val/acc 6.073e-01, val/nll 1.477e+00
+[2023-02-18 10:33:12] [Epoch    54/  200] trn/loss 6.268e-01, trn/lr 8.336e-05, val/acc 6.218e-01, val/nll 1.407e+00 (best_acc: 6.170e-01 -> 6.218e-01, test_acc: 6.337e-01, test_nll: 1.381e+00)
+[2023-02-18 10:33:20] [Epoch    55/  200] trn/loss 6.064e-01, trn/lr 8.277e-05, val/acc 6.192e-01, val/nll 1.445e+00
+[2023-02-18 10:33:27] [Epoch    56/  200] trn/loss 5.916e-01, trn/lr 8.217e-05, val/acc 6.206e-01, val/nll 1.430e+00
+[2023-02-18 10:33:34] [Epoch    57/  200] trn/loss 5.765e-01, trn/lr 8.157e-05, val/acc 6.154e-01, val/nll 1.477e+00
+[2023-02-18 10:33:43] [Epoch    58/  200] trn/loss 5.609e-01, trn/lr 8.096e-05, val/acc 6.250e-01, val/nll 1.414e+00 (best_acc: 6.218e-01 -> 6.250e-01, test_acc: 6.352e-01, test_nll: 1.378e+00)
+[2023-02-18 10:33:50] [Epoch    59/  200] trn/loss 5.357e-01, trn/lr 8.034e-05, val/acc 6.166e-01, val/nll 1.445e+00
+[2023-02-18 10:33:57] [Epoch    60/  200] trn/loss 5.266e-01, trn/lr 7.971e-05, val/acc 6.194e-01, val/nll 1.424e+00
+[2023-02-18 10:34:05] [Epoch    61/  200] trn/loss 5.127e-01, trn/lr 7.907e-05, val/acc 6.263e-01, val/nll 1.414e+00 (best_acc: 6.250e-01 -> 6.263e-01, test_acc: 6.354e-01, test_nll: 1.397e+00)
+[2023-02-18 10:34:13] [Epoch    62/  200] trn/loss 4.950e-01, trn/lr 7.843e-05, val/acc 6.315e-01, val/nll 1.400e+00 (best_acc: 6.263e-01 -> 6.315e-01, test_acc: 6.362e-01, test_nll: 1.363e+00)
+[2023-02-18 10:34:21] [Epoch    63/  200] trn/loss 4.866e-01, trn/lr 7.778e-05, val/acc 6.217e-01, val/nll 1.436e+00
+[2023-02-18 10:34:28] [Epoch    64/  200] trn/loss 4.783e-01, trn/lr 7.712e-05, val/acc 6.215e-01, val/nll 1.430e+00
+[2023-02-18 10:34:35] [Epoch    65/  200] trn/loss 4.644e-01, trn/lr 7.646e-05, val/acc 6.219e-01, val/nll 1.428e+00
+[2023-02-18 10:34:42] [Epoch    66/  200] trn/loss 4.486e-01, trn/lr 7.579e-05, val/acc 6.302e-01, val/nll 1.407e+00
+[2023-02-18 10:34:50] [Epoch    67/  200] trn/loss 4.299e-01, trn/lr 7.512e-05, val/acc 6.306e-01, val/nll 1.409e+00
+[2023-02-18 10:34:57] [Epoch    68/  200] trn/loss 4.214e-01, trn/lr 7.443e-05, val/acc 6.261e-01, val/nll 1.427e+00
+[2023-02-18 10:35:04] [Epoch    69/  200] trn/loss 4.078e-01, trn/lr 7.374e-05, val/acc 6.310e-01, val/nll 1.407e+00
+[2023-02-18 10:35:11] [Epoch    70/  200] trn/loss 3.958e-01, trn/lr 7.305e-05, val/acc 6.282e-01, val/nll 1.418e+00
+[2023-02-18 10:35:19] [Epoch    71/  200] trn/loss 3.875e-01, trn/lr 7.235e-05, val/acc 6.295e-01, val/nll 1.430e+00
+[2023-02-18 10:35:26] [Epoch    72/  200] trn/loss 3.883e-01, trn/lr 7.165e-05, val/acc 6.181e-01, val/nll 1.464e+00
+[2023-02-18 10:35:33] [Epoch    73/  200] trn/loss 3.714e-01, trn/lr 7.093e-05, val/acc 6.289e-01, val/nll 1.427e+00
+[2023-02-18 10:35:41] [Epoch    74/  200] trn/loss 3.625e-01, trn/lr 7.022e-05, val/acc 6.327e-01, val/nll 1.422e+00 (best_acc: 6.315e-01 -> 6.327e-01, test_acc: 6.427e-01, test_nll: 1.404e+00)
+[2023-02-18 10:35:49] [Epoch    75/  200] trn/loss 3.531e-01, trn/lr 6.950e-05, val/acc 6.294e-01, val/nll 1.438e+00
+[2023-02-18 10:35:57] [Epoch    76/  200] trn/loss 3.466e-01, trn/lr 6.877e-05, val/acc 6.342e-01, val/nll 1.405e+00 (best_acc: 6.327e-01 -> 6.342e-01, test_acc: 6.431e-01, test_nll: 1.373e+00)
+[2023-02-18 10:36:04] [Epoch    77/  200] trn/loss 3.340e-01, trn/lr 6.804e-05, val/acc 6.296e-01, val/nll 1.439e+00
+[2023-02-18 10:36:11] [Epoch    78/  200] trn/loss 3.222e-01, trn/lr 6.731e-05, val/acc 6.282e-01, val/nll 1.448e+00
+[2023-02-18 10:36:19] [Epoch    79/  200] trn/loss 3.177e-01, trn/lr 6.657e-05, val/acc 6.327e-01, val/nll 1.419e+00
+[2023-02-18 10:36:26] [Epoch    80/  200] trn/loss 3.034e-01, trn/lr 6.583e-05, val/acc 6.300e-01, val/nll 1.437e+00
+[2023-02-18 10:36:33] [Epoch    81/  200] trn/loss 2.942e-01, trn/lr 6.508e-05, val/acc 6.269e-01, val/nll 1.457e+00
+[2023-02-18 10:36:40] [Epoch    82/  200] trn/loss 2.939e-01, trn/lr 6.433e-05, val/acc 6.285e-01, val/nll 1.453e+00
+[2023-02-18 10:36:49] [Epoch    83/  200] trn/loss 2.862e-01, trn/lr 6.357e-05, val/acc 6.409e-01, val/nll 1.425e+00 (best_acc: 6.342e-01 -> 6.409e-01, test_acc: 6.408e-01, test_nll: 1.412e+00)
+[2023-02-18 10:36:57] [Epoch    84/  200] trn/loss 2.724e-01, trn/lr 6.282e-05, val/acc 6.412e-01, val/nll 1.382e+00 (best_acc: 6.409e-01 -> 6.412e-01, test_acc: 6.483e-01, test_nll: 1.370e+00)
+[2023-02-18 10:37:05] [Epoch    85/  200] trn/loss 2.659e-01, trn/lr 6.206e-05, val/acc 6.419e-01, val/nll 1.389e+00 (best_acc: 6.412e-01 -> 6.419e-01, test_acc: 6.450e-01, test_nll: 1.397e+00)
+[2023-02-18 10:37:13] [Epoch    86/  200] trn/loss 2.617e-01, trn/lr 6.129e-05, val/acc 6.438e-01, val/nll 1.397e+00 (best_acc: 6.419e-01 -> 6.438e-01, test_acc: 6.482e-01, test_nll: 1.373e+00)
+[2023-02-18 10:37:21] [Epoch    87/  200] trn/loss 2.471e-01, trn/lr 6.053e-05, val/acc 6.368e-01, val/nll 1.428e+00
+[2023-02-18 10:37:28] [Epoch    88/  200] trn/loss 2.436e-01, trn/lr 5.976e-05, val/acc 6.394e-01, val/nll 1.447e+00
+[2023-02-18 10:37:35] [Epoch    89/  200] trn/loss 2.435e-01, trn/lr 5.899e-05, val/acc 6.319e-01, val/nll 1.467e+00
+[2023-02-18 10:37:42] [Epoch    90/  200] trn/loss 2.359e-01, trn/lr 5.821e-05, val/acc 6.416e-01, val/nll 1.396e+00
+[2023-02-18 10:37:50] [Epoch    91/  200] trn/loss 2.287e-01, trn/lr 5.744e-05, val/acc 6.412e-01, val/nll 1.417e+00
+[2023-02-18 10:37:57] [Epoch    92/  200] trn/loss 2.245e-01, trn/lr 5.666e-05, val/acc 6.404e-01, val/nll 1.430e+00
+[2023-02-18 10:38:04] [Epoch    93/  200] trn/loss 2.217e-01, trn/lr 5.588e-05, val/acc 6.437e-01, val/nll 1.416e+00
+[2023-02-18 10:38:12] [Epoch    94/  200] trn/loss 2.150e-01, trn/lr 5.510e-05, val/acc 6.440e-01, val/nll 1.414e+00 (best_acc: 6.438e-01 -> 6.440e-01, test_acc: 6.449e-01, test_nll: 1.403e+00)
+[2023-02-18 10:38:20] [Epoch    95/  200] trn/loss 2.040e-01, trn/lr 5.432e-05, val/acc 6.426e-01, val/nll 1.410e+00
+[2023-02-18 10:38:27] [Epoch    96/  200] trn/loss 2.028e-01, trn/lr 5.353e-05, val/acc 6.424e-01, val/nll 1.411e+00
+[2023-02-18 10:38:34] [Epoch    97/  200] trn/loss 2.012e-01, trn/lr 5.275e-05, val/acc 6.427e-01, val/nll 1.415e+00
+[2023-02-18 10:38:41] [Epoch    98/  200] trn/loss 1.958e-01, trn/lr 5.197e-05, val/acc 6.421e-01, val/nll 1.416e+00
+[2023-02-18 10:38:49] [Epoch    99/  200] trn/loss 1.891e-01, trn/lr 5.118e-05, val/acc 6.414e-01, val/nll 1.423e+00
+[2023-02-18 10:38:56] [Epoch   100/  200] trn/loss 1.901e-01, trn/lr 5.040e-05, val/acc 6.417e-01, val/nll 1.415e+00
+[2023-02-18 10:39:03] [Epoch   101/  200] trn/loss 1.801e-01, trn/lr 4.961e-05, val/acc 6.438e-01, val/nll 1.428e+00
+[2023-02-18 10:39:10] [Epoch   102/  200] trn/loss 1.747e-01, trn/lr 4.882e-05, val/acc 6.399e-01, val/nll 1.427e+00
+[2023-02-18 10:39:19] [Epoch   103/  200] trn/loss 1.705e-01, trn/lr 4.804e-05, val/acc 6.470e-01, val/nll 1.426e+00 (best_acc: 6.440e-01 -> 6.470e-01, test_acc: 6.493e-01, test_nll: 1.417e+00)
+[2023-02-18 10:39:27] [Epoch   104/  200] trn/loss 1.684e-01, trn/lr 4.725e-05, val/acc 6.498e-01, val/nll 1.411e+00 (best_acc: 6.470e-01 -> 6.498e-01, test_acc: 6.521e-01, test_nll: 1.414e+00)
+[2023-02-18 10:39:34] [Epoch   105/  200] trn/loss 1.640e-01, trn/lr 4.647e-05, val/acc 6.455e-01, val/nll 1.422e+00
+[2023-02-18 10:39:42] [Epoch   106/  200] trn/loss 1.607e-01, trn/lr 4.569e-05, val/acc 6.417e-01, val/nll 1.431e+00
+[2023-02-18 10:39:49] [Epoch   107/  200] trn/loss 1.591e-01, trn/lr 4.491e-05, val/acc 6.494e-01, val/nll 1.420e+00
+[2023-02-18 10:39:57] [Epoch   108/  200] trn/loss 1.562e-01, trn/lr 4.413e-05, val/acc 6.512e-01, val/nll 1.378e+00 (best_acc: 6.498e-01 -> 6.512e-01, test_acc: 6.544e-01, test_nll: 1.373e+00)
+[2023-02-18 10:40:04] [Epoch   109/  200] trn/loss 1.490e-01, trn/lr 4.335e-05, val/acc 6.476e-01, val/nll 1.408e+00
+[2023-02-18 10:40:11] [Epoch   110/  200] trn/loss 1.469e-01, trn/lr 4.257e-05, val/acc 6.490e-01, val/nll 1.410e+00
+[2023-02-18 10:40:19] [Epoch   111/  200] trn/loss 1.461e-01, trn/lr 4.179e-05, val/acc 6.503e-01, val/nll 1.392e+00
+[2023-02-18 10:40:26] [Epoch   112/  200] trn/loss 1.452e-01, trn/lr 4.102e-05, val/acc 6.480e-01, val/nll 1.412e+00
+[2023-02-18 10:40:33] [Epoch   113/  200] trn/loss 1.392e-01, trn/lr 4.025e-05, val/acc 6.497e-01, val/nll 1.409e+00
+[2023-02-18 10:40:41] [Epoch   114/  200] trn/loss 1.372e-01, trn/lr 3.948e-05, val/acc 6.530e-01, val/nll 1.400e+00 (best_acc: 6.512e-01 -> 6.530e-01, test_acc: 6.621e-01, test_nll: 1.367e+00)
+[2023-02-18 10:40:49] [Epoch   115/  200] trn/loss 1.360e-01, trn/lr 3.871e-05, val/acc 6.494e-01, val/nll 1.401e+00
+[2023-02-18 10:40:57] [Epoch   116/  200] trn/loss 1.320e-01, trn/lr 3.795e-05, val/acc 6.532e-01, val/nll 1.403e+00 (best_acc: 6.530e-01 -> 6.532e-01, test_acc: 6.529e-01, test_nll: 1.383e+00)
+[2023-02-18 10:41:05] [Epoch   117/  200] trn/loss 1.272e-01, trn/lr 3.719e-05, val/acc 6.559e-01, val/nll 1.382e+00 (best_acc: 6.532e-01 -> 6.559e-01, test_acc: 6.575e-01, test_nll: 1.361e+00)
+[2023-02-18 10:41:12] [Epoch   118/  200] trn/loss 1.246e-01, trn/lr 3.643e-05, val/acc 6.556e-01, val/nll 1.383e+00
+[2023-02-18 10:41:20] [Epoch   119/  200] trn/loss 1.219e-01, trn/lr 3.568e-05, val/acc 6.551e-01, val/nll 1.384e+00
+[2023-02-18 10:41:28] [Epoch   120/  200] trn/loss 1.194e-01, trn/lr 3.493e-05, val/acc 6.585e-01, val/nll 1.375e+00 (best_acc: 6.559e-01 -> 6.585e-01, test_acc: 6.602e-01, test_nll: 1.363e+00)
+[2023-02-18 10:41:36] [Epoch   121/  200] trn/loss 1.185e-01, trn/lr 3.418e-05, val/acc 6.602e-01, val/nll 1.377e+00 (best_acc: 6.585e-01 -> 6.602e-01, test_acc: 6.598e-01, test_nll: 1.356e+00)
+[2023-02-18 10:41:44] [Epoch   122/  200] trn/loss 1.187e-01, trn/lr 3.344e-05, val/acc 6.511e-01, val/nll 1.403e+00
+[2023-02-18 10:41:51] [Epoch   123/  200] trn/loss 1.168e-01, trn/lr 3.270e-05, val/acc 6.491e-01, val/nll 1.405e+00
+[2023-02-18 10:41:58] [Epoch   124/  200] trn/loss 1.101e-01, trn/lr 3.196e-05, val/acc 6.566e-01, val/nll 1.367e+00
+[2023-02-18 10:42:06] [Epoch   125/  200] trn/loss 1.081e-01, trn/lr 3.123e-05, val/acc 6.607e-01, val/nll 1.381e+00 (best_acc: 6.602e-01 -> 6.607e-01, test_acc: 6.654e-01, test_nll: 1.357e+00)
+[2023-02-18 10:42:13] [Epoch   126/  200] trn/loss 1.073e-01, trn/lr 3.051e-05, val/acc 6.604e-01, val/nll 1.370e+00
+[2023-02-18 10:42:21] [Epoch   127/  200] trn/loss 1.038e-01, trn/lr 2.979e-05, val/acc 6.563e-01, val/nll 1.376e+00
+[2023-02-18 10:42:28] [Epoch   128/  200] trn/loss 1.034e-01, trn/lr 2.907e-05, val/acc 6.544e-01, val/nll 1.389e+00
+[2023-02-18 10:42:35] [Epoch   129/  200] trn/loss 1.013e-01, trn/lr 2.836e-05, val/acc 6.580e-01, val/nll 1.381e+00
+[2023-02-18 10:42:42] [Epoch   130/  200] trn/loss 9.784e-02, trn/lr 2.765e-05, val/acc 6.576e-01, val/nll 1.389e+00
+[2023-02-18 10:42:50] [Epoch   131/  200] trn/loss 1.000e-01, trn/lr 2.695e-05, val/acc 6.562e-01, val/nll 1.394e+00
+[2023-02-18 10:42:57] [Epoch   132/  200] trn/loss 9.629e-02, trn/lr 2.626e-05, val/acc 6.559e-01, val/nll 1.374e+00
+[2023-02-18 10:43:04] [Epoch   133/  200] trn/loss 9.569e-02, trn/lr 2.557e-05, val/acc 6.601e-01, val/nll 1.369e+00
+[2023-02-18 10:43:12] [Epoch   134/  200] trn/loss 9.413e-02, trn/lr 2.489e-05, val/acc 6.588e-01, val/nll 1.379e+00
+[2023-02-18 10:43:19] [Epoch   135/  200] trn/loss 9.442e-02, trn/lr 2.421e-05, val/acc 6.597e-01, val/nll 1.391e+00
+[2023-02-18 10:43:26] [Epoch   136/  200] trn/loss 9.263e-02, trn/lr 2.354e-05, val/acc 6.595e-01, val/nll 1.375e+00
+[2023-02-18 10:43:34] [Epoch   137/  200] trn/loss 9.100e-02, trn/lr 2.288e-05, val/acc 6.616e-01, val/nll 1.375e+00 (best_acc: 6.607e-01 -> 6.616e-01, test_acc: 6.653e-01, test_nll: 1.356e+00)
+[2023-02-18 10:43:43] [Epoch   138/  200] trn/loss 8.868e-02, trn/lr 2.222e-05, val/acc 6.640e-01, val/nll 1.368e+00 (best_acc: 6.616e-01 -> 6.640e-01, test_acc: 6.695e-01, test_nll: 1.340e+00)
+[2023-02-18 10:43:50] [Epoch   139/  200] trn/loss 8.603e-02, trn/lr 2.157e-05, val/acc 6.585e-01, val/nll 1.371e+00
+[2023-02-18 10:43:57] [Epoch   140/  200] trn/loss 8.576e-02, trn/lr 2.093e-05, val/acc 6.604e-01, val/nll 1.372e+00
+[2023-02-18 10:44:05] [Epoch   141/  200] trn/loss 8.582e-02, trn/lr 2.030e-05, val/acc 6.645e-01, val/nll 1.366e+00 (best_acc: 6.640e-01 -> 6.645e-01, test_acc: 6.687e-01, test_nll: 1.339e+00)
+[2023-02-18 10:44:13] [Epoch   142/  200] trn/loss 8.287e-02, trn/lr 1.967e-05, val/acc 6.637e-01, val/nll 1.355e+00
+[2023-02-18 10:44:21] [Epoch   143/  200] trn/loss 8.319e-02, trn/lr 1.905e-05, val/acc 6.664e-01, val/nll 1.356e+00 (best_acc: 6.645e-01 -> 6.664e-01, test_acc: 6.744e-01, test_nll: 1.323e+00)
+[2023-02-18 10:44:28] [Epoch   144/  200] trn/loss 8.044e-02, trn/lr 1.843e-05, val/acc 6.616e-01, val/nll 1.361e+00
+[2023-02-18 10:44:35] [Epoch   145/  200] trn/loss 8.007e-02, trn/lr 1.783e-05, val/acc 6.619e-01, val/nll 1.360e+00
+[2023-02-18 10:44:43] [Epoch   146/  200] trn/loss 7.809e-02, trn/lr 1.723e-05, val/acc 6.662e-01, val/nll 1.350e+00
+[2023-02-18 10:44:50] [Epoch   147/  200] trn/loss 7.626e-02, trn/lr 1.664e-05, val/acc 6.635e-01, val/nll 1.370e+00
+[2023-02-18 10:44:57] [Epoch   148/  200] trn/loss 7.700e-02, trn/lr 1.606e-05, val/acc 6.610e-01, val/nll 1.359e+00
+[2023-02-18 10:45:04] [Epoch   149/  200] trn/loss 7.652e-02, trn/lr 1.549e-05, val/acc 6.647e-01, val/nll 1.354e+00
+[2023-02-18 10:45:12] [Epoch   150/  200] trn/loss 7.540e-02, trn/lr 1.493e-05, val/acc 6.653e-01, val/nll 1.354e+00
+[2023-02-18 10:45:19] [Epoch   151/  200] trn/loss 7.383e-02, trn/lr 1.437e-05, val/acc 6.663e-01, val/nll 1.350e+00
+[2023-02-18 10:45:26] [Epoch   152/  200] trn/loss 7.336e-02, trn/lr 1.382e-05, val/acc 6.653e-01, val/nll 1.349e+00
+[2023-02-18 10:45:34] [Epoch   153/  200] trn/loss 7.140e-02, trn/lr 1.329e-05, val/acc 6.685e-01, val/nll 1.343e+00 (best_acc: 6.664e-01 -> 6.685e-01, test_acc: 6.717e-01, test_nll: 1.323e+00)
+[2023-02-18 10:45:42] [Epoch   154/  200] trn/loss 7.112e-02, trn/lr 1.276e-05, val/acc 6.675e-01, val/nll 1.342e+00
+[2023-02-18 10:45:50] [Epoch   155/  200] trn/loss 6.920e-02, trn/lr 1.224e-05, val/acc 6.701e-01, val/nll 1.344e+00 (best_acc: 6.685e-01 -> 6.701e-01, test_acc: 6.725e-01, test_nll: 1.317e+00)
+[2023-02-18 10:45:57] [Epoch   156/  200] trn/loss 7.021e-02, trn/lr 1.173e-05, val/acc 6.666e-01, val/nll 1.345e+00
+[2023-02-18 10:46:04] [Epoch   157/  200] trn/loss 6.912e-02, trn/lr 1.123e-05, val/acc 6.698e-01, val/nll 1.348e+00
+[2023-02-18 10:46:12] [Epoch   158/  200] trn/loss 6.878e-02, trn/lr 1.074e-05, val/acc 6.670e-01, val/nll 1.340e+00
+[2023-02-18 10:46:19] [Epoch   159/  200] trn/loss 6.776e-02, trn/lr 1.025e-05, val/acc 6.649e-01, val/nll 1.348e+00
+[2023-02-18 10:46:27] [Epoch   160/  200] trn/loss 6.647e-02, trn/lr 9.783e-06, val/acc 6.704e-01, val/nll 1.349e+00 (best_acc: 6.701e-01 -> 6.704e-01, test_acc: 6.729e-01, test_nll: 1.326e+00)
+[2023-02-18 10:46:34] [Epoch   161/  200] trn/loss 6.613e-02, trn/lr 9.321e-06, val/acc 6.694e-01, val/nll 1.343e+00
+[2023-02-18 10:46:43] [Epoch   162/  200] trn/loss 6.468e-02, trn/lr 8.870e-06, val/acc 6.717e-01, val/nll 1.339e+00 (best_acc: 6.704e-01 -> 6.717e-01, test_acc: 6.727e-01, test_nll: 1.316e+00)
+[2023-02-18 10:46:51] [Epoch   163/  200] trn/loss 6.527e-02, trn/lr 8.428e-06, val/acc 6.731e-01, val/nll 1.332e+00 (best_acc: 6.717e-01 -> 6.731e-01, test_acc: 6.735e-01, test_nll: 1.315e+00)
+[2023-02-18 10:46:58] [Epoch   164/  200] trn/loss 6.361e-02, trn/lr 7.997e-06, val/acc 6.664e-01, val/nll 1.339e+00
+[2023-02-18 10:47:06] [Epoch   165/  200] trn/loss 6.302e-02, trn/lr 7.576e-06, val/acc 6.684e-01, val/nll 1.341e+00
+[2023-02-18 10:47:13] [Epoch   166/  200] trn/loss 6.233e-02, trn/lr 7.166e-06, val/acc 6.700e-01, val/nll 1.337e+00
+[2023-02-18 10:47:20] [Epoch   167/  200] trn/loss 6.083e-02, trn/lr 6.766e-06, val/acc 6.678e-01, val/nll 1.339e+00
+[2023-02-18 10:47:27] [Epoch   168/  200] trn/loss 6.188e-02, trn/lr 6.377e-06, val/acc 6.707e-01, val/nll 1.334e+00
+[2023-02-18 10:47:35] [Epoch   169/  200] trn/loss 6.091e-02, trn/lr 5.998e-06, val/acc 6.696e-01, val/nll 1.332e+00
+[2023-02-18 10:47:42] [Epoch   170/  200] trn/loss 6.037e-02, trn/lr 5.631e-06, val/acc 6.692e-01, val/nll 1.338e+00
+[2023-02-18 10:47:49] [Epoch   171/  200] trn/loss 6.025e-02, trn/lr 5.274e-06, val/acc 6.695e-01, val/nll 1.334e+00
+[2023-02-18 10:47:56] [Epoch   172/  200] trn/loss 5.991e-02, trn/lr 4.929e-06, val/acc 6.715e-01, val/nll 1.335e+00
+[2023-02-18 10:48:04] [Epoch   173/  200] trn/loss 6.003e-02, trn/lr 4.594e-06, val/acc 6.715e-01, val/nll 1.335e+00
+[2023-02-18 10:48:11] [Epoch   174/  200] trn/loss 5.888e-02, trn/lr 4.271e-06, val/acc 6.729e-01, val/nll 1.333e+00
+[2023-02-18 10:48:18] [Epoch   175/  200] trn/loss 5.879e-02, trn/lr 3.959e-06, val/acc 6.705e-01, val/nll 1.331e+00
+[2023-02-18 10:48:25] [Epoch   176/  200] trn/loss 5.857e-02, trn/lr 3.659e-06, val/acc 6.726e-01, val/nll 1.330e+00
+[2023-02-18 10:48:33] [Epoch   177/  200] trn/loss 5.843e-02, trn/lr 3.369e-06, val/acc 6.723e-01, val/nll 1.335e+00
+[2023-02-18 10:48:40] [Epoch   178/  200] trn/loss 5.763e-02, trn/lr 3.092e-06, val/acc 6.723e-01, val/nll 1.335e+00
+[2023-02-18 10:48:48] [Epoch   179/  200] trn/loss 5.689e-02, trn/lr 2.826e-06, val/acc 6.732e-01, val/nll 1.331e+00 (best_acc: 6.731e-01 -> 6.732e-01, test_acc: 6.734e-01, test_nll: 1.306e+00)
+[2023-02-18 10:48:55] [Epoch   180/  200] trn/loss 5.649e-02, trn/lr 2.571e-06, val/acc 6.709e-01, val/nll 1.332e+00
+[2023-02-18 10:49:03] [Epoch   181/  200] trn/loss 5.673e-02, trn/lr 2.329e-06, val/acc 6.717e-01, val/nll 1.330e+00
+[2023-02-18 10:49:11] [Epoch   182/  200] trn/loss 5.710e-02, trn/lr 2.098e-06, val/acc 6.733e-01, val/nll 1.327e+00 (best_acc: 6.732e-01 -> 6.733e-01, test_acc: 6.774e-01, test_nll: 1.305e+00)
+[2023-02-18 10:49:18] [Epoch   183/  200] trn/loss 5.582e-02, trn/lr 1.878e-06, val/acc 6.727e-01, val/nll 1.329e+00
+[2023-02-18 10:49:25] [Epoch   184/  200] trn/loss 5.541e-02, trn/lr 1.671e-06, val/acc 6.726e-01, val/nll 1.331e+00
+[2023-02-18 10:49:34] [Epoch   185/  200] trn/loss 5.491e-02, trn/lr 1.476e-06, val/acc 6.746e-01, val/nll 1.330e+00 (best_acc: 6.733e-01 -> 6.746e-01, test_acc: 6.760e-01, test_nll: 1.306e+00)
+[2023-02-18 10:49:42] [Epoch   186/  200] trn/loss 5.528e-02, trn/lr 1.292e-06, val/acc 6.748e-01, val/nll 1.328e+00 (best_acc: 6.746e-01 -> 6.748e-01, test_acc: 6.762e-01, test_nll: 1.303e+00)
+[2023-02-18 10:49:49] [Epoch   187/  200] trn/loss 5.535e-02, trn/lr 1.121e-06, val/acc 6.746e-01, val/nll 1.327e+00
+[2023-02-18 10:49:57] [Epoch   188/  200] trn/loss 5.513e-02, trn/lr 9.617e-07, val/acc 6.717e-01, val/nll 1.327e+00
+[2023-02-18 10:50:04] [Epoch   189/  200] trn/loss 5.520e-02, trn/lr 8.145e-07, val/acc 6.725e-01, val/nll 1.326e+00
+[2023-02-18 10:50:11] [Epoch   190/  200] trn/loss 5.574e-02, trn/lr 6.794e-07, val/acc 6.731e-01, val/nll 1.325e+00
+[2023-02-18 10:50:18] [Epoch   191/  200] trn/loss 5.430e-02, trn/lr 5.565e-07, val/acc 6.746e-01, val/nll 1.326e+00
+[2023-02-18 10:50:26] [Epoch   192/  200] trn/loss 5.519e-02, trn/lr 4.458e-07, val/acc 6.737e-01, val/nll 1.324e+00
+[2023-02-18 10:50:33] [Epoch   193/  200] trn/loss 5.449e-02, trn/lr 3.474e-07, val/acc 6.746e-01, val/nll 1.325e+00
+[2023-02-18 10:50:40] [Epoch   194/  200] trn/loss 5.525e-02, trn/lr 2.612e-07, val/acc 6.740e-01, val/nll 1.325e+00
+[2023-02-18 10:50:47] [Epoch   195/  200] trn/loss 5.508e-02, trn/lr 1.872e-07, val/acc 6.737e-01, val/nll 1.326e+00
+[2023-02-18 10:50:55] [Epoch   196/  200] trn/loss 5.425e-02, trn/lr 1.255e-07, val/acc 6.753e-01, val/nll 1.325e+00 (best_acc: 6.748e-01 -> 6.753e-01, test_acc: 6.746e-01, test_nll: 1.304e+00)
+[2023-02-18 10:51:04] [Epoch   197/  200] trn/loss 5.398e-02, trn/lr 7.619e-08, val/acc 6.757e-01, val/nll 1.324e+00 (best_acc: 6.753e-01 -> 6.757e-01, test_acc: 6.765e-01, test_nll: 1.302e+00)
+[2023-02-18 10:51:11] [Epoch   198/  200] trn/loss 5.504e-02, trn/lr 3.916e-08, val/acc 6.738e-01, val/nll 1.325e+00
+[2023-02-18 10:51:18] [Epoch   199/  200] trn/loss 5.465e-02, trn/lr 1.445e-08, val/acc 6.748e-01, val/nll 1.324e+00
+[2023-02-18 10:51:25] [Epoch   200/  200] trn/loss 5.482e-02, trn/lr 2.075e-09, val/acc 6.735e-01, val/nll 1.325e+00
