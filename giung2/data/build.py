@@ -107,11 +107,11 @@ def build_dataloaders(config):
         image_shape = (1, 32, 32, 3)
         num_classes = 100
 
-    if config.data_name == 'Dogs200_x32':
+    if config.data_name == 'Dogs120_x32':
         trn_images, val_images = trn_images[:10240], trn_images[10240:] # 10240 /  1760 /  8580
         trn_labels, val_labels = trn_labels[:10240], trn_labels[10240:]
         image_shape = (1, 32, 32, 3)
-        num_classes = 200
+        num_classes = 120
 
     if config.data_name == 'Food101_x32':
         trn_images, val_images = trn_images[:61440], trn_images[61440:] # 61440 / 14310 / 25250
