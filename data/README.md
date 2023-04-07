@@ -40,12 +40,6 @@ wget https://www.dropbox.com/s/2a1z2f63du8nhse/Food101_x32.tar.gz
 tar -xvzf Food101_x32.tar.gz
 ```
 
-### ImageNet1k_x32
-```
-wget https://www.dropbox.com/s/vhi089am8q1tkuo/ImageNet1k_x32.tar.gz
-tar -xvzf ImageNet1k_x32.tar.gz
-```
-
 ### Pets37_x32
 ```
 wget https://www.dropbox.com/s/4ujvea9i99ch8ot/Pets37_x32.tar.gz
@@ -56,4 +50,22 @@ tar -xvzf Pets37_x32.tar.gz
 ```
 wget https://www.dropbox.com/s/rcxylz8dn7fm03m/TinyImageNet200_x32.tar.gz
 tar -xvzf TinyImageNet200_x32.tar.gz
+```
+
+### TinyImageNet200_x64
+```
+wget https://www.dropbox.com/s/dddexickd88is9l/TinyImageNet200_x64.tar.gz
+tar -xvzf TinyImageNet200_x64.tar.gz
+```
+
+### ImageNet1k_x32
+```
+wget https://www.dropbox.com/s/vhi089am8q1tkuo/ImageNet1k_x32.tar.gz
+tar -xvzf ImageNet1k_x32.tar.gz
+```
+
+### ImageNet1k_x64
+```
+wget 
+tar -xvzf ImageNet1k_x64.tar.gz
 ```

@@ -131,10 +131,22 @@ def build_dataloaders(config):
         image_shape = (1, 32, 32, 3)
         num_classes = 200
 
+    if config.data_name == 'TinyImageNet200_x64':
+        trn_images, val_images = trn_images[:81920], trn_images[81920:] # 81920 / 18080 / 10000
+        trn_labels, val_labels = trn_labels[:81920], trn_labels[81920:]
+        image_shape = (1, 64, 64, 3)
+        num_classes = 200
+
     if config.data_name == 'ImageNet1k_x32':
         trn_images, val_images = trn_images, tst_images
         trn_labels, val_labels = trn_labels, tst_labels
         image_shape = (1, 32, 32, 3)
+        num_classes = 1000
+
+    if config.data_name == 'ImageNet1k_x64':
+        trn_images, val_images = trn_images, tst_images
+        trn_labels, val_labels = trn_labels, tst_labels
+        image_shape = (1, 64, 64, 3)
         num_classes = 1000
 
     # proportional train data
