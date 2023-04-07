@@ -49,7 +49,7 @@ def _build_dataloader(images, labels, batch_size, rng=None, shuffle=False, trans
         yield batch
 
 
-def _set_augmentation(name):
+def _set_augmentation(name, image_size):
 
     if name == 'none':
         return jax.jit(jax.vmap(image_processing.ToTensorTransform()))
@@ -61,14 +61,14 @@ def _set_augmentation(name):
     
     if name == 'standard':
         return jax.jit(jax.vmap(image_processing.TransformChain([
-            image_processing.RandomCropTransform(size=32, padding=4),
+            image_processing.RandomCropTransform(size=image_size, padding=4),
             image_processing.RandomHFlipTransform(prob=0.5),
             image_processing.ToTensorTransform()])))
     
     if name == 'dequantized_standard':
         return jax.jit(jax.vmap(image_processing.TransformChain([
             image_processing.RandomDequantizationTransform(),
-            image_processing.RandomCropTransform(size=32, padding=4),
+            image_processing.RandomCropTransform(size=image_size, padding=4),
             image_processing.RandomHFlipTransform(prob=0.5),
             image_processing.ToTensorTransform()])))
 
@@ -154,7 +154,7 @@ def build_dataloaders(config):
     trn_labels = trn_labels[:int(len(trn_labels) * config.data_proportional)]
 
     # transforms
-    trn_transform = _set_augmentation(config.data_augmentation)
+    trn_transform = _set_augmentation(config.data_augmentation, image_size=image_shape[1])
     val_transform = jax.jit(jax.vmap(image_processing.ToTensorTransform()))
 
     dataloaders = dict()
