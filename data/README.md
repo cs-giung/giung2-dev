@@ -66,6 +66,6 @@ tar -xvzf ImageNet1k_x32.tar.gz
 
 ### ImageNet1k_x64
 ```
-wget 
+wget https://www.dropbox.com/s/urh77zy42xxzhgo/ImageNet1k_x64.tar.gz
 tar -xvzf ImageNet1k_x64.tar.gz
 ```
