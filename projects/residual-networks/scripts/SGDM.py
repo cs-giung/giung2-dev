@@ -20,7 +20,7 @@ from tensorflow.io import gfile
 
 from scripts import defaults
 from giung2.data.build import build_dataloaders
-from giung2.models.resnet import FlaxResNet
+from giung2.models.resnet import FlaxResNet, FlaxPreResNet
 from giung2.metrics import evaluate_acc, evaluate_nll
 
 
@@ -41,14 +41,25 @@ def launch(config, print_fn):
     dataloaders = build_dataloaders(config)
 
     # build model
-    _ResNet = partial(
-        FlaxResNet,
-        depth        = config.model_depth,
-        widen_factor = config.model_width,
-        dtype        = model_dtype,
-        pixel_mean   = defaults.PIXEL_MEAN,
-        pixel_std    = defaults.PIXEL_STD,
-        num_classes  = dataloaders['num_classes'])
+    if config.model_name == 'FlaxResNet':
+        _ResNet = partial(
+            FlaxResNet,
+            depth        = config.model_depth,
+            widen_factor = config.model_width,
+            dtype        = model_dtype,
+            pixel_mean   = defaults.PIXEL_MEAN,
+            pixel_std    = defaults.PIXEL_STD,
+            num_classes  = dataloaders['num_classes'])
+    
+    if config.model_name == 'FlaxPreResNet':
+        _ResNet = partial(
+            FlaxPreResNet,
+            depth        = config.model_depth,
+            widen_factor = config.model_width,
+            dtype        = model_dtype,
+            pixel_mean   = defaults.PIXEL_MEAN,
+            pixel_std    = defaults.PIXEL_STD,
+            num_classes  = dataloaders['num_classes'])
 
     if config.model_style == 'BN-ReLU':
         model = _ResNet()

@@ -17,8 +17,10 @@ def default_argument_parser():
     parser.add_argument('--data_proportional', default=1.0, type=float,
                         help='use the proportional train split if specified (default: 1.0)')
 
+    parser.add_argument('--model_name', default='FlaxResNet', type=str,
+                        choices=['FlaxResNet', 'FlaxPreResNet'])
     parser.add_argument('--model_depth', default=20, type=int,
-                        choices=[20, 32, 44, 56, 110])
+                        help='6n+2 for FlaxResNet, and 6n+4 for FlaxPreResNet (default: 20)')
     parser.add_argument('--model_width', default=1, type=int,
                         help='widen factor (default: 1)')
     parser.add_argument('--model_style', default='BN-ReLU', type=str,
