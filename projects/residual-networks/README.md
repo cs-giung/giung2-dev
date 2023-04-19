@@ -65,7 +65,7 @@ python scripts/SGDM.py
 ### Test performance of Wide Residual Networks (WRNs)
 ```bash
 python scripts/SGDM.py
-    --data_name {CIFAR10_x32, CIFAR100_x32}
+    --data_name {CIFAR10_x32, CIFAR100_x32, TinyImageNet200_x64}
     --model_name FlaxPreResNet
     --model_depth {16, 28, 40}
     --model_width {4, 8, 10}
@@ -75,8 +75,8 @@ python scripts/SGDM.py
     --optim_weight_decay {0.003, 0.001, 0.0003, 0.0001}
     --seed 42
 ```
-| Depth | Width | Epoch | CIFAR-10      | CIFAR-100     | Logs |
-| :-:   | :-:   | :-:   | :-:           | :-:           | :-   |
-| 40    | 4     | 200   | 95.18 / 0.203 | 76.90 / 0.993 | [`C10`](./save/CIFAR10_x32/WRN40x4-BN-ReLU/bs-0256_ne-0200_lr-0.03_mo-0.90_wd-0.0030_fp32/42/20230408153805.log), [`C100`](./save/CIFAR100_x32/WRN40x4-BN-ReLU/bs-0256_ne-0200_lr-0.10_mo-0.90_wd-0.0010_fp32/42/20230408185317.log)
-| 16    | 8     | 200   | 95.18 / 0.163 | 78.62 / 1.065 | [`C10`](./save/CIFAR10_x32/WRN16x8-BN-ReLU/bs-0256_ne-0200_lr-0.10_mo-0.90_wd-0.0010_fp32/42/20230408043410.log), [`C100`](./save/CIFAR100_x32/WRN16x8-BN-ReLU/bs-0256_ne-0200_lr-0.10_mo-0.70_wd-0.0030_fp32/42/20230408091344.log)
-| 28    | 10    | 200   | 95.20 / 0.187 | 79.44 / 0.891 | [`C10`](./save/CIFAR10_x32/WRN28x10-BN-ReLU/bs-0256_ne-0200_lr-0.01_mo-0.97_wd-0.0030_fp32/42/20230407080102.log), [`C100`](./save/CIFAR100_x32/WRN28x10-BN-ReLU/bs-0256_ne-0200_lr-0.03_mo-0.97_wd-0.0010_fp32/42/20230407233930.log)
+| Depth | Width | Epoch | CIFAR-10      | CIFAR-100     | TinyImageNet-200 | Logs |
+| :-:   | :-:   | :-:   | :-:           | :-:           | :-:              | :-   |
+| 40    | 4     | 200   | 95.18 / 0.203 | 76.90 / 0.993 | -                | [`C10`](./save/CIFAR10_x32/WRN40x4-BN-ReLU/bs-0256_ne-0200_lr-0.03_mo-0.90_wd-0.0030_fp32/42/20230408153805.log), [`C100`](./save/CIFAR100_x32/WRN40x4-BN-ReLU/bs-0256_ne-0200_lr-0.10_mo-0.90_wd-0.0010_fp32/42/20230408185317.log)
+| 16    | 8     | 200   | 95.18 / 0.163 | 78.62 / 1.065 | -                | [`C10`](./save/CIFAR10_x32/WRN16x8-BN-ReLU/bs-0256_ne-0200_lr-0.10_mo-0.90_wd-0.0010_fp32/42/20230408043410.log), [`C100`](./save/CIFAR100_x32/WRN16x8-BN-ReLU/bs-0256_ne-0200_lr-0.10_mo-0.70_wd-0.0030_fp32/42/20230408091344.log)
+| 28    | 10    | 200   | 95.20 / 0.187 | 79.44 / 0.891 | 68.08 / 1.693    | [`C10`](./save/CIFAR10_x32/WRN28x10-BN-ReLU/bs-0256_ne-0200_lr-0.01_mo-0.97_wd-0.0030_fp32/42/20230407080102.log), [`C100`](./save/CIFAR100_x32/WRN28x10-BN-ReLU/bs-0256_ne-0200_lr-0.03_mo-0.97_wd-0.0010_fp32/42/20230407233930.log), [`TIN200`](./save/TinyImageNet200_x64/WRN28x10-BN-ReLU/bs-0256_ne-0200_lr-0.03_mo-0.90_wd-0.0030_fp32/42/20230411125108.log)
