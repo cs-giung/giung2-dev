@@ -91,9 +91,9 @@ class FlaxResNet(nn.Module):
                 y = self.relu(y)
                 y = self.conv(
                     features    = _channel * 4,
-                    kernel_size = (3, 3),
+                    kernel_size = (1, 1),
                     strides     = (1, 1),
-                    padding     = (1, 1),
+                    padding     = (0, 0),
                     dtype       = self.dtype,
                 )(y)
                 y = self.norm(dtype=self.dtype)(y)
