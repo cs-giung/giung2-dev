@@ -51,22 +51,16 @@ def launch(config, print_fn):
     # Dataset
     # ----------------------------------------------------------------------- #
     def prepare_tf_data(batch):
-        images = batch['image']._numpy() / 255.0
-        labels = batch['label']._numpy()
-
-        marker = np.zeros((config.batch_size,))
-        marker[:images.shape[0]] += 1
-        if images.shape[0] < config.batch_size:
-            images = np.concatenate([images, np.zeros([
-                config.batch_size - images.shape[0], *images.shape[1:]
-            ], images.dtype)])
-            labels = np.concatenate([labels, np.zeros([
-                config.batch_size - labels.shape[0], *labels.shape[1:]
-            ], labels.dtype)])
-
-        return {'images': images.reshape(shard_shape + images.shape[1:]),
-                'labels': labels.reshape(shard_shape),
-                'marker': marker.reshape(shard_shape)}
+        batch['images'] = batch['images']._numpy()
+        batch['labels'] = batch['labels']._numpy()
+        batch['marker'] = np.ones_like(batch['labels'])
+        def _prepare(x):
+            if x.shape[0] < config.batch_size:
+                x = np.concatenate([x, np.zeros([
+                    config.batch_size - x.shape[0], *x.shape[1:]
+                ], x.dtype)])
+            return x.reshape(shard_shape + x.shape[1:])
+        return jax.tree_util.tree_map(_prepare, batch)
 
     dataset_builder = tfds.builder(config.data_name)
 
@@ -146,7 +140,7 @@ def launch(config, print_fn):
             output, new_model_state = model.apply({
                 'params': params['ext'],
                 'batch_stats': state.batch_stats,
-                'image_stats': state.image_stats}, batch['images'],
+                'image_stats': state.image_stats}, batch['images'] / 255.0,
                 mutable='batch_stats', use_running_average=False)
 
             # negative_log_likelihood
@@ -289,7 +283,7 @@ def launch(config, print_fn):
             # --------------------------------------------------------------- #
             acc, nll, cnt = 0.0, 0.0, 0
             for batch_idx, batch in enumerate(val_iter, start=1):
-                logits = p_apply_fn(batch['images'], state)
+                logits = p_apply_fn(batch['images'] / 255.0, state)
                 logits = logits.reshape(-1, NUM_CLASSES)
                 labels = batch['labels'].reshape(-1)
                 marker = batch['marker'].reshape(-1)

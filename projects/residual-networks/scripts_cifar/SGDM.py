@@ -49,40 +49,40 @@ def launch(config, print_fn):
     # Dataset
     # ----------------------------------------------------------------------- #
     def prepare_data(batch):
-        images = batch['images'] / 255.0
-        labels, marker = batch['labels'], batch['marker']
-        return {'images': images.reshape(shard_shape + images.shape[1:]),
-                'labels': labels.reshape(shard_shape),
-                'marker': marker.reshape(shard_shape)}
+        def _prepare(x):
+            return x.reshape(shard_shape + x.shape[1:])
+        return jax.tree_util.tree_map(_prepare, batch)
 
     data = load_data(config.data_root, config.data_name)
-    data_transform = jax.jit(jax.vmap(
+    trn_transform = jax.jit(jax.vmap(
         image_processing.TransformChain([
             image_processing.RandomCropTransform(
                 size=data.image_shape[1], padding=4),
-            image_processing.RandomHFlipTransform(prob=0.5)
+            image_processing.RandomHFlipTransform(prob=0.5),
+            image_processing.ToTensorTransform(),
         ])))
+    val_transform = image_processing.ToTensorTransform()
     
     build_trn_loader = lambda rng: jax_utils.prefetch_to_device(
         map(prepare_data, build_dataloader(
             images=data.trn_images,
             labels=data.trn_labels,
             batch_size=config.batch_size,
-            rng=rng, shuffle=True, transform=data_transform,
+            rng=rng, shuffle=True, transform=trn_transform,
         )), config.prefetch_factor)
     build_val_loader = lambda rng: jax_utils.prefetch_to_device(
         map(prepare_data, build_dataloader(
             images=data.val_images,
             labels=data.val_labels,
             batch_size=config.batch_size,
-            rng=None, shuffle=False, transform=None,
+            rng=None, shuffle=False, transform=val_transform,
         )), config.prefetch_factor)
     build_tst_loader = lambda rng: jax_utils.prefetch_to_device(
         map(prepare_data, build_dataloader(
             images=data.tst_images,
             labels=data.tst_labels,
             batch_size=config.batch_size,
-            rng=None, shuffle=False, transform=None,
+            rng=None, shuffle=False, transform=val_transform,
         )), config.prefetch_factor)
 
     trn_steps_per_epoch = math.ceil(len(data.trn_images) / config.batch_size)
