@@ -251,6 +251,7 @@ def launch(config, print_fn):
     best_acc = 0.0
     p_step_trn = jax.pmap(partial(
         step_trn, config=config, scheduler=scheduler), axis_name='batch')
+    sync_batch_stats = jax.pmap(lambda x: jax.lax.pmean(x, 'x'), 'x')
     
     if dynamic_scale:
         dynamic_scale = jax_utils.replicate(dynamic_scale)
@@ -290,6 +291,10 @@ def launch(config, print_fn):
 
             log_str += ', '.join(
                 f'{k} {v:.3e}' for k, v in trn_summarized.items())
+
+            # synchronize batch_stats across replicas
+            state = state.replace(
+                batch_stats=sync_batch_stats(state.batch_stats))
 
             # --------------------------------------------------------------- #
             # Valid
