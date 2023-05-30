@@ -22,7 +22,8 @@ def default_argument_parser():
         '--data_name', default='CIFAR10_x32', type=str,
         choices=[
             'CIFAR10_x32', 'CIFAR100_x32',
-            'TinyImageNet200_x32', 'TinyImageNet200_x64'])
+            'TinyImageNet200_x32', 'TinyImageNet200_x64',
+            'ImageNet1k_x32', 'ImageNet1k_x64'])
 
     parser.add_argument(
         '--resnet_depth', default=20, type=int,
