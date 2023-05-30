@@ -92,10 +92,8 @@ def create_trn_split(data_builder, batch_size, split='train',
                      dtype=tf.float32, image_size=IMAGE_SIZE, cache=True):
   
     data = data_builder.as_dataset(
-        split=split,
-        decoders={'image': tfds.decode.SkipDecoding()},
-        shuffle_files=True,
-        read_config=tfds.ReadConfig(add_tfds_id=True))
+        split=split, shuffle_files=True,
+        decoders={'image': tfds.decode.SkipDecoding()})
     image_decoder = data_builder.info.features['image'].decode_example
     shuffle_buffer_size = min(
         16*batch_size, data_builder.info.splits[split].num_examples)
@@ -106,9 +104,7 @@ def create_trn_split(data_builder, batch_size, split='train',
         image = _random_flip(image)
         image = tf.reshape(image, [image_size, image_size, 3])
         image = tf.cast(image, dtype=dtype)
-        return {'image': image,
-                'label': example['label'],
-                'tfds_id': example['tfds_id']}
+        return {'images': image, 'labels': example['label']}
     
     if cache:
         data = data.cache()
@@ -124,10 +120,8 @@ def create_val_split(data_builder, batch_size, split='validation',
                      dtype=tf.float32, image_size=IMAGE_SIZE, cache=True):
     
     data = data_builder.as_dataset(
-        split=split,
-        decoders={'image': tfds.decode.SkipDecoding()},
-        shuffle_files=False,
-        read_config=tfds.ReadConfig(add_tfds_id=True))
+        split=split, shuffle_files=False,
+        decoders={'image': tfds.decode.SkipDecoding()})
     image_decoder = data_builder.info.features['image'].decode_example
 
     def decode_example(example):
@@ -135,9 +129,7 @@ def create_val_split(data_builder, batch_size, split='validation',
         image = _center_crop(image, image_size)
         image = tf.reshape(image, [image_size, image_size, 3])
         image = tf.cast(image, dtype=dtype)
-        return {'image': image,
-                'label': example['label'],
-                'tfds_id': example['tfds_id']}
+        return {'images': image, 'labels': example['label']}
     
     if cache:
         data = data.cache()
