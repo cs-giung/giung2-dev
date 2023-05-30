@@ -1,5 +1,5 @@
 import math
-from typing import Any, Callable, Optional, Sequence, Tuple
+from typing import Any, Callable, Optional, Tuple
 
 import jax
 import jax.numpy as jnp

@@ -64,7 +64,7 @@ class FlaxResNetModule(nn.Module):
         x = x / jnp.reshape(s.value, (1, 1, 1, -1))
 
         # define the first layer
-        if self.image_size == 32:
+        if self.image_size in [32, 64]:
             y = self.conv(
                 features    = self.num_planes,
                 kernel_size = (3, 3),
@@ -119,8 +119,8 @@ class FlaxResNetModule(nn.Module):
                         padding     = (1, 1),
                         dtype       = self.dtype,
                     )(y)
-                    y = self.norm(dtype=self.dtype)(y)
-                    y = self.relu(y)
+                    y = self.norm(dtype=self.dtype,
+                                  scale_init=jax.nn.initializers.zeros)(y)
 
                 if self.block_type == 'Bottleneck':
                     y = self.conv(
@@ -148,7 +148,8 @@ class FlaxResNetModule(nn.Module):
                         padding     = (0, 0),
                         dtype       = self.dtype,
                     )(y)
-                    y = self.norm(dtype=self.dtype)(y)
+                    y = self.norm(dtype=self.dtype,
+                                  scale_init=jax.nn.initializers.zeros)(y)
                 
                 if residual.shape != y.shape:
                     residual = self.conv(
