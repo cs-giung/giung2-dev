@@ -1,0 +1,78 @@
+[2023-05-30 21:44:37] Environments:
+------------  ---------------------------------------------------------------------------------
+sys.platform  linux
+Python        3.10.10 (main, Mar 21 2023, 18:45:11) [GCC 11.2.0]
+JAX           0.4.8 @/mnt/home/giung/.conda/envs/jax-cuda11/lib/python3.10/site-packages/jax
+jaxlib        0.4.7 @/mnt/home/giung/.conda/envs/jax-cuda11/lib/python3.10/site-packages/jaxlib
+Flax          0.6.8 @/mnt/home/giung/.conda/envs/jax-cuda11/lib/python3.10/site-packages/flax
+Optax         0.1.4 @/mnt/home/giung/.conda/envs/jax-cuda11/lib/python3.10/site-packages/optax
+------------  ---------------------------------------------------------------------------------
+
+[2023-05-30 21:44:37] Command line arguments:
+- args.data_root             : ./data/
+- args.data_name             : CIFAR100_x32
+- args.resnet_depth          : 20
+- args.resnet_width          : 2
+- args.batch_size            : 256
+- args.num_workers           : 32
+- args.prefetch_factor       : 2
+- args.optim_ni              : 48000
+- args.optim_lr              : 0.1
+- args.optim_momentum        : 0.9
+- args.optim_weight_decay    : 0.0001
+- args.optim_label_smoothing : 0.0
+- args.optim_global_clipping : None
+- args.save                  : ./save/CIFAR100_x32/resnet_20x2-iter_48k-wd_0.0001/42/
+- args.seed                  : 42
+- args.mixed_precision       : False
+
+[2023-05-30 21:44:45] images.shape: (1, 256, 32, 32, 3), output.shape: (1, 256, 128)
+[2023-05-30 21:44:45] The number of trainable parameters: 1091600
+[2023-05-30 21:45:21] [Iter    1000/  48000] trn/loss 4.277e+00, trn/negative_log_likelihood 4.277e+00, trn/w_norm 6.381e+01, trn/g_norm 4.308e-01, trn/lr 1.041e-02, val/acc 1.015e-01, val/nll 3.945e+00, val/best_acc 1.015e-01 (best_acc: 0.000e+00 -> 1.015e-01), tst/acc 9.560e-02, tst/nll 3.944e+00
+[2023-05-30 21:45:45] [Iter    2000/  48000] trn/loss 3.598e+00, trn/negative_log_likelihood 3.598e+00, trn/w_norm 6.355e+01, trn/g_norm 1.083e+00, trn/lr 3.124e-02, val/acc 2.045e-01, val/nll 3.263e+00, val/best_acc 2.045e-01 (best_acc: 1.015e-01 -> 2.045e-01), tst/acc 2.052e-01, tst/nll 3.252e+00
+[2023-05-30 21:46:08] [Iter    3000/  48000] trn/loss 2.611e+00, trn/negative_log_likelihood 2.611e+00, trn/w_norm 6.451e+01, trn/g_norm 1.630e+00, trn/lr 5.207e-02, val/acc 3.302e-01, val/nll 2.688e+00, val/best_acc 3.302e-01 (best_acc: 2.045e-01 -> 3.302e-01), tst/acc 3.423e-01, tst/nll 2.678e+00
+[2023-05-30 21:46:32] [Iter    4000/  48000] trn/loss 1.835e+00, trn/negative_log_likelihood 1.835e+00, trn/w_norm 6.782e+01, trn/g_norm 1.565e+00, trn/lr 7.291e-02, val/acc 4.523e-01, val/nll 2.127e+00, val/best_acc 4.523e-01 (best_acc: 3.302e-01 -> 4.523e-01), tst/acc 4.597e-01, tst/nll 2.133e+00
+[2023-05-30 21:46:56] [Iter    5000/  48000] trn/loss 1.425e+00, trn/negative_log_likelihood 1.425e+00, trn/w_norm 7.260e+01, trn/g_norm 1.446e+00, trn/lr 9.332e-02, val/acc 4.688e-01, val/nll 2.103e+00, val/best_acc 4.688e-01 (best_acc: 4.523e-01 -> 4.688e-01), tst/acc 4.773e-01, tst/nll 2.092e+00
+[2023-05-30 21:47:20] [Iter    6000/  48000] trn/loss 1.131e+00, trn/negative_log_likelihood 1.131e+00, trn/w_norm 7.781e+01, trn/g_norm 1.403e+00, trn/lr 9.992e-02, val/acc 5.299e-01, val/nll 1.846e+00, val/best_acc 5.299e-01 (best_acc: 4.688e-01 -> 5.299e-01), tst/acc 5.351e-01, tst/nll 1.832e+00
+[2023-05-30 21:47:45] [Iter    7000/  48000] trn/loss 9.146e-01, trn/negative_log_likelihood 9.146e-01, trn/w_norm 8.234e+01, trn/g_norm 1.416e+00, trn/lr 9.961e-02, val/acc 5.398e-01, val/nll 1.893e+00, val/best_acc 5.398e-01 (best_acc: 5.299e-01 -> 5.398e-01), tst/acc 5.428e-01, tst/nll 1.865e+00
+[2023-05-30 21:48:11] [Iter    8000/  48000] trn/loss 7.597e-01, trn/negative_log_likelihood 7.597e-01, trn/w_norm 8.630e+01, trn/g_norm 1.438e+00, trn/lr 9.903e-02, val/acc 5.853e-01, val/nll 1.834e+00, val/best_acc 5.853e-01 (best_acc: 5.398e-01 -> 5.853e-01), tst/acc 5.901e-01, tst/nll 1.771e+00
+[2023-05-30 21:48:36] [Iter    9000/  48000] trn/loss 6.359e-01, trn/negative_log_likelihood 6.359e-01, trn/w_norm 8.972e+01, trn/g_norm 1.449e+00, trn/lr 9.819e-02, val/acc 5.991e-01, val/nll 1.792e+00, val/best_acc 5.991e-01 (best_acc: 5.853e-01 -> 5.991e-01), tst/acc 6.020e-01, tst/nll 1.771e+00
+[2023-05-30 21:48:59] [Iter   10000/  48000] trn/loss 5.445e-01, trn/negative_log_likelihood 5.445e-01, trn/w_norm 9.252e+01, trn/g_norm 1.446e+00, trn/lr 9.710e-02, val/acc 5.768e-01, val/nll 1.945e+00, val/best_acc 5.991e-01
+[2023-05-30 21:49:23] [Iter   11000/  48000] trn/loss 4.711e-01, trn/negative_log_likelihood 4.711e-01, trn/w_norm 9.469e+01, trn/g_norm 1.450e+00, trn/lr 9.576e-02, val/acc 6.024e-01, val/nll 1.885e+00, val/best_acc 6.024e-01 (best_acc: 5.991e-01 -> 6.024e-01), tst/acc 6.031e-01, tst/nll 1.854e+00
+[2023-05-30 21:49:47] [Iter   12000/  48000] trn/loss 4.114e-01, trn/negative_log_likelihood 4.114e-01, trn/w_norm 9.633e+01, trn/g_norm 1.446e+00, trn/lr 9.417e-02, val/acc 5.959e-01, val/nll 2.050e+00, val/best_acc 6.024e-01
+[2023-05-30 21:50:11] [Iter   13000/  48000] trn/loss 3.632e-01, trn/negative_log_likelihood 3.632e-01, trn/w_norm 9.744e+01, trn/g_norm 1.434e+00, trn/lr 9.236e-02, val/acc 6.046e-01, val/nll 1.946e+00, val/best_acc 6.046e-01 (best_acc: 6.024e-01 -> 6.046e-01), tst/acc 6.004e-01, tst/nll 1.963e+00
+[2023-05-30 21:50:35] [Iter   14000/  48000] trn/loss 3.124e-01, trn/negative_log_likelihood 3.124e-01, trn/w_norm 9.807e+01, trn/g_norm 1.400e+00, trn/lr 9.031e-02, val/acc 6.103e-01, val/nll 1.957e+00, val/best_acc 6.103e-01 (best_acc: 6.046e-01 -> 6.103e-01), tst/acc 6.085e-01, tst/nll 2.001e+00
+[2023-05-30 21:50:59] [Iter   15000/  48000] trn/loss 2.874e-01, trn/negative_log_likelihood 2.874e-01, trn/w_norm 9.823e+01, trn/g_norm 1.406e+00, trn/lr 8.806e-02, val/acc 5.825e-01, val/nll 2.218e+00, val/best_acc 6.103e-01
+[2023-05-30 21:51:23] [Iter   16000/  48000] trn/loss 2.617e-01, trn/negative_log_likelihood 2.617e-01, trn/w_norm 9.821e+01, trn/g_norm 1.388e+00, trn/lr 8.560e-02, val/acc 6.029e-01, val/nll 2.066e+00, val/best_acc 6.103e-01
+[2023-05-30 21:51:47] [Iter   17000/  48000] trn/loss 2.329e-01, trn/negative_log_likelihood 2.329e-01, trn/w_norm 9.780e+01, trn/g_norm 1.362e+00, trn/lr 8.296e-02, val/acc 6.238e-01, val/nll 1.934e+00, val/best_acc 6.238e-01 (best_acc: 6.103e-01 -> 6.238e-01), tst/acc 6.272e-01, tst/nll 1.927e+00
+[2023-05-30 21:52:12] [Iter   18000/  48000] trn/loss 2.122e-01, trn/negative_log_likelihood 2.122e-01, trn/w_norm 9.716e+01, trn/g_norm 1.352e+00, trn/lr 8.014e-02, val/acc 6.121e-01, val/nll 2.142e+00, val/best_acc 6.238e-01
+[2023-05-30 21:52:36] [Iter   19000/  48000] trn/loss 1.898e-01, trn/negative_log_likelihood 1.898e-01, trn/w_norm 9.628e+01, trn/g_norm 1.323e+00, trn/lr 7.717e-02, val/acc 6.187e-01, val/nll 2.086e+00, val/best_acc 6.238e-01
+[2023-05-30 21:53:00] [Iter   20000/  48000] trn/loss 1.684e-01, trn/negative_log_likelihood 1.684e-01, trn/w_norm 9.523e+01, trn/g_norm 1.294e+00, trn/lr 7.405e-02, val/acc 6.250e-01, val/nll 2.090e+00, val/best_acc 6.250e-01 (best_acc: 6.238e-01 -> 6.250e-01), tst/acc 6.265e-01, tst/nll 2.084e+00
+[2023-05-30 21:53:24] [Iter   21000/  48000] trn/loss 1.505e-01, trn/negative_log_likelihood 1.505e-01, trn/w_norm 9.396e+01, trn/g_norm 1.257e+00, trn/lr 7.080e-02, val/acc 6.373e-01, val/nll 2.069e+00, val/best_acc 6.373e-01 (best_acc: 6.250e-01 -> 6.373e-01), tst/acc 6.390e-01, tst/nll 2.053e+00
+[2023-05-30 21:53:47] [Iter   22000/  48000] trn/loss 1.323e-01, trn/negative_log_likelihood 1.323e-01, trn/w_norm 9.253e+01, trn/g_norm 1.222e+00, trn/lr 6.744e-02, val/acc 6.332e-01, val/nll 2.041e+00, val/best_acc 6.373e-01
+[2023-05-30 21:54:10] [Iter   23000/  48000] trn/loss 1.159e-01, trn/negative_log_likelihood 1.159e-01, trn/w_norm 9.093e+01, trn/g_norm 1.186e+00, trn/lr 6.399e-02, val/acc 6.321e-01, val/nll 2.020e+00, val/best_acc 6.373e-01
+[2023-05-30 21:54:35] [Iter   24000/  48000] trn/loss 1.009e-01, trn/negative_log_likelihood 1.009e-01, trn/w_norm 8.925e+01, trn/g_norm 1.145e+00, trn/lr 6.047e-02, val/acc 6.343e-01, val/nll 2.065e+00, val/best_acc 6.373e-01
+[2023-05-30 21:54:59] [Iter   25000/  48000] trn/loss 8.234e-02, trn/negative_log_likelihood 8.234e-02, trn/w_norm 8.739e+01, trn/g_norm 1.056e+00, trn/lr 5.689e-02, val/acc 6.434e-01, val/nll 1.949e+00, val/best_acc 6.434e-01 (best_acc: 6.373e-01 -> 6.434e-01), tst/acc 6.449e-01, tst/nll 1.991e+00
+[2023-05-30 21:55:23] [Iter   26000/  48000] trn/loss 7.360e-02, trn/negative_log_likelihood 7.360e-02, trn/w_norm 8.549e+01, trn/g_norm 1.032e+00, trn/lr 5.327e-02, val/acc 6.502e-01, val/nll 1.985e+00, val/best_acc 6.502e-01 (best_acc: 6.434e-01 -> 6.502e-01), tst/acc 6.517e-01, tst/nll 1.948e+00
+[2023-05-30 21:55:48] [Iter   27000/  48000] trn/loss 5.730e-02, trn/negative_log_likelihood 5.730e-02, trn/w_norm 8.355e+01, trn/g_norm 9.168e-01, trn/lr 4.964e-02, val/acc 6.666e-01, val/nll 1.866e+00, val/best_acc 6.666e-01 (best_acc: 6.502e-01 -> 6.666e-01), tst/acc 6.643e-01, tst/nll 1.886e+00
+[2023-05-30 21:56:12] [Iter   28000/  48000] trn/loss 3.676e-02, trn/negative_log_likelihood 3.676e-02, trn/w_norm 8.129e+01, trn/g_norm 7.199e-01, trn/lr 4.601e-02, val/acc 6.621e-01, val/nll 1.925e+00, val/best_acc 6.666e-01
+[2023-05-30 21:56:36] [Iter   29000/  48000] trn/loss 2.270e-02, trn/negative_log_likelihood 2.270e-02, trn/w_norm 7.887e+01, trn/g_norm 5.242e-01, trn/lr 4.240e-02, val/acc 6.719e-01, val/nll 1.783e+00, val/best_acc 6.719e-01 (best_acc: 6.666e-01 -> 6.719e-01), tst/acc 6.765e-01, tst/nll 1.782e+00
+[2023-05-30 21:57:01] [Iter   30000/  48000] trn/loss 1.674e-02, trn/negative_log_likelihood 1.674e-02, trn/w_norm 7.647e+01, trn/g_norm 4.191e-01, trn/lr 3.883e-02, val/acc 6.801e-01, val/nll 1.722e+00, val/best_acc 6.801e-01 (best_acc: 6.719e-01 -> 6.801e-01), tst/acc 6.848e-01, tst/nll 1.706e+00
+[2023-05-30 21:57:25] [Iter   31000/  48000] trn/loss 1.279e-02, trn/negative_log_likelihood 1.279e-02, trn/w_norm 7.421e+01, trn/g_norm 3.379e-01, trn/lr 3.532e-02, val/acc 6.790e-01, val/nll 1.727e+00, val/best_acc 6.801e-01
+[2023-05-30 21:57:49] [Iter   32000/  48000] trn/loss 9.795e-03, trn/negative_log_likelihood 9.795e-03, trn/w_norm 7.217e+01, trn/g_norm 2.527e-01, trn/lr 3.188e-02, val/acc 6.831e-01, val/nll 1.663e+00, val/best_acc 6.831e-01 (best_acc: 6.801e-01 -> 6.831e-01), tst/acc 6.835e-01, tst/nll 1.659e+00
+[2023-05-30 21:58:14] [Iter   33000/  48000] trn/loss 9.082e-03, trn/negative_log_likelihood 9.082e-03, trn/w_norm 7.035e+01, trn/g_norm 2.378e-01, trn/lr 2.855e-02, val/acc 6.806e-01, val/nll 1.664e+00, val/best_acc 6.831e-01
+[2023-05-30 21:58:39] [Iter   34000/  48000] trn/loss 8.484e-03, trn/negative_log_likelihood 8.484e-03, trn/w_norm 6.878e+01, trn/g_norm 2.173e-01, trn/lr 2.532e-02, val/acc 6.864e-01, val/nll 1.632e+00, val/best_acc 6.864e-01 (best_acc: 6.831e-01 -> 6.864e-01), tst/acc 6.878e-01, tst/nll 1.602e+00
+[2023-05-30 21:59:05] [Iter   35000/  48000] trn/loss 8.197e-03, trn/negative_log_likelihood 8.197e-03, trn/w_norm 6.742e+01, trn/g_norm 2.101e-01, trn/lr 2.223e-02, val/acc 6.892e-01, val/nll 1.616e+00, val/best_acc 6.892e-01 (best_acc: 6.864e-01 -> 6.892e-01), tst/acc 6.885e-01, tst/nll 1.586e+00
+[2023-05-30 21:59:30] [Iter   36000/  48000] trn/loss 7.804e-03, trn/negative_log_likelihood 7.804e-03, trn/w_norm 6.625e+01, trn/g_norm 1.969e-01, trn/lr 1.928e-02, val/acc 6.875e-01, val/nll 1.607e+00, val/best_acc 6.892e-01
+[2023-05-30 21:59:54] [Iter   37000/  48000] trn/loss 7.598e-03, trn/negative_log_likelihood 7.598e-03, trn/w_norm 6.527e+01, trn/g_norm 1.887e-01, trn/lr 1.650e-02, val/acc 6.894e-01, val/nll 1.586e+00, val/best_acc 6.894e-01 (best_acc: 6.892e-01 -> 6.894e-01), tst/acc 6.929e-01, tst/nll 1.566e+00
+[2023-05-30 22:00:18] [Iter   38000/  48000] trn/loss 7.372e-03, trn/negative_log_likelihood 7.372e-03, trn/w_norm 6.445e+01, trn/g_norm 1.830e-01, trn/lr 1.389e-02, val/acc 6.875e-01, val/nll 1.593e+00, val/best_acc 6.894e-01
+[2023-05-30 22:00:41] [Iter   39000/  48000] trn/loss 7.260e-03, trn/negative_log_likelihood 7.260e-03, trn/w_norm 6.377e+01, trn/g_norm 1.815e-01, trn/lr 1.147e-02, val/acc 6.867e-01, val/nll 1.584e+00, val/best_acc 6.894e-01
+[2023-05-30 22:01:04] [Iter   40000/  48000] trn/loss 7.242e-03, trn/negative_log_likelihood 7.242e-03, trn/w_norm 6.323e+01, trn/g_norm 1.823e-01, trn/lr 9.262e-03, val/acc 6.844e-01, val/nll 1.575e+00, val/best_acc 6.894e-01
+[2023-05-30 22:01:28] [Iter   41000/  48000] trn/loss 7.020e-03, trn/negative_log_likelihood 7.020e-03, trn/w_norm 6.280e+01, trn/g_norm 1.733e-01, trn/lr 7.265e-03, val/acc 6.877e-01, val/nll 1.570e+00, val/best_acc 6.894e-01
+[2023-05-30 22:01:51] [Iter   42000/  48000] trn/loss 6.888e-03, trn/negative_log_likelihood 6.888e-03, trn/w_norm 6.247e+01, trn/g_norm 1.672e-01, trn/lr 5.493e-03, val/acc 6.894e-01, val/nll 1.567e+00, val/best_acc 6.894e-01
+[2023-05-30 22:02:15] [Iter   43000/  48000] trn/loss 6.821e-03, trn/negative_log_likelihood 6.821e-03, trn/w_norm 6.222e+01, trn/g_norm 1.667e-01, trn/lr 3.957e-03, val/acc 6.897e-01, val/nll 1.569e+00, val/best_acc 6.897e-01 (best_acc: 6.894e-01 -> 6.897e-01), tst/acc 6.905e-01, tst/nll 1.548e+00
+[2023-05-30 22:02:39] [Iter   44000/  48000] trn/loss 6.757e-03, trn/negative_log_likelihood 6.757e-03, trn/w_norm 6.205e+01, trn/g_norm 1.647e-01, trn/lr 2.665e-03, val/acc 6.872e-01, val/nll 1.562e+00, val/best_acc 6.897e-01
+[2023-05-30 22:03:02] [Iter   45000/  48000] trn/loss 6.670e-03, trn/negative_log_likelihood 6.670e-03, trn/w_norm 6.194e+01, trn/g_norm 1.624e-01, trn/lr 1.622e-03, val/acc 6.878e-01, val/nll 1.562e+00, val/best_acc 6.897e-01
+[2023-05-30 22:03:26] [Iter   46000/  48000] trn/loss 6.724e-03, trn/negative_log_likelihood 6.724e-03, trn/w_norm 6.188e+01, trn/g_norm 1.632e-01, trn/lr 8.352e-04, val/acc 6.872e-01, val/nll 1.559e+00, val/best_acc 6.897e-01
+[2023-05-30 22:03:49] [Iter   47000/  48000] trn/loss 6.604e-03, trn/negative_log_likelihood 6.604e-03, trn/w_norm 6.185e+01, trn/g_norm 1.588e-01, trn/lr 3.083e-04, val/acc 6.879e-01, val/nll 1.562e+00, val/best_acc 6.897e-01
+[2023-05-30 22:04:13] [Iter   48000/  48000] trn/loss 6.603e-03, trn/negative_log_likelihood 6.603e-03, trn/w_norm 6.185e+01, trn/g_norm 1.596e-01, trn/lr 4.413e-05, val/acc 6.876e-01, val/nll 1.561e+00, val/best_acc 6.897e-01
