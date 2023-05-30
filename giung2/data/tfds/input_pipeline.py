@@ -97,7 +97,8 @@ def create_trn_split(data_builder, batch_size, split='train',
         shuffle_files=True,
         read_config=tfds.ReadConfig(add_tfds_id=True))
     image_decoder = data_builder.info.features['image'].decode_example
-    shuffle_buffer = min(4096, data_builder.info.splits[split].num_examples)
+    shuffle_buffer_size = min(
+        16*batch_size, data_builder.info.splits[split].num_examples)
 
     def decode_example(example):
         image = image_decoder(example['image'])
@@ -112,7 +113,7 @@ def create_trn_split(data_builder, batch_size, split='train',
     if cache:
         data = data.cache()
     data = data.repeat()
-    data = data.shuffle(shuffle_buffer)
+    data = data.shuffle(shuffle_buffer_size)
     data = data.map(decode_example, num_parallel_calls=tf.data.AUTOTUNE)
     data = data.batch(batch_size, drop_remainder=True)
     data = data.prefetch(tf.data.AUTOTUNE)
