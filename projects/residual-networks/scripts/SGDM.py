@@ -21,7 +21,7 @@ from flax.training import common_utils, train_state
 from flax.training import dynamic_scale as dynamic_scale_lib
 from tensorflow.io.gfile import GFile
 
-from scripts_cifar import defaults
+from scripts import defaults
 from giung2.data import image_processing
 from giung2.data.build import load_data, build_dataloader
 from giung2.models.resnet import FlaxResNet

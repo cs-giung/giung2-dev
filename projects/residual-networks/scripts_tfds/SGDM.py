@@ -23,7 +23,7 @@ from flax.training import common_utils, train_state
 from flax.training import dynamic_scale as dynamic_scale_lib
 from tensorflow.io.gfile import GFile
 
-from scripts_imagenet import defaults
+from scripts_tfds import defaults
 from giung2.data.tfds import input_pipeline
 from giung2.data.torchvision import imagenet
 from giung2.models.resnet import FlaxResNet
