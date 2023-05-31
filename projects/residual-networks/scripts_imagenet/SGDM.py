@@ -390,8 +390,8 @@ def main():
     parser = defaults.default_argument_parser()
 
     parser.add_argument(
-        '--optim_ni', default=500000, type=int,
-        help='the number of training iterations (default: 500000)')
+        '--optim_ni', default=512000, type=int,
+        help='the number of training iterations (default: 512000)')
     parser.add_argument(
         '--optim_lr', default=0.1, type=float,
         help='base learning rate (default: 0.1)')
@@ -403,8 +403,8 @@ def main():
         help='weight decay coefficient (default: 0.0)')
 
     parser.add_argument(
-        '--optim_label_smoothing', default=0.0, type=float,
-        help='label smoothing regularization (default: 0.0)')
+        '--optim_label_smoothing', default=0.0001, type=float,
+        help='label smoothing regularization (default: 0.0001)')
     parser.add_argument(
         '--optim_global_clipping', default=None, type=float,
         help='global norm for the gradient clipping (default: None)')
