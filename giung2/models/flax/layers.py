@@ -4,6 +4,7 @@ from typing import Any, Callable, Optional, Tuple
 import jax
 import jax.numpy as jnp
 import flax.linen as nn
+from flax.linen.dtypes import canonicalize_dtype
 
 
 PRNGKey = Any
@@ -19,20 +20,62 @@ class Identity(nn.Module):
         return inputs
 
 
+class StdConv(nn.Conv):
+    """Weight Standardization (WS; https://arxiv.org/abs/1903.10520).
+
+    Similar to BN, WS controls the first and second moments of the weights of
+    the weights of each output channel individually in convolutional layers.
+    
+    Note that we do not have any affiner transformation on standardized kernel.
+    This is beccause we assume that normalization layers such as BN or GN will
+    normalize this convolutional layer again, and having affine transformation
+    will confuse and slow down training.
+    """
+    def param(self, name, init_fn, *init_args):
+        param = super().param(name, init_fn, *init_args)
+        if name == 'kernel':
+            param = param - jnp.mean(param, axis=(0, 1, 2))
+            param = param / (jnp.std(param, axis=(0, 1, 2)) + 1e-5)
+        return param
+
+
 class FilterResponseNorm(nn.Module):
+    """Filter Response Normalization (FRN; https://arxiv.org/abs/1911.09737).
+
+    FRN normalizes the activations of the layer for each given example in a
+    batch independently, rather than across a batch like Batch Normalization.
+    """
     epsilon: float = 1e-6
-    dtype:   Any   = jnp.float32
+    dtype: Optional[Dtype] = None
+    param_dtype: Dtype = jnp.float32
+    use_bias: bool = True
+    use_scale: bool = True
+    bias_init: Callable[
+        [PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.zeros
+    scale_init: Callable[
+        [PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.ones
+    threshold_init: Callable[
+        [PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.zeros
 
     @nn.compact
-    def __call__(self, x):
-        gamma = self.param('gamma', jax.nn.initializers.ones,  (x.shape[-1],), self.dtype)
-        beta  = self.param('beta',  jax.nn.initializers.zeros, (x.shape[-1],), self.dtype)
-        tau   = self.param('tau',   jax.nn.initializers.zeros, (x.shape[-1],), self.dtype)
-        nu2   = jnp.mean(jnp.square(x), axis=(1, 2), keepdims=True)
-        y     = x * jax.lax.rsqrt(nu2 + self.epsilon)
-        y     = gamma.reshape(1, 1, 1, -1) * y + beta.reshape(1, 1, 1, -1)
-        z     = jnp.maximum(y, tau.reshape(1, 1, 1, -1))
-        return z
+    def __call__(self, inputs):
+        y = inputs
+        nu2 = jnp.mean(jnp.square(inputs), axis=(1, 2), keepdims=True)
+        mul = jax.lax.rsqrt(nu2 + self.epsilon)
+        if self.use_scale:
+            scale = self.param('scale', self.scale_init, (inputs.shape[-1],),
+                               self.param_dtype).reshape((1, 1, 1, -1))
+            mul *= scale
+        y *= mul
+        if self.use_bias:
+            bias = self.param('bias', self.bias_init, (inputs.shape[-1],),
+                              self.param_dtype).reshape((1, 1, 1, -1))
+            y += bias
+        tau = self.param('threshold', self.threshold_init, (inputs.shape[-1],),
+                         self.param_dtype).reshape((1, 1, 1, -1))
+        z = jnp.maximum(y, tau)
+        dtype = canonicalize_dtype(scale, bias, tau, dtype=self.dtype)
+        return jnp.asarray(z, dtype)
 
 
 class DenseBatchEnsemble(nn.Dense):
