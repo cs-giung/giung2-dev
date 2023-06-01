@@ -93,4 +93,4 @@
 |    50 |     1 |  25.56 M |   0.767 |       |       | `152 iter/min` `fp16` `b2048-64k` `8RTX3090` | [`*.log`](./save/imagenet2012/resnet_50x1-batch_2048-iter_64k-lr_0.8-wd_0.0001-fp16/42/20230531040107.log)
 |       |       |          |   0.767 | 0.765 | 0.641 | `141 iter/min` `fp16` `b2048-64k` `8TPUv3`   | [`*.log`](./save/imagenet2012/resnet_50x1-batch_2048-iter_64k-lr_0.8-wd_0.0001-tpuv3-fp16/42/20230530191949.log)
 |       |       |          |   0.764 | 0.763 | 0.639 | ` 84 iter/min` `fp16` `b4096-32k` `8TPUv3`   | [`*.log`](./save/imagenet2012/resnet_50x1-batch_4096-iter_32k-lr_1.6-wd_0.0001-tpuv3-fp16/42/20230531093438.log)
-|   101 |     1 |  44.55 M |   0.784 | 0.782 | 0.663 | `118 iter/min` `fp16` `b2048-64k` `8RTX3090` |
+|   101 |     1 |  44.55 M |   0.784 | 0.782 | 0.663 | `118 iter/min` `fp16` `b2048-64k` `8RTX3090` | [`*.log`](./save/imagenet2012/resnet_101x1-batch_2048-iter_64k-lr_0.8-wd_0.0001-fp16/42/20230531152838.log)
