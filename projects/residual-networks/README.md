@@ -72,3 +72,25 @@
 |    20 |     4 |   4.35 M |   0.611 |   0.598 |   1.731 | ` 322 iter/min`        | [`*.log`](./save/TinyImageNet200_x64/resnet_20x4-iter_48k-wd_0.0010/42/20230530222243.log)
 |    18 |     1 |  11.27 M |   0.648 |   0.647 |   1.635 | ` 385 iter/min`        | [`*.log`](./save/TinyImageNet200_x64/resnet_18x1-iter_48k-wd_0.0010/42/20230530225807.log)
 |       |       |          |   0.643 |   0.642 |   1.631 | ` 730 iter/min` `fp16` | [`*.log`](./save/TinyImageNet200_x64/resnet_18x1-iter_48k-wd_0.0010-fp16/42/20230530233139.log)
+
+### ImageNet1k_x64
+* The optimization terminates after 128k iterations with a mini-batch size of 1024 (~102 epochs).
+* All training runs are done with four GeForce RTX 3090.
+* The calculation of throughputs is based on the last 5k iterations.
+
+| Depth | Width | # Params | val/acc | misc                  |    |
+|    -: |    -: |       -: |     :-: | :-                    | :- |
+|    50 |     1 |  25.55 M |   0.711 | `206 iter/min` `fp16` | [`*.log`](./save/ImageNet1k_x64/resnet_50x1-batch_1024-iter_128k-lr_0.4-wd_0.0001-fp16/42/20230531044821.log)
+
+## Results for 224x224 images
+
+### imagenet2012
+
+| Depth | Width | # Params | val/acc | IN    | IN-V2 | misc                  |    |
+|    -: |    -: |       -: |     :-: | :-:   |   :-: | :-                    | :- |
+|    18 |     1 |  11.69 M |         |       |       | `    iter/min` `fp16` `b2048-64k` `4RTX3090` |
+|    34 |     1 |  21.80 M |   0.740 | 0.737 | 0.609 | `137 iter/min` `fp16` `b2048-64k` `4RTX3090` | [`*.log`](./save/imagenet2012/resnet_34x1-batch_2048-iter_64k-lr_0.8-wd_0.0001-fp16/42/20230531132545.log)
+|    50 |     1 |  25.56 M |   0.767 |       |       | `152 iter/min` `fp16` `b2048-64k` `8RTX3090` | [`*.log`](./save/imagenet2012/resnet_50x1-batch_2048-iter_64k-lr_0.8-wd_0.0001-fp16/42/20230531040107.log)
+|       |       |          |   0.767 | 0.765 | 0.641 | `141 iter/min` `fp16` `b2048-64k` `8TPUv3`   | [`*.log`](./save/imagenet2012/resnet_50x1-batch_2048-iter_64k-lr_0.8-wd_0.0001-tpuv3-fp16/42/20230530191949.log)
+|       |       |          |   0.764 | 0.763 | 0.639 | ` 84 iter/min` `fp16` `b4096-32k` `8TPUv3`   | [`*.log`](./save/imagenet2012/resnet_50x1-batch_4096-iter_32k-lr_1.6-wd_0.0001-tpuv3-fp16/42/20230531093438.log)
+|   101 |     1 |  44.55 M |   0.784 | 0.782 | 0.663 | `118 iter/min` `fp16` `b2048-64k` `8RTX3090` |
