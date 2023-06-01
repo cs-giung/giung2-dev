@@ -1,9 +1,11 @@
 # Residual Networks
 
+## Results for 32x32 images
+
 ### CIFAR10_x32
-* The optimization terminates after 48k iterations with a mini-batch size of 256 (i.e., 300 epochs).
-* All training runs are done with a single GeForce RTX 3090.
-* The calculation of throughputs `iter/min` is based on the last 5k iterations.
+* The optimization terminates after 48k iterations with a mini-batch size of 256 (~300 epochs).
+* All training runs are done with a single GeForce RTX 3090
+* The calculation of throughputs is based on the last 5k iterations.
 
 | Depth | Width | # Params | val/acc | tst/acc | tst/nll | misc                   |    |
 |    -: |    -: |       -: |     :-: |     :-: |     :-: | :-                     | :- |
@@ -17,9 +19,9 @@
 |       |       |          |   0.953 |   0.951 |   0.193 | `2273 iter/min` `fp16` | [`*.log`](./save/CIFAR10_x32/resnet_18x1-iter_48k-wd_0.0010-fp16/42/20230531004307.log)
 
 ### CIFAR100_x32
-* The optimization terminates after 48k iterations with a mini-batch size of 256 (i.e., 300 epochs).
+* The optimization terminates after 48k iterations with a mini-batch size of 256 (~300 epochs).
 * All training runs are done with a single GeForce RTX 3090.
-* The calculation of throughputs `iter/min` is based on the last 5k iterations.
+* The calculation of throughputs is based on the last 5k iterations.
 
 | Depth | Width | # Params | val/acc | tst/acc | tst/nll | misc                   |    |
 |    -: |    -: |       -: |     :-: |     :-: |     :-: | :-                     | :- |
@@ -33,9 +35,9 @@
 |       |       |          |   0.774 |   0.768 |   0.957 | `2256 iter/min` `fp16` | [`*.log`](./save/CIFAR100_x32/resnet_18x1-iter_48k-wd_0.0010-fp16/42/20230531004337.log)
 
 ### TinyImageNet200_x32
-* The optimization terminates after 48k iterations with a mini-batch size of 256 (i.e., 150 epochs).
+* The optimization terminates after 48k iterations with a mini-batch size of 256 (~150 epochs).
 * All training runs are done with a single GeForce RTX 3090.
-* The calculation of throughputs `iter/min` is based on the last 5k iterations.
+* The calculation of throughputs is based on the last 5k iterations.
 
 | Depth | Width | # Params | val/acc | tst/acc | tst/nll | misc                   |    |
 |    -: |    -: |       -: |     :-: |     :-: |     :-: | :-                     | :- |
@@ -45,15 +47,28 @@
 |    18 |     1 |  11.27 M |   0.559 |   0.565 |   2.032 | `1293 iter/min`        | [`*.log`](./save/TinyImageNet200_x32/resnet_18x1-iter_48k-wd_0.0010/42/20230530233419.log)
 |       |       |          |   0.565 |   0.559 |   2.037 | `2290 iter/min` `fp16` | [`*.log`](./save/TinyImageNet200_x32/resnet_18x1-iter_48k-wd_0.0010-fp16/42/20230531004231.log)
 
+### ImageNet1k_x32
+* The optimization terminates after 128k iterations with a mini-batch size of 1024 (~102 epochs).
+* All training runs are done with two GeForce RTX 3090.
+* The calculation of throughputs is based on the last 5k iterations.
+
+| Depth | Width | # Params | val/acc | misc                               |    |
+|    -: |    -: |       -: |     :-: | :-                                 | :- |
+|    18 |     1 |  11.68 M |   0.546 | `1017 iter/min` `fp16` `nan-grads` | [`*.log`](./save/ImageNet1k_x32/resnet_18x1-batch_1024-iter_128k-lr_0.4-wd_0.0001-fp16/42/20230601025851.log)
+|    34 |     1 |  21.79 M |   0.573 | ` 547 iter/min` `fp16` `nan-grads` | [`*.log`](./save/ImageNet1k_x32/resnet_34x1-batch_1024-iter_128k-lr_0.4-wd_0.0001-fp16/42/20230531221315.log)
+|    50 |     1 |  25.55 M |   0.613 | ` 375 iter/min` `fp16` `nan-grads` | [`*.log`](./save/ImageNet1k_x32/resnet_50x1-batch_1024-iter_128k-lr_0.4-wd_0.0001-fp16/42/20230531184114.log)
+
+## Results for 64x64 images
+
 ### TinyImageNet200_x64
-* The optimization terminates after 48k iterations with a mini-batch size of 256 (i.e., 150 epochs).
+* The optimization terminates after `48k` iterations with a mini-batch size of 256 (~150 epochs).
 * All training runs are done with a single GeForce RTX 3090.
-* The calculation of throughputs `iter/min` is based on the last 5k iterations.
+* The calculation of throughputs is based on the last 5k iterations.
 
 | Depth | Width | # Params | val/acc | tst/acc | tst/nll | misc                   |    |
 |    -: |    -: |       -: |     :-: |     :-: |     :-: | :-                     | :- |
-|    20 |     1 |   0.28 M |   0.506 |   0.508 |   2.011 |                        | [`*.log`](./save/TinyImageNet200_x64/resnet_20x1-iter_48k-wd_0.0010/42/20230530214921.log)
-|    20 |     2 |   1.10 M |   0.576 |   0.570 |   1.775 |                        | [`*.log`](./save/TinyImageNet200_x64/resnet_20x2-iter_48k-wd_0.0010/42/20230530214951.log)
-|    20 |     4 |   4.35 M |   0.611 |   0.598 |   1.731 |                        | [`*.log`](./save/TinyImageNet200_x64/resnet_20x4-iter_48k-wd_0.0010/42/20230530222243.log)
+|    20 |     1 |   0.28 M |   0.506 |   0.508 |   2.011 | `1471 iter/min`        | [`*.log`](./save/TinyImageNet200_x64/resnet_20x1-iter_48k-wd_0.0010/42/20230530214921.log)
+|    20 |     2 |   1.10 M |   0.576 |   0.570 |   1.775 | ` 735 iter/min`        | [`*.log`](./save/TinyImageNet200_x64/resnet_20x2-iter_48k-wd_0.0010/42/20230530214951.log)
+|    20 |     4 |   4.35 M |   0.611 |   0.598 |   1.731 | ` 322 iter/min`        | [`*.log`](./save/TinyImageNet200_x64/resnet_20x4-iter_48k-wd_0.0010/42/20230530222243.log)
 |    18 |     1 |  11.27 M |   0.648 |   0.647 |   1.635 | ` 385 iter/min`        | [`*.log`](./save/TinyImageNet200_x64/resnet_18x1-iter_48k-wd_0.0010/42/20230530225807.log)
 |       |       |          |   0.643 |   0.642 |   1.631 | ` 730 iter/min` `fp16` | [`*.log`](./save/TinyImageNet200_x64/resnet_18x1-iter_48k-wd_0.0010-fp16/42/20230530233139.log)
