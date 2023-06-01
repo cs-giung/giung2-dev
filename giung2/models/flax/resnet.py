@@ -69,7 +69,7 @@ class FlaxResNetModule(nn.Module):
                 features    = self.num_planes,
                 kernel_size = (3, 3),
                 strides     = (1, 1),
-                padding     = (1, 1),
+                padding     = 'SAME',
                 dtype       = self.dtype,
             )(x)
             y = self.norm(dtype=self.dtype)(y)
@@ -80,7 +80,7 @@ class FlaxResNetModule(nn.Module):
                 features    = self.num_planes,
                 kernel_size = (7, 7),
                 strides     = (2, 2),
-                padding     = (3, 3),
+                padding     = 'SAME',
                 dtype       = self.dtype,
             )(x)
             y = self.norm(dtype=self.dtype)(y)
@@ -107,7 +107,7 @@ class FlaxResNetModule(nn.Module):
                         features    = _channel * self.widen_factor,
                         kernel_size = (3, 3),
                         strides     = (_stride, _stride),
-                        padding     = (1, 1),
+                        padding     = 'SAME',
                         dtype       = self.dtype,
                     )(y)
                     y = self.norm(dtype=self.dtype)(y)
@@ -116,7 +116,7 @@ class FlaxResNetModule(nn.Module):
                         features    = _channel * self.widen_factor,
                         kernel_size = (3, 3),
                         strides     = (1, 1),
-                        padding     = (1, 1),
+                        padding     = 'SAME',
                         dtype       = self.dtype,
                     )(y)
                     y = self.norm(dtype=self.dtype,
@@ -127,7 +127,7 @@ class FlaxResNetModule(nn.Module):
                         features    = _channel * self.widen_factor,
                         kernel_size = (1, 1),
                         strides     = (1, 1),
-                        padding     = (0, 0),
+                        padding     = 'SAME',
                         dtype       = self.dtype,
                     )(y)
                     y = self.norm(dtype=self.dtype)(y)
@@ -136,7 +136,7 @@ class FlaxResNetModule(nn.Module):
                         features    = _channel * self.widen_factor,
                         kernel_size = (3, 3),
                         strides     = (_stride, _stride),
-                        padding     = (1, 1),
+                        padding     = 'SAME',
                         dtype       = self.dtype,
                     )(y)
                     y = self.norm(dtype=self.dtype)(y)
@@ -145,7 +145,7 @@ class FlaxResNetModule(nn.Module):
                         features    = _channel * 4,
                         kernel_size = (1, 1),
                         strides     = (1, 1),
-                        padding     = (0, 0),
+                        padding     = 'SAME',
                         dtype       = self.dtype,
                     )(y)
                     y = self.norm(dtype=self.dtype,
@@ -156,7 +156,7 @@ class FlaxResNetModule(nn.Module):
                         features    = y.shape[-1],
                         kernel_size = (1, 1),
                         strides     = (_stride, _stride),
-                        padding     = (0, 0),
+                        padding     = 'SAME',
                         dtype       = self.dtype,
                     )(residual)
                     residual = self.norm(dtype=self.dtype)(residual)
