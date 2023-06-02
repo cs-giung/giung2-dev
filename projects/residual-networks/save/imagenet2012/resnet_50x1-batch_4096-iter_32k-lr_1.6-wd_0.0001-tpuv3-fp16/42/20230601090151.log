@@ -1,0 +1,66 @@
+[2023-06-01 09:01:51] Environments:
+------------  -------------------------------------------------------------
+sys.platform  linux
+Python        3.8.10 (default, Mar 13 2023, 10:26:41) [GCC 9.4.0]
+JAX           0.4.10 @/home/giung/.local/lib/python3.8/site-packages/jax
+jaxlib        0.4.10 @/home/giung/.local/lib/python3.8/site-packages/jaxlib
+Flax          0.6.10 @/home/giung/.local/lib/python3.8/site-packages/flax
+Optax         0.1.5 @/home/giung/.local/lib/python3.8/site-packages/optax
+------------  -------------------------------------------------------------
+
+[2023-06-01 09:01:51] Command line arguments:
+- args.data_root             : /mnt/local/datasets/manual/
+- args.data_name             : imagenet2012
+- args.resnet_depth          : 50
+- args.resnet_width          : 1
+- args.batch_size            : 4096
+- args.num_workers           : 32
+- args.prefetch_factor       : 2
+- args.optim_ni              : 32000
+- args.optim_lr              : 1.6
+- args.optim_momentum        : 0.9
+- args.optim_weight_decay    : 0.0001
+- args.optim_label_smoothing : 0.0001
+- args.optim_global_clipping : None
+- args.save                  : ./save/imagenet2012/resnet_50x1-batch_4096-iter_32k-lr_1.6-wd_0.0001-tpuv3-fp16/42/
+- args.seed                  : 42
+- args.mixed_precision       : True
+
+[2023-06-01 09:01:54] Multiple local devices are detected:
+[TpuDevice(id=0, process_index=0, coords=(0,0,0), core_on_chip=0), TpuDevice(id=1, process_index=0, coords=(0,0,0), core_on_chip=1), TpuDevice(id=2, process_index=0, coords=(1,0,0), core_on_chip=0), TpuDevice(id=3, process_index=0, coords=(1,0,0), core_on_chip=1), TpuDevice(id=4, process_index=0, coords=(0,1,0), core_on_chip=0), TpuDevice(id=5, process_index=0, coords=(0,1,0), core_on_chip=1), TpuDevice(id=6, process_index=0, coords=(1,1,0), core_on_chip=0), TpuDevice(id=7, process_index=0, coords=(1,1,0), core_on_chip=1)]
+
+[2023-06-01 09:02:39] images.shape: (8, 512, 224, 224, 3), output.shape: (8, 512, 2048)
+[2023-06-01 09:02:43] The number of trainable parameters: 25556032
+[2023-06-01 09:20:26] [Iter    1000/  32000] trn/loss 5.588e+00, trn/negative_log_likelihood 5.588e+00, trn/w_norm 2.363e+02, trn/g_norm 7.127e-01, trn/lr 2.498e-01, val/acc 1.284e-01, val/nll 4.732e+00, val/best_acc 1.284e-01 (best_acc: 0.000e+00 -> 1.284e-01)
+[2023-06-01 09:32:35] [Iter    2000/  32000] trn/loss 3.588e+00, trn/negative_log_likelihood 3.588e+00, trn/w_norm 1.693e+02, trn/g_norm 7.948e-01, trn/lr 7.498e-01, val/acc 3.358e-01, val/nll 3.091e+00, val/best_acc 3.358e-01 (best_acc: 1.284e-01 -> 3.358e-01)
+[2023-06-01 09:44:35] [Iter    3000/  32000] trn/loss 2.851e+00, trn/negative_log_likelihood 2.851e+00, trn/w_norm 1.387e+02, trn/g_norm 6.861e-01, trn/lr 1.250e+00, val/acc 3.619e-01, val/nll 2.973e+00, val/best_acc 3.619e-01 (best_acc: 3.358e-01 -> 3.619e-01)
+[2023-06-01 09:56:30] [Iter    4000/  32000] trn/loss 2.603e+00, trn/negative_log_likelihood 2.603e+00, trn/w_norm 1.451e+02, trn/g_norm 6.264e-01, trn/lr 1.589e+00, val/acc 3.618e-01, val/nll 3.023e+00, val/best_acc 3.619e-01
+[2023-06-01 10:08:32] [Iter    5000/  32000] trn/loss 2.459e+00, trn/negative_log_likelihood 2.459e+00, trn/w_norm 1.484e+02, trn/g_norm 6.191e-01, trn/lr 1.592e+00, val/acc 4.339e-01, val/nll 2.496e+00, val/best_acc 4.339e-01 (best_acc: 3.619e-01 -> 4.339e-01)
+[2023-06-01 10:20:38] [Iter    6000/  32000] trn/loss 2.380e+00, trn/negative_log_likelihood 2.380e+00, trn/w_norm 1.500e+02, trn/g_norm 6.191e-01, trn/lr 1.575e+00, val/acc 4.027e-01, val/nll 2.755e+00, val/best_acc 4.339e-01
+[2023-06-01 10:32:39] [Iter    7000/  32000] trn/loss 2.327e+00, trn/negative_log_likelihood 2.327e+00, trn/w_norm 1.509e+02, trn/g_norm 6.196e-01, trn/lr 1.548e+00, val/acc 4.215e-01, val/nll 2.592e+00, val/best_acc 4.339e-01
+[2023-06-01 10:44:50] [Iter    8000/  32000] trn/loss 2.283e+00, trn/negative_log_likelihood 2.283e+00, trn/w_norm 1.511e+02, trn/g_norm 6.223e-01, trn/lr 1.513e+00, val/acc 4.400e-01, val/nll 2.481e+00, val/best_acc 4.400e-01 (best_acc: 4.339e-01 -> 4.400e-01)
+[2023-06-01 10:56:50] [Iter    9000/  32000] trn/loss 2.246e+00, trn/negative_log_likelihood 2.246e+00, trn/w_norm 1.510e+02, trn/g_norm 6.270e-01, trn/lr 1.470e+00, val/acc 4.849e-01, val/nll 2.233e+00, val/best_acc 4.849e-01 (best_acc: 4.400e-01 -> 4.849e-01)
+[2023-06-01 11:08:49] [Iter   10000/  32000] trn/loss 2.211e+00, trn/negative_log_likelihood 2.211e+00, trn/w_norm 1.506e+02, trn/g_norm 6.312e-01, trn/lr 1.418e+00, val/acc 5.053e-01, val/nll 2.101e+00, val/best_acc 5.053e-01 (best_acc: 4.849e-01 -> 5.053e-01)
+[2023-06-01 11:21:00] [Iter   11000/  32000] trn/loss 2.177e+00, trn/negative_log_likelihood 2.177e+00, trn/w_norm 1.500e+02, trn/g_norm 6.376e-01, trn/lr 1.359e+00, val/acc 4.914e-01, val/nll 2.209e+00, val/best_acc 5.053e-01
+[2023-06-01 11:32:57] [Iter   12000/  32000] trn/loss 2.142e+00, trn/negative_log_likelihood 2.142e+00, trn/w_norm 1.492e+02, trn/g_norm 6.445e-01, trn/lr 1.294e+00, val/acc 4.957e-01, val/nll 2.215e+00, val/best_acc 5.053e-01
+[2023-06-01 11:45:04] [Iter   13000/  32000] trn/loss 2.104e+00, trn/negative_log_likelihood 2.104e+00, trn/w_norm 1.481e+02, trn/g_norm 6.533e-01, trn/lr 1.222e+00, val/acc 4.747e-01, val/nll 2.309e+00, val/best_acc 5.053e-01
+[2023-06-01 11:57:11] [Iter   14000/  32000] trn/loss 2.068e+00, trn/negative_log_likelihood 2.068e+00, trn/w_norm 1.470e+02, trn/g_norm 6.650e-01, trn/lr 1.146e+00, val/acc 5.259e-01, val/nll 2.026e+00, val/best_acc 5.259e-01 (best_acc: 5.053e-01 -> 5.259e-01)
+[2023-06-01 12:09:10] [Iter   15000/  32000] trn/loss 2.026e+00, trn/negative_log_likelihood 2.026e+00, trn/w_norm 1.455e+02, trn/g_norm 6.757e-01, trn/lr 1.065e+00, val/acc 5.440e-01, val/nll 1.955e+00, val/best_acc 5.440e-01 (best_acc: 5.259e-01 -> 5.440e-01)
+[2023-06-01 12:21:19] [Iter   16000/  32000] trn/loss 1.983e+00, trn/negative_log_likelihood 1.983e+00, trn/w_norm 1.439e+02, trn/g_norm 6.891e-01, trn/lr 9.816e-01, val/acc 5.586e-01, val/nll 1.846e+00, val/best_acc 5.586e-01 (best_acc: 5.440e-01 -> 5.586e-01)
+[2023-06-01 12:33:30] [Iter   17000/  32000] trn/loss 1.938e+00, trn/negative_log_likelihood 1.938e+00, trn/w_norm 1.420e+02, trn/g_norm 7.056e-01, trn/lr 8.958e-01, val/acc 5.555e-01, val/nll 1.873e+00, val/best_acc 5.586e-01
+[2023-06-01 12:45:32] [Iter   18000/  32000] trn/loss 1.889e+00, trn/negative_log_likelihood 1.889e+00, trn/w_norm 1.400e+02, trn/g_norm 7.228e-01, trn/lr 8.088e-01, val/acc 5.738e-01, val/nll 1.796e+00, val/best_acc 5.738e-01 (best_acc: 5.586e-01 -> 5.738e-01)
+[2023-06-01 12:57:36] [Iter   19000/  32000] trn/loss 1.836e+00, trn/negative_log_likelihood 1.836e+00, trn/w_norm 1.378e+02, trn/g_norm 7.434e-01, trn/lr 7.217e-01, val/acc 5.858e-01, val/nll 1.733e+00, val/best_acc 5.858e-01 (best_acc: 5.738e-01 -> 5.858e-01)
+[2023-06-01 13:09:31] [Iter   20000/  32000] trn/loss 1.784e+00, trn/negative_log_likelihood 1.784e+00, trn/w_norm 1.354e+02, trn/g_norm 7.676e-01, trn/lr 6.355e-01, val/acc 5.748e-01, val/nll 1.796e+00, val/best_acc 5.858e-01
+[2023-06-01 13:21:51] [Iter   21000/  32000] trn/loss 1.724e+00, trn/negative_log_likelihood 1.724e+00, trn/w_norm 1.328e+02, trn/g_norm 7.933e-01, trn/lr 5.513e-01, val/acc 5.886e-01, val/nll 1.719e+00, val/best_acc 5.886e-01 (best_acc: 5.858e-01 -> 5.886e-01)
+[2023-06-01 13:33:56] [Iter   22000/  32000] trn/loss 1.661e+00, trn/negative_log_likelihood 1.661e+00, trn/w_norm 1.300e+02, trn/g_norm 8.241e-01, trn/lr 4.700e-01, val/acc 6.125e-01, val/nll 1.608e+00, val/best_acc 6.125e-01 (best_acc: 5.886e-01 -> 6.125e-01)
+[2023-06-01 13:45:58] [Iter   23000/  32000] trn/loss 1.595e+00, trn/negative_log_likelihood 1.595e+00, trn/w_norm 1.270e+02, trn/g_norm 8.604e-01, trn/lr 3.927e-01, val/acc 6.331e-01, val/nll 1.492e+00, val/best_acc 6.331e-01 (best_acc: 6.125e-01 -> 6.331e-01)
+[2023-06-01 13:58:05] [Iter   24000/  32000] trn/loss 1.524e+00, trn/negative_log_likelihood 1.524e+00, trn/w_norm 1.238e+02, trn/g_norm 9.010e-01, trn/lr 3.202e-01, val/acc 6.574e-01, val/nll 1.395e+00, val/best_acc 6.574e-01 (best_acc: 6.331e-01 -> 6.574e-01)
+[2023-06-01 14:10:07] [Iter   25000/  32000] trn/loss 1.446e+00, trn/negative_log_likelihood 1.446e+00, trn/w_norm 1.205e+02, trn/g_norm 9.459e-01, trn/lr 2.534e-01, val/acc 6.626e-01, val/nll 1.355e+00, val/best_acc 6.626e-01 (best_acc: 6.574e-01 -> 6.626e-01)
+[2023-06-01 14:22:18] [Iter   26000/  32000] trn/loss 1.364e+00, trn/negative_log_likelihood 1.364e+00, trn/w_norm 1.171e+02, trn/g_norm 1.000e+00, trn/lr 1.931e-01, val/acc 6.859e-01, val/nll 1.271e+00, val/best_acc 6.859e-01 (best_acc: 6.626e-01 -> 6.859e-01)
+[2023-06-01 14:34:20] [Iter   27000/  32000] trn/loss 1.273e+00, trn/negative_log_likelihood 1.273e+00, trn/w_norm 1.138e+02, trn/g_norm 1.060e+00, trn/lr 1.401e-01, val/acc 7.091e-01, val/nll 1.155e+00, val/best_acc 7.091e-01 (best_acc: 6.859e-01 -> 7.091e-01)
+[2023-06-01 14:46:27] [Iter   28000/  32000] trn/loss 1.179e+00, trn/negative_log_likelihood 1.179e+00, trn/w_norm 1.107e+02, trn/g_norm 1.127e+00, trn/lr 9.483e-02, val/acc 7.312e-01, val/nll 1.061e+00, val/best_acc 7.312e-01 (best_acc: 7.091e-01 -> 7.312e-01)
+[2023-06-01 14:58:34] [Iter   29000/  32000] trn/loss 1.084e+00, trn/negative_log_likelihood 1.084e+00, trn/w_norm 1.080e+02, trn/g_norm 1.193e+00, trn/lr 5.799e-02, val/acc 7.454e-01, val/nll 1.001e+00, val/best_acc 7.454e-01 (best_acc: 7.312e-01 -> 7.454e-01)
+[2023-06-01 15:10:31] [Iter   30000/  32000] trn/loss 9.911e-01, trn/negative_log_likelihood 9.911e-01, trn/w_norm 1.060e+02, trn/g_norm 1.246e+00, trn/lr 2.996e-02, val/acc 7.576e-01, val/nll 9.509e-01, val/best_acc 7.576e-01 (best_acc: 7.454e-01 -> 7.576e-01)
+[2023-06-01 15:22:36] [Iter   31000/  32000] trn/loss 9.235e-01, trn/negative_log_likelihood 9.235e-01, trn/w_norm 1.049e+02, trn/g_norm 1.279e+00, trn/lr 1.108e-02, val/acc 7.641e-01, val/nll 9.231e-01, val/best_acc 7.641e-01 (best_acc: 7.576e-01 -> 7.641e-01)
+[2023-06-01 15:34:41] [Iter   32000/  32000] trn/loss 8.900e-01, trn/negative_log_likelihood 8.900e-01, trn/w_norm 1.045e+02, trn/g_norm 1.283e+00, trn/lr 1.588e-03, val/acc 7.657e-01, val/nll 9.187e-01, val/best_acc 7.657e-01 (best_acc: 7.641e-01 -> 7.657e-01)
+[2023-06-01 15:41:23] ImageNet/acc 7.654e-01, ImageNet/nll 9.250e-01, ImageNetV2/acc 6.409e-01, ImageNetV2/nll 1.577e+00
