@@ -80,7 +80,7 @@
 
 | Depth | Width | # Params | val/acc | misc                              |    |
 |    -: |    -: |       -: |     :-: | :-                                | :- |
-|    50 |     1 |  25.55 M |   0.711 | `206 iter/min` `fp16` `nan-grads` | [`*.log`](./save/ImageNet1k_x64/resnet_50x1-batch_1024-iter_128k-lr_0.4-wd_0.0001-fp16/42/20230531044821.log)
+|    50 |     1 |  25.55 M |   0.707 | `206 iter/min` `fp16` `nan-grads` | [`*.log`](./save/ImageNet1k_x64/resnet_50x1-batch_1024-iter_128k-lr_0.4-wd_0.0001-fp16/42/20230601214123.log)
 
 ## Results for 224x224 images
 
