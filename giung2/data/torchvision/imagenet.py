@@ -14,7 +14,7 @@ _TRANSFORMS_FACTORY = {
         interpolation='bicubic', use_prefetcher=True),
     'preset1': transforms_imagenet_train(
         interpolation='bicubic', use_prefetcher=True),
-}
+    }
 
 
 def project_logits(logits, classmasks):
@@ -33,7 +33,7 @@ class ImageNet:
         self.preset          = preset
         self.batch_size      = batch_size
         self.num_workers     = num_workers
-        self.prefetch_factor = prefetch_factor
+        self.prefetch_factor = prefetch_factor if num_workers > 0 else None
         
         self.trn_transform   = _TRANSFORMS_FACTORY[preset]
         self.val_transform   = _TRANSFORMS_FACTORY['eval']
