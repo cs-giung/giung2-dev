@@ -399,12 +399,12 @@ def main():
         '--optim_momentum', default=0.9, type=float,
         help='momentum coefficient (default: 0.9)')
     parser.add_argument(
-        '--optim_weight_decay', default=0.0, type=float,
-        help='weight decay coefficient (default: 0.0)')
+        '--optim_weight_decay', default=0.0001, type=float,
+        help='weight decay coefficient (default: 0.0001)')
 
     parser.add_argument(
-        '--optim_label_smoothing', default=0.0001, type=float,
-        help='label smoothing regularization (default: 0.0001)')
+        '--optim_label_smoothing', default=0.0, type=float,
+        help='label smoothing regularization (default: 0.0)')
     parser.add_argument(
         '--optim_global_clipping', default=None, type=float,
         help='global norm for the gradient clipping (default: None)')
