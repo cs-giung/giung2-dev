@@ -54,7 +54,7 @@ tar -xvzf TinyImageNet200_x32.tar.gz
 
 ### TinyImageNet200_x64
 ```
-wget https://www.dropbox.com/s/dddexickd88is9l/TinyImageNet200_x64.tar.gz
+wget https://www.dropbox.com/s/gozxjsi78repsgt/TinyImageNet200_x64.tar.gz
 tar -xvzf TinyImageNet200_x64.tar.gz
 ```
 
