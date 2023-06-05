@@ -11,9 +11,14 @@ NAMES = np.array([
     'Food101_x32',
     'Pets37_x32',
     'TinyImageNet200_x32',
-    'TinyImageNet200_x64',
     'ImageNet1k_x32',
+    'TinyImageNet200_x64',
     'ImageNet1k_x64',
+    'ImageNet_x224',
+    'ImageNetV2_x224',
+    'ImageNetR_x224',
+    'ImageNetA_x224',
+    'ImageNetSketch_x224',
 ])
 
 EXISTS = np.array([os.path.exists(e) for e in NAMES])

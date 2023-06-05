@@ -52,20 +52,50 @@ wget https://www.dropbox.com/s/rcxylz8dn7fm03m/TinyImageNet200_x32.tar.gz
 tar -xvzf TinyImageNet200_x32.tar.gz
 ```
 
-### TinyImageNet200_x64
-```
-wget https://www.dropbox.com/s/gozxjsi78repsgt/TinyImageNet200_x64.tar.gz
-tar -xvzf TinyImageNet200_x64.tar.gz
-```
-
 ### ImageNet1k_x32
 ```
 wget https://www.dropbox.com/s/vhi089am8q1tkuo/ImageNet1k_x32.tar.gz
 tar -xvzf ImageNet1k_x32.tar.gz
 ```
 
+### TinyImageNet200_x64
+```
+wget https://www.dropbox.com/s/gozxjsi78repsgt/TinyImageNet200_x64.tar.gz
+tar -xvzf TinyImageNet200_x64.tar.gz
+```
+
 ### ImageNet1k_x64
 ```
 wget https://www.dropbox.com/s/urh77zy42xxzhgo/ImageNet1k_x64.tar.gz
 tar -xvzf ImageNet1k_x64.tar.gz
+```
+
+### ImageNet_x224 (test-only)
+```
+wget https://www.dropbox.com/s/gz5ac5xcv4hnkcw/ImageNet_x224.tar.gz
+tar -xvzf ImageNet_x224.tar.gz
+```
+
+### ImageNetV2_x224 (test-only)
+```
+wget https://www.dropbox.com/s/4npypel3gatmisv/ImageNetV2_x224.tar.gz
+tar -xvzf ImageNetV2_x224.tar.gz
+```
+
+### ImageNetR_x224 (test-only)
+```
+wget https://www.dropbox.com/s/9bvezn0vcu2efk8/ImageNetR_x224.tar.gz
+tar -xvzf ImageNetR_x224.tar.gz
+```
+
+### ImageNetA_x224 (test-only)
+```
+wget https://www.dropbox.com/s/qxathc2to6oqp51/ImageNetA_x224.tar.gz
+tar -xvzf ImageNetA_x224.tar.gz
+```
+
+### ImageNetSketch_x224 (test-only)
+```
+wget https://www.dropbox.com/s/wl8vmh8ocfejuxi/ImageNetSketch_x224.tar.gz
+tar -xvzf ImageNetSketch_x224.tar.gz
 ```
