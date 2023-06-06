@@ -58,6 +58,8 @@ wget https://www.dropbox.com/s/vhi089am8q1tkuo/ImageNet1k_x32.tar.gz
 tar -xvzf ImageNet1k_x32.tar.gz
 ```
 
+---
+
 ### TinyImageNet200_x64
 ```
 wget https://www.dropbox.com/s/gozxjsi78repsgt/TinyImageNet200_x64.tar.gz
@@ -69,6 +71,8 @@ tar -xvzf TinyImageNet200_x64.tar.gz
 wget https://www.dropbox.com/s/urh77zy42xxzhgo/ImageNet1k_x64.tar.gz
 tar -xvzf ImageNet1k_x64.tar.gz
 ```
+
+---
 
 ### ImageNet_x224 (test-only)
 ```
@@ -98,4 +102,42 @@ tar -xvzf ImageNetA_x224.tar.gz
 ```
 wget https://www.dropbox.com/s/wl8vmh8ocfejuxi/ImageNetSketch_x224.tar.gz
 tar -xvzf ImageNetSketch_x224.tar.gz
+```
+
+---
+
+### DomainNetReal_x224 (test-only)
+```
+wget https://www.dropbox.com/s/uenqdkied5kqzfz/DomainNetReal_x224.tar.gz
+tar -xvzf DomainNetReal_x224.tar.gz
+```
+
+### DomainNetPainting_x224 (test-only)
+```
+wget https://www.dropbox.com/s/gvhmxlaebvcy8zg/DomainNetPainting_x224.tar.gz
+tar -xvzf DomainNetPainting_x224.tar.gz
+```
+
+### DomainNetClipart_x224 (test-only)
+```
+wget https://www.dropbox.com/s/037tnnjbneze1na/DomainNetClipart_x224.tar.gz
+tar -xvzf DomainNetClipart_x224.tar.gz
+```
+
+### DomainNetQuickdraw_x224 (test-only)
+```
+wget https://www.dropbox.com/s/0n2vocd0cwbeh6d/DomainNetQuickdraw_x224.tar.gz
+tar -xvzf DomainNetQuickdraw_x224.tar.gz
+```
+
+### DomainNetInfograph_x224 (test-only)
+```
+wget https://www.dropbox.com/s/gbtkn8kd8m0bggb/DomainNetInfograph_x224.tar.gz
+tar -xvzf DomainNetInfograph_x224.tar.gz
+```
+
+### DomainNetSketch_x224 (test-only)
+```
+wget https://www.dropbox.com/s/wec7qze8o9lo4r8/DomainNetSketch_x224.tar.gz
+tar -xvzf DomainNetSketch_x224.tar.gz
 ```
