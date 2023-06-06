@@ -19,6 +19,12 @@ NAMES = np.array([
     'ImageNetR_x224',
     'ImageNetA_x224',
     'ImageNetSketch_x224',
+    'DomainNetReal_x224',
+    'DomainNetPainting_x224',
+    'DomainNetClipart_x224',
+    'DomainNetQuickdraw_x224',
+    'DomainNetInfograph_x224',
+    'DomainNetSketch_x224',
 ])
 
 EXISTS = np.array([os.path.exists(e) for e in NAMES])
