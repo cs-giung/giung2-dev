@@ -27,8 +27,9 @@ def project_logits(logits, classmasks):
 
 
 class ImageNet:
-    def __init__(self, root='~/data/', preset='preset1', load_trn=True,
-                 batch_size=256, num_workers=32, prefetch_factor=2):
+    def __init__(self, root='~/data/', preset='preset1',
+                 load_trn=True, load_val=True, batch_size=256,
+                 num_workers=32, prefetch_factor=2):
         self.root            = root
         self.preset          = preset
         self.batch_size      = batch_size
@@ -42,8 +43,9 @@ class ImageNet:
         if load_trn:
             self.trn_dataset = ImageDataset(
                 self.get_trn_directory(), transform=self.trn_transform)
-        self.val_dataset = ImageDataset(
-            self.get_val_directory(), transform=self.val_transform)
+        if load_val:
+            self.val_dataset = ImageDataset(
+                self.get_val_directory(), transform=self.val_transform)
 
     def trn_dataloader(self):
         return torch.utils.data.DataLoader(
