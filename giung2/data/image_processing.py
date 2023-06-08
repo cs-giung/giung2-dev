@@ -18,6 +18,7 @@ __all__ = [
     'RandomContrastTransform',
     'RandomSaturationTransform',
     'RandomHueTransform',
+    'RandomGaussianBlurTransform',
 ]
 
 
@@ -183,3 +184,33 @@ class RandomHueTransform(Transform):
             (hue + factor) % 1.0, sat, val)
         image = (jnp.stack(rgb_adjusted, axis=2) * 255.0).astype(image.dtype)
         return jnp.clip(image, 0, 255)
+
+
+class RandomGaussianBlurTransform(Transform):
+
+    def __init__(self, kernel_size, sigma=(0.1, 2.0)):
+        self.kernel_size = kernel_size
+        self.sigma = sigma
+
+    def __call__(self, rng, image):
+        sigma = jax.random.uniform(
+            rng, shape=(1,), minval=self.sigma[0], maxval=self.sigma[1])
+        radius = int(self.kernel_size / 2)
+        kernel_size_ = 2 * radius + 1
+        x = jnp.arange(-radius, radius + 1).astype(jnp.float32)
+        blur_filter = jnp.exp(-x**2 / (2. * sigma**2))
+        blur_filter = blur_filter / jnp.sum(blur_filter)
+        blur_v = jnp.tile(
+            jnp.reshape(blur_filter, [kernel_size_, 1, 1, 1]), [1, 1, 1, 3])
+        blur_h = jnp.tile(
+            jnp.reshape(blur_filter, [1, kernel_size_, 1, 1]), [1, 1, 1, 3])
+        blurred = image[jnp.newaxis, ...]
+        blurred = jax.lax.conv_general_dilated(
+            blurred, blur_h, (1, 1), 'SAME',
+            dimension_numbers=('NHWC', 'HWIO', 'NHWC'),
+            feature_group_count=blurred.shape[3])
+        blurred = jax.lax.conv_general_dilated(
+            blurred, blur_v, (1, 1), 'SAME',
+            dimension_numbers=('NHWC', 'HWIO', 'NHWC'),
+            feature_group_count=blurred.shape[3])
+        return jnp.squeeze(blurred, axis=0)
