@@ -42,8 +42,9 @@ class TransformChain(Transform):
 
     def __call__(self, rng, image):
         jmage = image
-        for _t in self.transforms:
-            jmage = _t(rng, jmage)
+        _rngs = jax.random.split(rng, len(self.transforms))
+        for _transform, _rng in zip(self.transforms, _rngs):
+            jmage = _transform(_rng, jmage)
         return jnp.where(jax.random.bernoulli(rng, self.prob), jmage, image)
 
 
