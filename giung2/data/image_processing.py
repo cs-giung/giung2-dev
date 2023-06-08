@@ -204,7 +204,7 @@ class RandomGaussianBlurTransform(Transform):
             jnp.reshape(blur_filter, [kernel_size_, 1, 1, 1]), [1, 1, 1, 3])
         blur_h = jnp.tile(
             jnp.reshape(blur_filter, [1, kernel_size_, 1, 1]), [1, 1, 1, 3])
-        blurred = image[jnp.newaxis, ...]
+        blurred = image[jnp.newaxis, ...] / 255.0
         blurred = jax.lax.conv_general_dilated(
             blurred, blur_h, (1, 1), 'SAME',
             dimension_numbers=('NHWC', 'HWIO', 'NHWC'),
@@ -213,4 +213,5 @@ class RandomGaussianBlurTransform(Transform):
             blurred, blur_v, (1, 1), 'SAME',
             dimension_numbers=('NHWC', 'HWIO', 'NHWC'),
             feature_group_count=blurred.shape[3])
-        return jnp.squeeze(blurred, axis=0)
+        image = (jnp.squeeze(blurred, axis=0) * 255.0).astype(image.dtype)
+        return jnp.clip(image, 0, 255)
