@@ -54,7 +54,8 @@ class RandomDequantizationTransform(Transform):
         """
 
     def __call__(self, rng, image):
-        return image + jax.random.uniform(rng, image.shape, minval=-0.5, maxval=0.5)
+        return image + jax.random.uniform(
+            rng, image.shape, minval=-0.5, maxval=0.5)
 
 
 class RandomHFlipTransform(Transform):
@@ -68,11 +69,8 @@ class RandomHFlipTransform(Transform):
         self.prob = prob
 
     def __call__(self, rng, image):
-        return jnp.where(
-            condition = jax.random.bernoulli(rng, self.prob),
-            x         = jnp.flip(image, axis=1),
-            y         = image,
-        )
+        is_flip = jax.random.bernoulli(rng, self.prob)
+        return jnp.where(is_flip, jnp.flip(image, axis=1), image)
 
 
 class RandomCropTransform(Transform):
@@ -88,20 +86,16 @@ class RandomCropTransform(Transform):
         self.padding = padding
 
     def __call__(self, rng, image):
+        rngs = jax.random.split(rng, 2)
+        pad_width = (
+            (self.padding, self.padding), (self.padding, self.padding), (0, 0))
         image = jnp.pad(
-            array           = image,
-            pad_width       = ((self.padding, self.padding),
-                               (self.padding, self.padding),
-                               (           0,            0),),
-            mode            = 'constant',
-            constant_values = 0,
-        )
-        rng1, rng2 = jax.random.split(rng, 2)
-        h0 = jax.random.randint(rng1, shape=(1,), minval=0, maxval=2*self.padding+1)[0]
-        w0 = jax.random.randint(rng2, shape=(1,), minval=0, maxval=2*self.padding+1)[0]
+            image, pad_width=pad_width, mode='constant', constant_values=0)
+        h0 = jax.random.randint(
+            rngs[0], shape=(1,), minval=0, maxval=2*self.padding+1)[0]
+        w0 = jax.random.randint(
+            rngs[1], shape=(1,), minval=0, maxval=2*self.padding+1)[0]
         image = jax.lax.dynamic_slice(
-            operand       = image,
-            start_indices = (h0, w0, 0),
-            slice_sizes   = (self.size, self.size, image.shape[2]),
-        )
+            image, start_indices=(h0, w0, 0),
+            slice_sizes=(self.size, self.size, image.shape[2]))
         return image
