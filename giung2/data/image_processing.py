@@ -13,6 +13,7 @@ __all__ = [
     'RandomDequantizationTransform',
     'RandomHFlipTransform',
     'RandomCropTransform',
+    'RandomGrayscaleTransform',
     'RandomBrightnessTransform',
     'RandomContrastTransform',
     'RandomSaturationTransform',
@@ -105,6 +106,23 @@ class RandomCropTransform(Transform):
             image, start_indices=(h0, w0, 0),
             slice_sizes=(self.size, self.size, image.shape[2]))
         return image
+
+
+class RandomGrayscaleTransform(Transform):
+
+    def __init__(self, prob=0.5):
+        """
+        Convert the image to grayscale with the given probability.
+        Args:
+            prob: probability of the conversion.
+        """
+        self.prob = prob
+
+    def __call__(self, rng, image):
+        is_gray = jax.random.bernoulli(rng, self.prob)
+        jmage = (255.0 * color_conversion.rgb_to_grayscale(
+            image / 255.0, keepdims=True)).astype(image.dtype)
+        return jnp.where(is_gray, jnp.clip(jmage, 0, 255), image)
 
 
 class RandomBrightnessTransform(Transform):
