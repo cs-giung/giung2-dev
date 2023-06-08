@@ -9,7 +9,7 @@ import numpy as np
 from typing import Any
 from tabulate import tabulate
 from functools import partial
-from collections import OrderedDict, namedtuple
+from collections import OrderedDict
 
 import jax
 import jaxlib
@@ -111,11 +111,13 @@ def launch(config, print_fn):
     params = {
         'ext': variables['params'],
         'proj_head_w0': jax.random.normal(
-            jax.random.PRNGKey(config.seed + 1), (FEATURE_DIM, PROJECT_DIM)
+            jax.random.PRNGKey(config.seed + 1), (FEATURE_DIM, FEATURE_DIM)
         ) / FEATURE_DIM**0.5,
+        'proj_head_s0': jnp.ones((FEATURE_DIM,)),
+        'proj_head_b0': jnp.zeros((FEATURE_DIM,)),
         'proj_head_w1': jax.random.normal(
-            jax.random.PRNGKey(config.seed + 2), (PROJECT_DIM, PROJECT_DIM)
-        ) / PROJECT_DIM**0.5}
+            jax.random.PRNGKey(config.seed + 2), (FEATURE_DIM, PROJECT_DIM)
+        ) / FEATURE_DIM**0.5}
     log_str = 'The number of trainable parameters: {:d}'.format(
         jax.flatten_util.ravel_pytree(params)[0].size)
     print_fn(log_str)
@@ -172,8 +174,14 @@ def launch(config, print_fn):
                 'image_stats': state.image_stats}, images / 255.0,
                 mutable='batch_stats', use_running_average=False)
             
-            # forward a project head
-            output = jax.nn.relu(output @ params['proj_head_w0'])
+            # forward a projection head
+            output = output @ params['proj_head_w0']
+            output = jax.lax.rsqrt(
+                jnp.var(output, axis=-1, keepdims=True) + 1e-05
+            ) * (output - jnp.mean(output, axis=-1, keepdims=True))
+            output *= params['proj_head_s0'].reshape(1, FEATURE_DIM)
+            output += params['proj_head_b0'].reshape(1, FEATURE_DIM)
+            output = jax.nn.relu(output)
             output = output @ params['proj_head_w1']
             output = output / jnp.linalg.norm(output, axis=-1, keepdims=True)
             simmat = output @ output.T
