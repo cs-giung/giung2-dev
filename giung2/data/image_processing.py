@@ -121,7 +121,7 @@ class RandomGrayscaleTransform(Transform):
     def __call__(self, rng, image):
         is_gray = jax.random.bernoulli(rng, self.prob)
         jmage = (255.0 * color_conversion.rgb_to_grayscale(
-            image / 255.0, keepdims=True)).astype(image.dtype)
+            image / 255.0, keep_dims=True)).astype(image.dtype)
         return jnp.where(is_gray, jnp.clip(jmage, 0, 255), image)
 
 
