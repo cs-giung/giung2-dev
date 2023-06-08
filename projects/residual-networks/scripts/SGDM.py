@@ -273,6 +273,8 @@ def launch(config, print_fn):
 
         try:
             batch = next(trn_iter)
+            if jnp.sum(batch['marker']) < config.batch_size:
+                batch = next(trn_iter)
         except:
             data_rng = jax.random.split(data_rng)[1]
             trn_iter = build_trn_loader(data_rng)
