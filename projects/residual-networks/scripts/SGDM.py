@@ -224,7 +224,9 @@ def launch(config, print_fn):
         ], boundaries=[
             math.floor(0.1 * config.optim_ni),
         ])
-    optimizer = optax.sgd(scheduler, momentum=config.optim_momentum)
+    optimizer = optax.sgd(
+        scheduler, momentum=config.optim_momentum,
+        accumulator_dtype=model_dtype)
 
     # build and replicate train state
     class TrainState(train_state.TrainState):
