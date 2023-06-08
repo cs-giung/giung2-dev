@@ -33,14 +33,18 @@ class Transform(metaclass=ABCMeta):
 
 class TransformChain(Transform):
 
-    def __init__(self, transforms: List[Transform]):
-        super().__init__()
+    def __init__(self, transforms: List[Transform], prob: float = 1.0):
+        """
+        Apply transforms with the given probability.
+        """
         self.transforms = transforms
+        self.prob = prob
 
     def __call__(self, rng, image):
+        jmage = image
         for _t in self.transforms:
-            image = _t(rng, image)
-        return image
+            jmage = _t(rng, jmage)
+        return jnp.where(jax.random.bernoulli(rng, self.prob), jmage, image)
 
 
 class ToTensorTransform(Transform):
