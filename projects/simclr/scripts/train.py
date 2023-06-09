@@ -267,15 +267,14 @@ def launch(config, print_fn):
     
     # define optimizer with scheduler
     sqrt_lr = config.optim_lr * math.sqrt(config.batch_size)
+    warm_up = min(10 * trn_steps_per_epoch, math.floor(0.1 * config.optim_ni))
     scheduler = optax.join_schedules(
         schedules=[
             optax.linear_schedule(
-                init_value=0.0, end_value=sqrt_lr,
-                transition_steps=math.floor(0.1 * config.optim_ni)),
+                init_value=0.0, end_value=sqrt_lr, transition_steps=warm_up),
             optax.cosine_decay_schedule(
-                init_value=sqrt_lr,
-                decay_steps=math.floor(0.9 * config.optim_ni))
-        ], boundaries=[math.floor(0.1 * config.optim_ni),])
+                init_value=sqrt_lr, decay_steps=(config.optim_ni - warm_up)),
+        ], boundaries=[warm_up,])
     optimizer = optax.lars(
         scheduler, weight_decay=config.optim_weight_decay,
         momentum=config.optim_momentum)
