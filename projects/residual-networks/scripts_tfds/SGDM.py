@@ -26,6 +26,7 @@ from tensorflow.io.gfile import GFile
 from scripts_tfds import defaults
 from giung2.data.tfds import input_pipeline
 from giung2.data.torchvision import imagenet
+from giung2.data.build import build_dataloader
 from giung2.models.resnet import FlaxResNet
 from giung2.metrics import evaluate_acc, evaluate_nll
 
@@ -336,7 +337,6 @@ def launch(config, print_fn):
             if jnp.isnan(trn_summarized['trn/loss']):
                 break
 
-
     # --------------------------------------------------------------- #
     # ImageNetV2
     # --------------------------------------------------------------- #
@@ -346,20 +346,27 @@ def launch(config, print_fn):
     )(best_ckpt['params'], best_ckpt['batch_stats'], best_ckpt['image_stats'])
 
     tst_summarized = {}
-    for dataset_name in ['ImageNet', 'ImageNetV2']:
+    for dataset_name in ['ImageNet', 'ImageNetV2',
+                         'ImageNetR', 'ImageNetA', 'ImageNetSketch']:
 
-        dataset = getattr(imagenet, dataset_name)(
-            root=config.data_root, batch_size=config.batch_size,
-            load_trn=False, num_workers=config.num_workers,
-            prefetch_factor=config.prefetch_factor)
-        dataloader = dataset.val_dataloader()
+        dataset = getattr(
+            imagenet, dataset_name)(load_trn=False, load_val=False)
+
+        tst_images = np.load(os.path.join(
+            config.data_root, f'{dataset_name}_x224/test_images.npy'))
+        tst_labels = np.load(os.path.join(
+            config.data_root, f'{dataset_name}_x224/test_labels.npy'))
+        dataloader = build_dataloader(
+            tst_images, tst_labels, config.batch_size)
+        tst_steps_per_epoch = math.ceil(
+            tst_images.shape[0] / config.batch_size)
 
         acc, nll, cnt = 0.0, 0.0, 0
-        for images, labels in tqdm(dataloader, leave=False, ncols=0,
-                                   total=len(dataloader), desc=dataset_name):
+        for batch in tqdm(dataloader, total=tst_steps_per_epoch,
+                          leave=False, ncols=0, desc=dataset_name):
             
-            labels = jnp.array(labels)
-            images = jnp.array(images / 255.0).transpose(0, 2, 3, 1)
+            labels = jnp.array(batch['labels'])[:batch['marker'].sum()]
+            images = jnp.array(batch['images'] / 255.0)
             if images.shape[0] != config.batch_size:
                 images = jnp.zeros(
                     (config.batch_size,) + images.shape[1:]
