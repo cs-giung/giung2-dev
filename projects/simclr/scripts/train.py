@@ -26,6 +26,7 @@ from scripts import defaults
 from giung2.data import image_processing
 from giung2.data.tfds import input_pipeline
 from giung2.models.resnet import FlaxResNet
+from giung2.metrics import evaluate_acc, evaluate_nll
 
 
 def launch(config, print_fn):
@@ -76,6 +77,8 @@ def launch(config, print_fn):
         dataset_builder, config.batch_size, split=val_split))
     val_iter = jax_utils.prefetch_to_device(val_iter, config.prefetch_factor)
 
+    NUM_CLASSES = 1000
+
     # ----------------------------------------------------------------------- #
     # Model
     # ----------------------------------------------------------------------- #
@@ -110,6 +113,7 @@ def launch(config, print_fn):
 
     params = {
         'ext': variables['params'],
+        'cls': jnp.zeros((FEATURE_DIM, NUM_CLASSES)),
         'proj_head_w0': jax.random.normal(
             jax.random.PRNGKey(config.seed + 1), (FEATURE_DIM, FEATURE_DIM)
         ) / FEATURE_DIM**0.5,
@@ -174,6 +178,14 @@ def launch(config, print_fn):
                 'image_stats': state.image_stats}, images / 255.0,
                 mutable='batch_stats', use_running_average=False)
             
+            # negative_log_likelihood (for online linear evaluation)
+            logits = jax.lax.stop_gradient(output) @ params['cls']
+            source = jax.nn.log_softmax(logits, axis=-1)
+            target = common_utils.onehot(
+                jnp.concatenate(batch['labels'], batch['labels']), NUM_CLASSES)
+            negative_log_likelihood = -jnp.sum(target * source, axis=-1)
+            negative_log_likelihood = jnp.mean(negative_log_likelihood)
+
             # forward a projection head
             output = output @ params['proj_head_w0']
             output = jax.lax.rsqrt(
@@ -186,7 +198,7 @@ def launch(config, print_fn):
             output = output / jnp.linalg.norm(output, axis=-1, keepdims=True)
             simmat = output @ output.T
 
-            # compute a contrastive loss
+            # contrastive_loss
             mask = np.eye(labels.shape[0], dtype=bool)
             labels = labels[~mask].reshape(labels.shape[0], -1)
             simmat = simmat[~mask].reshape(simmat.shape[0], -1)
@@ -194,10 +206,17 @@ def launch(config, print_fn):
             pos = simmat[ labels.astype(bool)].reshape(labels.shape[0], -1)
             neg = simmat[~labels.astype(bool)].reshape(labels.shape[0], -1)
             logits = jnp.concatenate([pos, neg], axis=1) / config.temperature
-            loss = -jnp.mean(jax.nn.log_softmax(logits, axis=-1)[:, 0])
+            contrastive_loss = -jnp.mean(
+                jax.nn.log_softmax(logits, axis=-1)[:, 0])
+
+            # loss
+            loss = contrastive_loss + negative_log_likelihood
 
             # log metrics
-            metrics = OrderedDict({'loss': loss})
+            metrics = OrderedDict({
+                'loss': loss,
+                'contrastive_loss': contrastive_loss,
+                'negative_log_likelihood': negative_log_likelihood})
             return loss, (metrics, new_model_state)
 
         # compute losses and gradients
@@ -263,6 +282,14 @@ def launch(config, print_fn):
         image_stats=variables['image_stats'])
     state = jax_utils.replicate(state)
 
+    def apply_fn(images, state):
+        return model.apply({
+            'params': state.params['ext'],
+            'batch_stats': state.batch_stats,
+            'image_stats': state.image_stats,
+        }, images, use_running_average=True) @ state.params['cls']
+    p_apply_fn = jax.pmap(apply_fn)
+
     # run optimization
     data_rng = jax.random.split(
         jax.random.PRNGKey(config.seed), local_device_count)
@@ -294,7 +321,7 @@ def launch(config, print_fn):
         trn_metric.append(metrics)
 
         if iter_idx % 1000 == 0:
-            trn_summarized = {}, {}, {}
+            trn_summarized, val_summarized = {}, {}
             
             trn_metric = common_utils.get_metrics(trn_metric)
             trn_summarized = {f'trn/{k}': v for k, v in jax.tree_util.tree_map(
@@ -309,19 +336,45 @@ def launch(config, print_fn):
                 batch_stats=sync_batch_stats(state.batch_stats))
 
             # --------------------------------------------------------------- #
+            # Valid
+            # --------------------------------------------------------------- #
+            acc, nll, cnt = 0.0, 0.0, 0
+            for batch_idx, batch in enumerate(val_iter, start=1):
+                logits = p_apply_fn(batch['images'] / 255.0, state)
+                logits = logits.reshape(-1, NUM_CLASSES)
+                labels = batch['labels'].reshape(-1)
+                marker = batch['marker'].reshape(-1)
+                pre = jax.nn.log_softmax(logits, axis=-1)
+                acc += jnp.sum(jnp.where(marker, evaluate_acc(
+                    pre, labels, log_input=True, reduction='none'
+                ), marker))
+                nll += jnp.sum(jnp.where(marker, evaluate_nll(
+                    pre, labels, log_input=True, reduction='none'
+                ), marker))
+                cnt += jnp.sum(marker)
+                if batch_idx == val_steps_per_epoch:
+                    break
+            val_summarized['val/acc'] = acc / cnt
+            val_summarized['val/nll'] = nll / cnt
+
+            log_str += ', '
+            log_str += ', '.join(
+                f'{k} {v:.3e}' for k, v in val_summarized.items())
+            
+            # --------------------------------------------------------------- #
             # Save
             # --------------------------------------------------------------- #
-            best_ckpt = {
+            save_ckpt = {
                 'params': state.params,
                 'batch_stats': state.batch_stats,
                 'image_stats': state.image_stats}
-            best_ckpt = jax.device_get(
-                jax.tree_util.tree_map(lambda x: x[0], best_ckpt))
+            save_ckpt = jax.device_get(
+                jax.tree_util.tree_map(lambda x: x[0], save_ckpt))
 
             if config.save:
-                best_path = os.path.join(config.save, 'checkpoint.ckpt')
-                with GFile(best_path, 'wb') as fp:
-                    fp.write(serialization.to_bytes(best_ckpt))
+                save_path = os.path.join(config.save, 'checkpoint.ckpt')
+                with GFile(save_path, 'wb') as fp:
+                    fp.write(serialization.to_bytes(save_ckpt))
                 
             # logging current iteration
             print_fn(log_str)
