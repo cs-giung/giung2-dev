@@ -159,17 +159,14 @@ def launch(config, print_fn):
 
             # obtain two views of the same example
             rngs = jax.random.split(data_rng)
-            images = jnp.concatenate([
+            images = jnp.stack([
                 augment_image(jax.random.split(
                     rngs[0], batch['images'].shape[0]), batch['images']),
                 augment_image(jax.random.split(
                     rngs[1], batch['images'].shape[0]), batch['images']),
-                ], axis=0)
-            labels = np.concatenate([
-                np.arange(batch['images'].shape[0]),
-                np.arange(batch['images'].shape[0])], axis=0)
-            labels = labels[np.newaxis, ...] == labels[..., np.newaxis]
-            labels = labels.astype(float)
+                ], axis=1)
+            images = images.reshape((images.shape[0] * 2, images.shape[2],
+                                     images.shape[3], images.shape[4]))
 
             # forward a base encoder network
             output, new_model_state = model.apply({
@@ -180,10 +177,11 @@ def launch(config, print_fn):
             
             # negative_log_likelihood (for online linear evaluation)
             logits = jax.lax.stop_gradient(output) @ params['cls']
-            source = jax.nn.log_softmax(logits, axis=-1)
-            target = common_utils.onehot(jnp.concatenate(
-                [batch['labels'], batch['labels']]), NUM_CLASSES)
-            negative_log_likelihood = -jnp.sum(target * source, axis=-1)
+            labels = jnp.stack([batch['labels'], batch['labels']], axis=1)
+            labels = labels.reshape((labels.shape[0] * 2))
+            negative_log_likelihood = -jnp.sum(
+                common_utils.onehot(labels, logits.shape[1]) \
+                    * jax.nn.log_softmax(logits, axis=-1), axis=-1)
             negative_log_likelihood = jnp.mean(negative_log_likelihood)
 
             # forward a projection head
@@ -195,19 +193,30 @@ def launch(config, print_fn):
             output += params['proj_head_b0'].reshape(1, FEATURE_DIM)
             output = jax.nn.relu(output)
             output = output @ params['proj_head_w1']
-            output = output / jnp.linalg.norm(output, axis=-1, keepdims=True)
-            simmat = output @ output.T
+            output = output / (
+                jnp.linalg.norm(output, axis=-1, keepdims=True) + 1e-10)
 
             # contrastive_loss
-            mask = np.eye(labels.shape[0], dtype=bool)
-            labels = labels[~mask].reshape(labels.shape[0], -1)
-            simmat = simmat[~mask].reshape(simmat.shape[0], -1)
+            simmat = output @ output.T
+            mask = 1 - np.eye(output.shape[0], dtype=int)
+            pos_idx = (
+                np.arange(output.shape[0]), 2 * np.repeat(
+                    np.arange(output.shape[0] // 2)[:, np.newaxis, ...], 2, 1
+                ).reshape(-1))
+            neg_mask = np.ones(
+                (output.shape[0], output.shape[0] - 1), dtype=int)
+            neg_mask[pos_idx] = 0
 
-            pos = simmat[ labels.astype(bool)].reshape(labels.shape[0], -1)
-            neg = simmat[~labels.astype(bool)].reshape(labels.shape[0], -1)
-            logits = jnp.concatenate([pos, neg], axis=1) / config.temperature
-            contrastive_loss = -jnp.mean(
-                jax.nn.log_softmax(logits, axis=-1)[:, 0])
+            simmat = simmat[mask == 1].reshape(simmat.shape[0], -1)
+            pos = simmat[pos_idx][:, jnp.newaxis]
+            neg = simmat[neg_mask == 1].reshape(simmat.shape[0], -1)
+
+            logits = jnp.concatenate((pos, neg), axis=1) / config.temperature
+            labels = jnp.zeros((logits.shape[0],), dtype=int)
+            contrastive_loss = -jnp.sum(
+                common_utils.onehot(labels, logits.shape[1]) \
+                    * jax.nn.log_softmax(logits, axis=-1), axis=-1)
+            contrastive_loss = jnp.mean(contrastive_loss)
 
             # loss
             loss = contrastive_loss + negative_log_likelihood
