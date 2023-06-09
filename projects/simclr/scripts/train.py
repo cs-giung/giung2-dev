@@ -181,8 +181,8 @@ def launch(config, print_fn):
             # negative_log_likelihood (for online linear evaluation)
             logits = jax.lax.stop_gradient(output) @ params['cls']
             source = jax.nn.log_softmax(logits, axis=-1)
-            target = common_utils.onehot(
-                jnp.concatenate(batch['labels'], batch['labels']), NUM_CLASSES)
+            target = common_utils.onehot(jnp.concatenate(
+                [batch['labels'], batch['labels']]), NUM_CLASSES)
             negative_log_likelihood = -jnp.sum(target * source, axis=-1)
             negative_log_likelihood = jnp.mean(negative_log_likelihood)
 
