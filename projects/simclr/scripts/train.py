@@ -16,6 +16,7 @@ import jaxlib
 import flax
 import optax
 import jax.numpy as jnp
+import tensorflow as tf
 import tensorflow_datasets as tfds
 from flax import jax_utils, serialization
 from flax.training import common_utils, train_state
@@ -49,6 +50,35 @@ def launch(config, print_fn):
     # ----------------------------------------------------------------------- #
     # Dataset
     # ----------------------------------------------------------------------- #
+    from giung2.data.tfds.input_pipeline import _random_crop, _random_flip
+
+    def create_trn_split_simclr(data_builder, batch_size, split='train',
+                                dtype=tf.float32, image_size=224, cache=True):
+        data = data_builder.as_dataset(
+            split=split, shuffle_files=True,
+            decoders={'image': tfds.decode.SkipDecoding()})
+        image_decoder = data_builder.info.features['image'].decode_example
+        shuffle_buffer_size = min(
+            16*batch_size, data_builder.info.splits[split].num_examples)
+        def decode_example(example):
+            image = image_decoder(example['image'])
+            jmage = _random_flip(_random_crop(image, image_size))
+            jmage = tf.reshape(jmage, [image_size, image_size, 3])
+            jmage = tf.cast(jmage, dtype=dtype)
+            kmage = _random_flip(_random_crop(image, image_size))
+            kmage = tf.reshape(kmage, [image_size, image_size, 3])
+            kmage = tf.cast(kmage, dtype=dtype)
+            image = tf.stack([jmage, kmage], axis=1)
+            return {'images': image, 'labels': example['label']}
+        if cache:
+            data = data.cache()
+        data = data.repeat()
+        data = data.shuffle(shuffle_buffer_size)
+        data = data.map(decode_example, num_parallel_calls=tf.data.AUTOTUNE)
+        data = data.batch(batch_size, drop_remainder=True)
+        data = data.prefetch(tf.data.AUTOTUNE)
+        return data
+
     def prepare_tf_data(batch):
         batch['images'] = batch['images']._numpy()
         batch['labels'] = batch['labels']._numpy()
@@ -66,7 +96,7 @@ def launch(config, print_fn):
     trn_split = 'train'
     trn_steps_per_epoch = math.ceil(
         dataset_builder.info.splits[trn_split].num_examples / config.batch_size)
-    trn_iter = map(prepare_tf_data, input_pipeline.create_trn_split(
+    trn_iter = map(prepare_tf_data, create_trn_split_simclr(
         dataset_builder, config.batch_size, split=trn_split))
     trn_iter = jax_utils.prefetch_to_device(trn_iter, config.prefetch_factor)
 
@@ -98,7 +128,7 @@ def launch(config, print_fn):
     variables = initialize_model(jax.random.PRNGKey(config.seed), model)
 
     # define forward function and specify shapes
-    images = next(trn_iter)['images']
+    images = next(trn_iter)['images'][:, 0]
     output = jax.pmap(model.apply)({
         'params': jax_utils.replicate(variables['params']),
         'batch_stats': jax_utils.replicate(variables['batch_stats']),
@@ -161,9 +191,9 @@ def launch(config, print_fn):
             rngs = jax.random.split(data_rng)
             images = jnp.stack([
                 augment_image(jax.random.split(
-                    rngs[0], batch['images'].shape[0]), batch['images']),
+                    rngs[0], batch['images'][:, 0].shape[0]), batch['images'][:, 0]),
                 augment_image(jax.random.split(
-                    rngs[1], batch['images'].shape[0]), batch['images']),
+                    rngs[1], batch['images'][:, 1].shape[0]), batch['images'][:, 1]),
                 ], axis=1)
             images = images.reshape((images.shape[0] * 2, images.shape[2],
                                      images.shape[3], images.shape[4]))
