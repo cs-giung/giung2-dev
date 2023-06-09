@@ -93,7 +93,7 @@
 | Depth | Width | # Params | val/acc | IN    | IN-V2 |  IN-R |  IN-A |  IN-S | misc                  |    |
 |    -: |    -: |       -: |     :-: | :-:   |   :-: |   :-: |   :-: |   :-: | :-                    | :- |
 |    18 |     1 |  11.69 M |   0.705 | 0.703 | 0.570 | 0.304 | 0.012 | 0.187 | `0.32 epoch/min` `fp16` `b2048-64k` `4RTX3090`  | [`*.log`](./save/imagenet2012/R18x1_b2048_i64k_lr0.8-wd0.0001-s42-fp16/20230609151625.log)
-|    34 |     1 |  21.80 M |   0.740 | 0.737 | 0.609 |       |       |       | `0.22 epoch/min` `fp16` `b2048-64k` `4RTX3090`  | [`*.log`](./save/imagenet2012/resnet_34x1-batch_2048-iter_64k-lr_0.8-wd_0.0001-fp16/42/20230531132545.log)
+|    34 |     1 |  21.80 M |   0.738 | 0.738 | 0.609 | 0.346 | 0.019 | 0.229 | `0.27 epoch/min` `fp16` `b2048-64k` `4RTX3090`  | [`*.log`](./save/imagenet2012/R34x1_b2048_i64k_lr0.8-wd0.0001-s42-fp16/20230609204742.log)
 |    50 |     1 |  25.56 M |   0.767 |       |       |       |       |       | `0.24 epoch/min` `fp16` `b2048-64k` `8RTX3090`  | [`*.log`](./save/imagenet2012/resnet_50x1-batch_2048-iter_64k-lr_0.8-wd_0.0001-fp16/42/20230531040107.log)
 |       |       |          |   0.767 | 0.765 | 0.641 |       |       |       | `0.23 epoch/min` `fp16` `b2048-64k` `8TPUv3`    | [`*.log`](./save/imagenet2012/resnet_50x1-batch_2048-iter_64k-lr_0.8-wd_0.0001-tpuv3-fp16/42/20230530191949.log)
 |       |       |          |   0.766 | 0.765 | 0.641 |       |       |       | `0.27 epoch/min` `fp16` `b4096-32k` `8TPUv3`    | [`*.log`](./save/imagenet2012/resnet_50x1-batch_4096-iter_32k-lr_1.6-wd_0.0001-tpuv3-fp16/42/20230601090151.log)
