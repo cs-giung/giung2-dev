@@ -68,7 +68,7 @@ def launch(config, print_fn):
             kmage = _random_flip(_random_crop(image, image_size))
             kmage = tf.reshape(kmage, [image_size, image_size, 3])
             kmage = tf.cast(kmage, dtype=dtype)
-            image = tf.stack([jmage, kmage], axis=1)
+            image = tf.stack([jmage, kmage], axis=0)
             return {'images': image, 'labels': example['label']}
         if cache:
             data = data.cache()
