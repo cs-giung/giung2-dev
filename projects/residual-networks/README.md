@@ -114,24 +114,24 @@ python scripts_tfds/train.py
 * The calculation of throughputs is based on the last 5k iterations.
 * The following training runs are done with four GeForce RTX 3090.
 
-| Depth | Width | # Params | IN    | V2    | R     | A     | S     | misc                  |    |
-|    -: |    -: |       -: | :-:   | :-:   | :-:   | :-:   | :-:   | :-                    | :- |
+| Depth | Width | # Params | IN    | V2    | R     | A     | S     | misc |    |
+|    -: |    -: |       -: | :-:   | :-:   | :-:   | :-:   | :-:   | :-   | :- |
 |    18 |     1 |  11.69 M | 0.703 | 0.570 | 0.304 | 0.012 | 0.187 | `0.32 epoch/min` `fp16` `b2048-64k`  | [`*.log`](https://www.dropbox.com/s/cgxxwn9imk2xe7h/R18x1_b2048_i64k_lr0.8-wd0.0001-s42-fp16.log) [`*.ckpt`](https://www.dropbox.com/s/2ge8jj6si2bcthn/R18x1_b2048_i64k_lr0.8-wd0.0001-s42-fp16.ckpt)
 |    34 |     1 |  21.80 M | 0.738 | 0.609 | 0.346 | 0.019 | 0.229 | `0.27 epoch/min` `fp16` `b2048-64k`  | [`*.log`](https://www.dropbox.com/s/n7nkugzrsll2x2c/R34x1_b2048_i64k_lr0.8-wd0.0001-s42-fp16.log) [`*.ckpt`](https://www.dropbox.com/s/srtj13opp67ff34/R34x1_b2048_i64k_lr0.8-wd0.0001-s42-fp16.ckpt)
 |    50 |     1 |  25.56 M | 0.764 | 0.638 | 0.353 | 0.020 | 0.239 | `0.16 epoch/min` `fp16` `b1024-128k` | [`*.log`](https://www.dropbox.com/s/l8cww0f0fqm60q6/R50x1_b1024_i128k_lr0.4-wd0.0001-s42-fp16.log) [`*.ckpt`](https://www.dropbox.com/s/5savumjgfofoh15/R50x1_b1024_i128k_lr0.4-wd0.0001-s42-fp16.ckpt)
 
 * The following training runs are done with eight GeForce RTX 3090.
 
-| Depth | Width | # Params | IN    | V2    | R     | A     | S     | misc                  |
-|    -: |    -: |       -: | :-:   | :-:   | :-:   | :-:   | :-:   | :-                    |
+| Depth | Width | # Params | IN    | V2    | R     | A     | S     | misc |
+|    -: |    -: |       -: | :-:   | :-:   | :-:   | :-:   | :-:   | :-   |
 |    50 |     1 |  25.56 M | 0.767 | (N/A) | (N/A) | (N/A) | (N/A) | `0.24 epoch/min` `fp16` `b2048-64k`  |
 |   152 |     1 |  60.19 M | 0.790 | 0.673 | (N/A) | (N/A) | (N/A) | `0.09 epoch/min` `fp16` `b1024-128k` |
 
 * The following training runs are done with eight TPUv3 cores.
 
-| Depth | Width | # Params | IN    | V2    | R     | A     | S     | misc                  |
-|    -: |    -: |       -: | :-:   | :-:   | :-:   | :-:   | :-:   | :-                    |
+| Depth | Width | # Params | IN    | V2    | R     | A     | S     | misc |    |
+|    -: |    -: |       -: | :-:   | :-:   | :-:   | :-:   | :-:   | :-   | :- |
 |    50 |     1 |  25.56 M | 0.765 | 0.641 | (N/A) | (N/A) | (N/A) | `0.27 epoch/min` `fp16` `b4096-32k`  |
 |       |       |          | 0.765 | 0.641 | (N/A) | (N/A) | (N/A) | `0.23 epoch/min` `fp16` `b2048-64k`  |
-|   152 |     1 |  60.19 M |       |       |       |       |       | `     epoch/min` `fp16` `b2048-32k ` |
-|       |       |          |       |       |       |       |       | `     epoch/min` `fp16` `b1024-128k` |
+|   152 |     1 |  60.19 M | 0.788 | 0.668 | 0.392 | 0.055 | 0.275 | `0.12 epoch/min` `fp16` `b2048-32k ` | [`*.log`](https://www.dropbox.com/s/itiob8i5rngn51s/R152x1_b2048_i64k_lr0.8-wd0.0001-s42-fp16-tpu.log) [`*.ckpt`](https://www.dropbox.com/s/lm709i58kbou689/R152x1_b2048_i64k_lr0.8-wd0.0001-s42-fp16-tpu.ckpt)
+|       |       |          | 0.789 | 0.666 | 0.395 | 0.057 | 0.279 | `0.11 epoch/min` `fp16` `b1024-128k` | [`*.log`](https://www.dropbox.com/s/3a3n2r5msx94iei/R152x1_b1024_i128k_lr0.4-wd0.0001-s42-fp16-tpu.log) [`*.ckpt`](https://www.dropbox.com/s/r1unycn0q59nyoi/R152x1_b1024_i128k_lr0.4-wd0.0001-s42-fp16-tpu.ckpt)
