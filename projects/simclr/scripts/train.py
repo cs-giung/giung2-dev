@@ -151,7 +151,9 @@ def launch(config, print_fn):
         'proj_head_b0': jnp.zeros((FEATURE_DIM,)),
         'proj_head_w1': jax.random.normal(
             jax.random.PRNGKey(config.seed + 2), (FEATURE_DIM, PROJECT_DIM)
-        ) / FEATURE_DIM**0.5}
+        ) / FEATURE_DIM**0.5,
+        'proj_head_s1': jnp.ones((PROJECT_DIM,)),
+        'proj_head_b1': jnp.zeros((PROJECT_DIM,))}
     log_str = 'The number of trainable parameters: {:d}'.format(
         jax.flatten_util.ravel_pytree(params)[0].size)
     print_fn(log_str)
@@ -222,7 +224,14 @@ def launch(config, print_fn):
             output *= params['proj_head_s0'].reshape(1, FEATURE_DIM)
             output += params['proj_head_b0'].reshape(1, FEATURE_DIM)
             output = jax.nn.relu(output)
+
             output = output @ params['proj_head_w1']
+            output = jax.lax.rsqrt(
+                jnp.var(output, axis=-1, keepdims=True) + 1e-05
+            ) * (output - jnp.mean(output, axis=-1, keepdims=True))
+            output *= params['proj_head_s1'].reshape(1, PROJECT_DIM)
+            output += params['proj_head_b1'].reshape(1, PROJECT_DIM)
+
             output = output / (
                 jnp.linalg.norm(output, axis=-1, keepdims=True) + 1e-10)
 
