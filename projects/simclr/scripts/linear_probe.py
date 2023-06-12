@@ -253,7 +253,7 @@ def launch(config, print_fn):
         state, metrics = p_step_trn(state, batch, dynamic_scale=dynamic_scale)
         trn_metric.append(metrics)
 
-        if iter_idx % 100 == 0:
+        if iter_idx % 1000 == 0:
             trn_summarized, val_summarized, tst_summarized = {}, {}, {}
             
             trn_metric = common_utils.get_metrics(trn_metric)
@@ -329,8 +329,8 @@ def main():
         help='path to the pre-trained *.ckpt file (required)')
 
     parser.add_argument(
-        '--optim_ni', default=5000, type=int,
-        help='the number of training iterations (default: 5000)')
+        '--optim_ni', default=32000, type=int,
+        help='the number of training iterations (default: 32000)')
     parser.add_argument(
         '--optim_lr', default=0.075, type=float,
         help='square root learning rate scaling will be used (default: 0.075)')
