@@ -118,7 +118,9 @@ def launch(config, print_fn):
         widen_factor=config.resnet_width,
         dtype=model_dtype,
         pixel_mean=(0.48145466, 0.45782750, 0.40821073),
-        pixel_std=(0.26862954, 0.26130258, 0.27577711))
+        pixel_std=(0.26862954, 0.26130258, 0.27577711),
+        norm=partial(flax.linen.BatchNorm,
+                     momentum=0.9, epsilon=1e-5, axis_name='batch'))
         
     def initialize_model(key, model):
         @jax.jit
