@@ -318,8 +318,10 @@ def launch(config, print_fn):
         ], boundaries=[warm_up,])
     optimizer = optax.lars(
         scheduler, weight_decay=config.optim_weight_decay,
+        weight_decay_mask=jax.tree_util.tree_map(lambda e: e.ndim > 1, params),
+        trust_ratio_mask=jax.tree_util.tree_map(lambda e: e.ndim > 1, params),
         momentum=config.optim_momentum)
-
+    
     # build and replicate train state
     class TrainState(train_state.TrainState):
         batch_stats: Any = None
