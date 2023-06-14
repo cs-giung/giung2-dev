@@ -9,25 +9,18 @@
 ## Results for imagenet2012
 
 ### SimCLRv1
-During linear evaluation, which is represented as "Valid ACC" in the tables, we added a linear classifier on the top of the base encoder. To prevent the label information from influencing the encoder, we utilized the `jax.lax.stop_gradient` on the input to the linear classifier. Throughout the training process, both the base encoder and the linear classifier were updated simultaneously using the LARS optimizer, employing the same set of hyperparameters.
+During linear evaluation, we added a linear classifier on the top of the base encoder. To prevent the label information from influencing the encoder, we utilized the `jax.lax.stop_gradient` on the input to the linear classifier. Throughout the training process, both the base encoder and the linear classifier were updated simultaneously using the LARS optimizer, employing the same set of hyperparameters. All training runs were conducted using a mini-batch size of 2048 and mixed precision training on eight TPUv3 cores.
 
-| Depth | Width | # Params | Valid ACC | misc |
-|    -: |    -: |       -: |        -: | :-   |
-|    18 |     1 |  11.69 M |   49.82 % | `b2048-64k` `fp16`  |
-|       |       |          |     (TBD) | `b2048-128k` `fp16` |
-|       |       |          |     (TBD) | `b2048-512k` `fp16` |
-|    50 |     1 |  25.56 M |   63.01 % | `b2048-64k` `fp16`  |
-|       |       |          |   64.59 % | `b2048-128k` `fp16` |
-|       |       |          |     (TBD) | `b2048-512k` `fp16` |
+| Depth | Width | # Params |     64k |    128k |    512k |
+|    -: |    -: |       -: |     :-: |     :-: |     :-: |
+|    18 |     1 |  11.69 M | 49.82 % |   (TBD) |   (TBD) |
+|    50 |     1 |  25.56 M | 63.01 % | 64.59 % |   (TBD) |
 
 ### SimCLRv0
-The results of the initial trials are summarized in the following table. During these trials, we did not use synchronized batch normalization layers and did not exclude batch normalization layers and biases from the LARS optimization.
+The results of the initial trials are summarized in the following table. During these trials, we did not use synchronized batch normalization layers and did not exclude batch normalization layers and biases from the LARS optimization. All training runs were conducted using a mini-batch size of 2048 and mixed precision training on eight TPUv3 cores.
 
-| Depth | Width | # Params | Valid ACC | misc |
-|    -: |    -: |       -: |        -: | :-   |
-|    18 |     1 |  11.69 M |   48.93 % | `b2048-64k` `fp16`  |
-|       |       |          |   50.82 % | `b2048-128k` `fp16` |
-|       |       |          |   52.32 % | `b2048-512k` `fp16` |
-|    50 |     1 |  25.56 M |   62.20 % | `b2048-64k` `fp16`  |
-|       |       |          |   63.89 % | `b2048-128k` `fp16` |
-|       |       |          |     (N/A) | `b2048-512k` `fp16` |
+
+| Depth | Width | # Params |     64k |    128k |    512k |
+|    -: |    -: |       -: |     :-: |     :-: |     :-: |
+|    18 |     1 |  11.69 M | 48.93 % | 50.82 % | 52.32 % |
+|    50 |     1 |  25.56 M | 62.20 % | 63.89 % |   (N/A) |
