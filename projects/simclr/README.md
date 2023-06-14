@@ -7,3 +7,25 @@
 ## Usage examples
 
 ## Results for imagenet2012
+
+### SimCLRv0
+The results of the initial trials are summarized in the following table. During these trials, we did not use synchronized batch normalization layers and did not exclude batch normalization layers and biases from the LARS optimization.
+
+| Depth | Width | # Params | Valid ACC | misc |
+|    -: |    -: |       -: |        -: | :-   |
+|    18 |     1 |  11.69 M |   48.93 % | `b2048-64k` `fp16`  |
+|       |       |          |   50.82 % | `b2048-128k` `fp16` |
+|       |       |          |   52.32 % | `b2048-512k` `fp16` |
+|    50 |     1 |  25.56 M |   62.20 % | `b2048-64k` `fp16`  |
+|       |       |          |   63.89 % | `b2048-128k` `fp16` |
+|       |       |          |     (N/A) | `b2048-512k` `fp16` |
+
+### SimCLRv1
+| Depth | Width | # Params | Valid ACC | misc |
+|    -: |    -: |       -: |        -: | :-   |
+|    18 |     1 |  11.69 M |   49.82 % | `b2048-64k` `fp16`  |
+|       |       |          |     (TBD) | `b2048-128k` `fp16` |
+|       |       |          |     (TBD) | `b2048-512k` `fp16` |
+|    50 |     1 |  25.56 M |   63.01 % | `b2048-64k` `fp16`  |
+|       |       |          |   64.59 % | `b2048-128k` `fp16` |
+|       |       |          |     (TBD) | `b2048-512k` `fp16` |
