@@ -13,7 +13,8 @@ During linear evaluation, we added a linear classifier on the top of the base en
 
 | Depth | Width | # Params |     64k |    128k |    512k |
 |    -: |    -: |       -: |     :-: |     :-: |     :-: |
-|    18 |     1 |  11.69 M | 49.82 % |   (TBD) |   (TBD) |
+|    18 |     1 |  11.69 M | 49.82 % | 51.31 % | 53.14 % |
+|    34 |     1 |  21.80 M | 52.94 % | 54.78 % |   (TBD) |
 |    50 |     1 |  25.56 M | 63.01 % | 64.59 % |   (TBD) |
 
 ### SimCLRv0
