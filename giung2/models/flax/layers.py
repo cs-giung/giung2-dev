@@ -79,52 +79,102 @@ class FilterResponseNorm(nn.Module):
 
 
 class DenseBatchEnsemble(nn.Dense):
+    """BatchEnsemble (BE; https://arxiv.org/abs/2002.06715).
+
+    Attributes:
+        use_bias: whether to add a bias independently (default: False).
+        ensemble_size: the number of scale factors (default: 1).
+        use_ensemble_bias: whether to add a bias globally (default: True).
+        scale_r_base: a base value of scale factor for input (default: 1.0).
+        scale_s_base: a base value of scale factor for output (default: 1.0).
+        scale_r_init: initializer for scale factor for input (default: zeros).
+        scale_s_init: initializer for scale factor for output (default: zeros).
+
+        See `flax.linen.Dense` for other attributes.
+    """
     use_bias: bool = False
     ensemble_size: int = 1
     use_ensemble_bias: bool = True
-    r_base: float = 1.0
-    s_base: float = 1.0
-    r_init: Callable[[PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.zeros
-    s_init: Callable[[PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.zeros
+    scale_r_base: float = 1.0
+    scale_s_base: float = 1.0
+    scale_r_init: Callable[
+        [PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.zeros
+    scale_s_init: Callable[
+        [PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.zeros
 
     @nn.compact
     def __call__(self, inputs: Array) -> Array:
-        r = self.param('batch_ensemble_r', self.r_init, (self.ensemble_size, inputs.shape[-1]), self.param_dtype)
-        s = self.param('batch_ensemble_s', self.s_init, (self.ensemble_size,    self.features), self.param_dtype)
-        b = self.param('ensemble_bias', self.bias_init, (self.features,), self.param_dtype) if self.use_ensemble_bias else None
+        r = self.param(
+            'scale_r', self.scale_r_init,
+            (self.ensemble_size, inputs.shape[-1]), self.param_dtype)
+        s = self.param(
+            'scale_s', self.scale_s_init,
+            (self.ensemble_size, self.features), self.param_dtype)
+        b = self.param(
+            'ensemble_bias', self.bias_init, (self.features,),
+            self.param_dtype) if self.use_ensemble_bias else None
 
         x = jnp.reshape(inputs, (self.ensemble_size, -1) + inputs.shape[1:])
         x, r = nn.dtypes.promote_dtype(x, r, dtype=self.dtype)
-        x = jnp.multiply(x, jnp.reshape(r + self.r_base, (self.ensemble_size,) + (1,) * (x.ndim - 2) + (-1,)))
+        x = jnp.multiply(x, jnp.reshape(
+            r + self.scale_r_base,
+            (self.ensemble_size,) + (1,) * (x.ndim - 2) + (-1,)))
         y = super().__call__(x)
         y, s = nn.dtypes.promote_dtype(y, s, dtype=self.dtype)
-        y = jnp.multiply(y, jnp.reshape(s + self.s_base, (self.ensemble_size,) + (1,) * (y.ndim - 2) + (-1,)))
+        y = jnp.multiply(y, jnp.reshape(
+            s + self.scale_s_base,
+            (self.ensemble_size,) + (1,) * (y.ndim - 2) + (-1,)))
         if b is not None:
             y += jnp.reshape(b, (1,) * (y.ndim - 1) + (-1,))
         return y.reshape((-1,) + y.shape[2:])
 
 
 class ConvBatchEnsemble(nn.Conv):
+    """BatchEnsemble (BE; https://arxiv.org/abs/2002.06715).
+
+    Attributes:
+        use_bias: whether to add a bias independently (default: False).
+        ensemble_size: the number of scale factors (default: 1).
+        use_ensemble_bias: whether to add a bias globally (default: True).
+        scale_r_base: a base value of scale factor for input (default: 1.0).
+        scale_s_base: a base value of scale factor for output (default: 1.0).
+        scale_r_init: initializer for scale factor for input (default: zeros).
+        scale_s_init: initializer for scale factor for output (default: zeros).
+
+        See `flax.linen.Dense` for other attributes.
+    """
     use_bias: bool = False
     ensemble_size: int = 1
     use_ensemble_bias: bool = True
-    r_base: float = 1.0
-    s_base: float = 1.0
-    r_init: Callable[[PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.zeros
-    s_init: Callable[[PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.zeros
+    scale_r_base: float = 1.0
+    scale_s_base: float = 1.0
+    scale_r_init: Callable[
+        [PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.zeros
+    scale_s_init: Callable[
+        [PRNGKey, Shape, Dtype], Array] = jax.nn.initializers.zeros
 
     @nn.compact
     def __call__(self, inputs: Array) -> Array:
-        r = self.param('batch_ensemble_r', self.r_init, (self.ensemble_size, inputs.shape[-1]), self.param_dtype)
-        s = self.param('batch_ensemble_s', self.s_init, (self.ensemble_size,    self.features), self.param_dtype)
-        b = self.param('ensemble_bias', self.bias_init, (self.features,), self.param_dtype) if self.use_ensemble_bias else None
+        r = self.param(
+            'scale_r', self.scale_r_init,
+            (self.ensemble_size, inputs.shape[-1]), self.param_dtype)
+        s = self.param(
+            'scale_s', self.scale_s_init,
+            (self.ensemble_size, self.features), self.param_dtype)
+        b = self.param(
+            'ensemble_bias', self.bias_init, (self.features,),
+            self.param_dtype) if self.use_ensemble_bias else None
 
         x = jnp.reshape(inputs, (self.ensemble_size, -1) + inputs.shape[1:])
         x, r = nn.dtypes.promote_dtype(x, r, dtype=self.dtype)
-        x = jnp.multiply(x, jnp.reshape(r + self.r_base, (self.ensemble_size,) + (1,) * (x.ndim - 2) + (-1,)))
+        x = jnp.multiply(x, jnp.reshape(
+            r + self.scale_r_base,
+            (self.ensemble_size,) + (1,) * (x.ndim - 2) + (-1,)))
         y = super().__call__(x)
         y, s = nn.dtypes.promote_dtype(y, s, dtype=self.dtype)
-        y = jnp.multiply(y, jnp.reshape(s + self.s_base, (self.ensemble_size,) + (1,) * (y.ndim - 2) + (-1,)))
+        y = jnp.multiply(y, jnp.reshape(
+            s + self.scale_s_base,
+            (self.ensemble_size,) + (1,) * (y.ndim - 2) + (-1,)))
         if b is not None:
             y += jnp.reshape(b, (1,) * (y.ndim - 1) + (-1,))
         return y.reshape((-1,) + y.shape[2:])
