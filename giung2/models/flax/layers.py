@@ -26,10 +26,13 @@ class StdConv(nn.Conv):
     Similar to BN, WS controls the first and second moments of the weights of
     the weights of each output channel individually in convolutional layers.
     
-    Note that we do not have any affiner transformation on standardized kernel.
-    This is beccause we assume that normalization layers such as BN or GN will
+    Note that we do not have any affine transformation on standardized kernel.
+    This is because we assume that normalization layers such as BN or GN will
     normalize this convolutional layer again, and having affine transformation
     will confuse and slow down training.
+
+    Attributes:
+        See `flax.linen.Conv`.
     """
     def param(self, name, init_fn, *init_args):
         param = super().param(name, init_fn, *init_args)
@@ -44,6 +47,16 @@ class FilterResponseNorm(nn.Module):
 
     FRN normalizes the activations of the layer for each given example in a
     batch independently, rather than across a batch like Batch Normalization.
+
+    Attributes:
+        epsilon: a small float to avoid dividing by zero (default: 1e-06).
+        dtype: the dtype of the result (default: infer from input and params).
+        param_dtype: the dtype of parameter initializers (default: float32).
+        use_bias: whether to add a bias (default: True).
+        use_scale: whether to multiply by a scale (default: True).
+        bias_init: initializer for bias (default: zeros).
+        scale_init: initializer for scale (default: ones).
+        threshold_init: initializer for threshold (default: zeros).
     """
     epsilon: float = 1e-6
     dtype: Optional[Dtype] = None
@@ -290,4 +303,3 @@ class ConvDropFilter(nn.Conv):
 
         x = jax.lax.select(mask, inputs / keep_prob, jnp.zeros_like(inputs))
         return super().__call__(x)
- 
