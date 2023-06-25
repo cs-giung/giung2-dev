@@ -60,20 +60,20 @@ def load_data(data_name, tokenizer, max_length=None, truncation=True):
         num_labels)
 
 
-def build_dataloader(dataset, batch_size, rng=None, shuffle=False):
-        
+def build_dataloader(input_ids, attention_mask, labels,
+                     batch_size, rng=None, shuffle=False):
+    
     # shuffle the entire dataset if specified
-    num_rows = dataset.num_rows
+    num_rows = len(input_ids)
     _shuffled = jax.random.permutation(rng, num_rows) \
         if shuffle else jnp.arange(num_rows)
-    dataset = dataset[_shuffled]
-
-    input_ids = np.array(dataset['input_ids'])
-    attention_mask = np.array(dataset['attention_mask'])
-    labels = np.array(dataset['labels'])
-    marker = np.ones(num_rows, dtype=bool)
+    
+    input_ids = input_ids[_shuffled]
+    attention_mask = attention_mask[_shuffled]
+    labels = labels[_shuffled]
 
     # add padding to process the entire dataset
+    marker = np.ones(num_rows, dtype=bool)
     num_batches = math.ceil(num_rows / batch_size)
     
     padded_input_ids = np.concatenate([
