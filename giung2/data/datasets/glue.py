@@ -45,18 +45,18 @@ def load_data(data_name, tokenizer, max_length=None, truncation=True):
         preprocess_fn, batched=True, remove_columns=dset['train'].column_names)
     
     return data(
-        np.array(dset['train'].input_ids),
-        np.array(dset['train'].attention_mask),
-        np.array(dset['train'].labels),
-        dset['train'].num_rows,
-        np.array(dset['validation'].input_ids),
-        np.array(dset['validation'].attention_mask),
-        np.array(dset['validation'].labels),
-        dset['validation'].num_rows,
-        np.array(dset['test'].input_ids),
-        np.array(dset['test'].attention_mask),
-        np.array(dset['test'].labels),
-        dset['test'].num_rows,
+        np.array(dset['train']['input_ids']),
+        np.array(dset['train']['attention_mask']),
+        np.array(dset['train']['labels']),
+        dset['train']['num_rows'],
+        np.array(dset['validation']['input_ids']),
+        np.array(dset['validation']['attention_mask']),
+        np.array(dset['validation']['labels']),
+        dset['validation']['num_rows'],
+        np.array(dset['test']['input_ids']),
+        np.array(dset['test']['attention_mask']),
+        np.array(dset['test']['labels']),
+        dset['test']['num_rows'],
         num_labels)
 
 
