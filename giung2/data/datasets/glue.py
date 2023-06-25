@@ -25,9 +25,9 @@ def load_data(data_name, tokenizer, max_length=None, truncation=True):
     }[actual_task]
 
     data = namedtuple('data', [
-        'trn_input_ids', 'trn_attention_mask', 'trn_labels', 'trn_num_rows',
-        'val_input_ids', 'val_attention_mask', 'val_labels', 'val_num_rows',
-        'tst_input_ids', 'tst_attention_mask', 'tst_labels', 'tst_num_rows',
+        'trn_input_ids', 'trn_attention_mask', 'trn_labels',
+        'val_input_ids', 'val_attention_mask', 'val_labels',
+        'tst_input_ids', 'tst_attention_mask', 'tst_labels',
         'num_labels'])
     
     def preprocess_fn(examples):
@@ -48,15 +48,12 @@ def load_data(data_name, tokenizer, max_length=None, truncation=True):
         np.array(dset['train']['input_ids']),
         np.array(dset['train']['attention_mask']),
         np.array(dset['train']['labels']),
-        dset['train']['num_rows'],
         np.array(dset['validation']['input_ids']),
         np.array(dset['validation']['attention_mask']),
         np.array(dset['validation']['labels']),
-        dset['validation']['num_rows'],
         np.array(dset['test']['input_ids']),
         np.array(dset['test']['attention_mask']),
         np.array(dset['test']['labels']),
-        dset['test']['num_rows'],
         num_labels)
 
 
