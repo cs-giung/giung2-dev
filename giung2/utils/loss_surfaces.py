@@ -1,15 +1,11 @@
 import jax
 import jax.numpy as jnp
+import numpy as np
 from collections import namedtuple
 
 
 def get_2d_loss_surfaces(
-        w1, w2, w3,
-        x_points: int = 10,
-        y_points: int = 10,
-        x_margin: float = 0.1,
-        y_margin: float = 0.1,
-    ):
+        w1, w2, w3, density: int = 5, margin: float = 0.1):
 
     loss_surfaces = namedtuple(
         'loss_surfaces', ['plane_fn', 'coordinates', 'grid_xs', 'grid_ys'])
@@ -36,17 +32,23 @@ def get_2d_loss_surfaces(
         [[0, 0], [u_norm, 0], [jnp.dot(w3 - w1, u) / u_norm, v_norm]])
     
     x_min = float(coordinates[:, 0].min())
+    x_med = float(coordinates[:, 0].median())
     x_max = float(coordinates[:, 0].max())
-    x_len = x_max - x_min
-    x_min = x_min - x_margin * x_len
-    x_max = x_max + x_margin * x_len
-    grid_xs = jnp.linspace(x_min, x_max, x_points)
+    grid_xs = [x_min, x_med, x_max]
+    grid_xs = np.concatenate((
+        np.array([x_min - margin * (x_max - x_min),]),
+        np.linspace(grid_xs[0], grid_xs[1], density)[:-1],
+        np.linspace(grid_xs[1], grid_xs[2], density)),
+        np.array([x_max + margin * (x_max - x_min),]))
     
     y_min = float(coordinates[:, 0].min())
+    y_med = (y_max + y_min) / 2.0
     y_max = float(coordinates[:, 0].max())
-    y_len = y_max - y_min
-    y_min = y_min - y_margin * y_len
-    y_max = y_max + y_margin * y_len
-    grid_ys = jnp.linspace(y_min, y_max, y_points)
+    grid_ys = [y_min, y_med, y_max]
+    grid_ys = np.concatenate((
+        np.array([y_min - margin * (y_max - y_min),]),
+        np.linspace(grid_ys[0], grid_ys[1], density)[:-1],
+        np.linspace(grid_ys[1], grid_ys[2], density)),
+        np.array([y_max + margin * (y_max - y_min),]))
 
     return loss_surfaces(plane_fn, coordinates, grid_xs, grid_ys)
