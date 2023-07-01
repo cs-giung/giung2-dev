@@ -12,7 +12,7 @@ def get_2d_loss_surfaces(
     ):
 
     loss_surfaces = namedtuple(
-        'loss_surfaces', ['plane_fn', 'coordiates', 'grid_xs', 'grid_ys'])
+        'loss_surfaces', ['plane_fn', 'coordinates', 'grid_xs', 'grid_ys'])
     
     unravel_pytree = None
     if not isinstance(w1, jnp.ndarray):
