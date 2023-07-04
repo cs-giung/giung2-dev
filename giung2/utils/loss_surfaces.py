@@ -41,8 +41,8 @@ def get_2d_loss_surfaces(
         np.linspace(grid_xs[1], grid_xs[2], density),
         np.array([x_max + margin * (x_max - x_min),])))
     
-    y_min = float(coordinates[:, 0].min())
-    y_max = float(coordinates[:, 0].max())
+    y_min = float(coordinates[:, 1].min())
+    y_max = float(coordinates[:, 1].max())
     y_med = (y_max + y_min) / 2.0
     grid_ys = [y_min, y_med, y_max]
     grid_ys = np.concatenate((
