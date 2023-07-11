@@ -4,6 +4,40 @@ import numpy as np
 from collections import namedtuple
 
 
+def get_1d_loss_surfaces(
+        w1, w2, density: int = 5, margin: float = 0.1):
+
+    loss_surfaces = namedtuple(
+        'loss_surfaces', ['plane_fn', 'coordinates', 'grid_xs'])
+    
+    unravel_pytree = None
+    if not isinstance(w1, jnp.ndarray):
+        w1, unravel_pytree = jax.flatten_util.ravel_pytree(w1)
+        w2, unravel_pytree = jax.flatten_util.ravel_pytree(w2)
+
+    u = w2 - w1
+    u_norm = jnp.linalg.norm(u)
+
+    if unravel_pytree:
+        plane_fn = lambda x: unravel_pytree(w1 + x * (u / u_norm))
+    else:
+        plane_fn = lambda x: w1 + x * (u / u_norm)
+        
+    coordinates = jnp.array([0, u_norm])
+    
+    x_min = float(coordinates.min())
+    x_max = float(coordinates.max())
+    x_med = (x_max + x_min) / 2.0
+    grid_xs = [x_min, x_med, x_max]
+    grid_xs = np.concatenate((
+        np.array([x_min - margin * (x_max - x_min),]),
+        np.linspace(grid_xs[0], grid_xs[1], density)[:-1],
+        np.linspace(grid_xs[1], grid_xs[2], density),
+        np.array([x_max + margin * (x_max - x_min),])))
+    
+    return loss_surfaces(plane_fn, coordinates, grid_xs)
+
+
 def get_2d_loss_surfaces(
         w1, w2, w3, density: int = 5, margin: float = 0.1):
 
