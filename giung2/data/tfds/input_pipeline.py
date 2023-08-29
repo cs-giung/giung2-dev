@@ -93,7 +93,8 @@ def create_trn_split(data_builder, batch_size, split='train',
   
     data = data_builder.as_dataset(
         split=split, shuffle_files=True,
-        decoders={'image': tfds.decode.SkipDecoding()})
+        decoders={'image': tfds.decode.SkipDecoding()},
+        read_config=tfds.ReadConfig(add_tfds_id=True))
     image_decoder = data_builder.info.features['image'].decode_example
     shuffle_buffer_size = min(
         16*batch_size, data_builder.info.splits[split].num_examples)
@@ -121,7 +122,8 @@ def create_val_split(data_builder, batch_size, split='validation',
     
     data = data_builder.as_dataset(
         split=split, shuffle_files=False,
-        decoders={'image': tfds.decode.SkipDecoding()})
+        decoders={'image': tfds.decode.SkipDecoding()},
+        read_config=tfds.ReadConfig(add_tfds_id=True))
     image_decoder = data_builder.info.features['image'].decode_example
 
     def decode_example(example):
