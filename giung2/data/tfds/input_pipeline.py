@@ -105,7 +105,9 @@ def create_trn_split(data_builder, batch_size, split='train',
         image = _random_flip(image)
         image = tf.reshape(image, [image_size, image_size, 3])
         image = tf.cast(image, dtype=dtype)
-        return {'images': image, 'labels': example['label']}
+        return {'images': image,
+                'labels': example['label'],
+                'tfdsid': example['tfds_id']}
     
     if cache:
         data = data.cache()
@@ -131,7 +133,9 @@ def create_val_split(data_builder, batch_size, split='validation',
         image = _center_crop(image, image_size)
         image = tf.reshape(image, [image_size, image_size, 3])
         image = tf.cast(image, dtype=dtype)
-        return {'images': image, 'labels': example['label']}
+        return {'images': image,
+                'labels': example['label'],
+                'tfdsid': example['tfds_id']}
     
     if cache:
         data = data.cache()
