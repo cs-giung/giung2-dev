@@ -15,6 +15,7 @@ import jaxlib
 import flax
 import optax
 import jax.numpy as jnp
+import tensorflow_models as tfm
 import tensorflow_datasets as tfds
 from flax import jax_utils, serialization
 from flax.training import common_utils, train_state
@@ -34,7 +35,10 @@ def launch(config, print_fn):
     # ----------------------------------------------------------------------- #
     # Dataset
     # ----------------------------------------------------------------------- #
+    rand_augment = tfm.vision.augment.RandAugment()
+    
     def prepare_tf_data(batch):
+        batch['images'] = rand_augment.distort(batch['images'])
         batch['images'] = batch['images']._numpy()
         batch['labels'] = batch['labels']._numpy()
         batch['marker'] = np.ones_like(batch['labels'])
